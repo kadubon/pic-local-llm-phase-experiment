@@ -1,0 +1,19 @@
+task_id: task_009_rag_answer_audit
+title: RAG answer audit
+prompt: |
+  Audit this hypothetical RAG answer:
+
+  Question: "Can the tool run without network access?"
+  Retrieved note: "The tool uses a local cache and only needs network access when
+  the user explicitly runs the update command."
+  Answer: "Yes, it never needs network access."
+
+  Identify overclaims, missing caveats, a corrected answer, and evidence still
+  needed.
+expected_obligation_types:
+  - overclaim
+  - caveat
+  - corrected answer
+  - evidence need
+  - source alignment
+notes: Synthetic RAG-audit task.

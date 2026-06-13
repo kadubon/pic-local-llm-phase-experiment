@@ -1,0 +1,11 @@
+model: qwen3.5:35b-a3b
+ollama_url: http://localhost:11434
+temperature: 0
+top_p: 1
+seed: 42
+num_predict: 2048
+max_tasks: 10
+repair_rounds: 1
+pic_profile: development
+output_dir: results/runs
+timeout_seconds: 180

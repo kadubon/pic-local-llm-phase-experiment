@@ -1,0 +1,17 @@
+task_id: task_005_evidence_requirements
+title: Evidence requirement extraction from a short claim
+prompt: |
+  Extract evidence requirements from this claim:
+
+  "The new batching path reduces local processing time by 30% without changing
+  output correctness."
+
+  List what evidence would be needed, what assumptions are missing, and what
+  would not be proven even if the claim were supported.
+expected_obligation_types:
+  - benchmark evidence
+  - correctness evidence
+  - assumptions
+  - non-claims
+  - comparison baseline
+notes: Synthetic evidence-audit task.

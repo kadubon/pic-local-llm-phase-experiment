@@ -1,0 +1,17 @@
+task_id: task_007_refactoring_plan_review
+title: Refactoring plan review
+prompt: |
+  Review this refactoring plan:
+
+  "Move all parsing, validation, and rendering into one Manager class so it is
+  easier to call from the CLI."
+
+  Identify design risks, what should remain separated, a safer incremental plan,
+  and tests that should protect behavior.
+expected_obligation_types:
+  - design risk
+  - separation of concerns
+  - incremental step
+  - behavior-preserving test
+  - rollback consideration
+notes: Synthetic architecture-review task.

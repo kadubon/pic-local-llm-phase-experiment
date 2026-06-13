@@ -1,0 +1,19 @@
+task_id: task_001_readme_improvement
+title: README improvement proposal
+prompt: |
+  Review this short project description and propose a concrete README improvement plan.
+
+  Project description:
+  "TinyCache is a local-only Python cache helper. It stores small JSON-serializable
+  values on disk for scripts that need repeatable intermediate results. It is not
+  intended for secrets, shared multi-user systems, or long-term archival storage."
+
+  Produce a concise proposal with sections for audience, missing setup details,
+  usage examples, safety notes, and acceptance criteria.
+expected_obligation_types:
+  - audience
+  - setup
+  - usage example
+  - safety boundary
+  - acceptance criteria
+notes: Synthetic documentation-review task.

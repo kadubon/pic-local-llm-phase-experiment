@@ -1,0 +1,19 @@
+task_id: task_003_test_plan
+title: Test-plan proposal for a function
+prompt: |
+  Create a test plan for a function named `normalize_tags(tags)`.
+
+  Expected behavior:
+  - trims surrounding whitespace
+  - lowercases tags
+  - removes empty tags
+  - removes duplicates while preserving first-seen order
+
+  Provide test cases, edge cases, and what each case verifies.
+expected_obligation_types:
+  - normal case
+  - edge case
+  - duplicate handling
+  - ordering
+  - verification rationale
+notes: Synthetic unit-test planning task.

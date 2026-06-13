@@ -1,0 +1,9 @@
+task_id: sample_task
+title: Sample evidence audit
+prompt: |
+  Extract the evidence needed for a local performance claim.
+expected_obligation_types:
+  - benchmark evidence
+  - correctness evidence
+  - assumptions
+notes: Fixture task for tests.

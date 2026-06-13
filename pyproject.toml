@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pic-local-llm-phase-experiment"
+version = "0.1.0"
+description = "Local Ollama experiment comparing baseline LLM loops with PIC-assisted residual-preserving repair loops."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [
+  { name = "PIC Local LLM Phase Experiment Contributors" }
+]
+keywords = [
+  "ollama",
+  "local-llm",
+  "percolation-inversion-compiler",
+  "reproducible-experiment",
+  "workflow-diagnostics"
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+dependencies = [
+  "pydantic>=2.8,<3",
+  "PyYAML>=6.0.1,<7",
+  "requests>=2.32,<3",
+  "rich>=13.7,<14"
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.2,<9",
+  "ruff>=0.6,<1"
+]
+
+[project.scripts]
+pic-phase-setup = "pic_local_llm_phase_experiment.setup_cli:main"
+pic-phase-run = "pic_local_llm_phase_experiment.run_cli:main"
+pic-phase-analyze = "pic_local_llm_phase_experiment.analyze_cli:main"
+pic-phase-report = "pic_local_llm_phase_experiment.report_cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pic_local_llm_phase_experiment"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

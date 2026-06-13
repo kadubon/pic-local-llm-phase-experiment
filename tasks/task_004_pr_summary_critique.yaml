@@ -1,0 +1,17 @@
+task_id: task_004_pr_summary_critique
+title: PR summary critique
+prompt: |
+  Critique the following PR summary for review readiness:
+
+  "This PR improves the export flow. It changes validation, updates the CLI,
+  and fixes some tests."
+
+  Identify missing context, likely reviewer questions, risk areas, and a clearer
+  replacement summary. Keep the critique actionable.
+expected_obligation_types:
+  - missing context
+  - reviewer question
+  - risk area
+  - replacement summary
+  - actionable next step
+notes: Synthetic PR communication task.

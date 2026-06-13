@@ -1,0 +1,14 @@
+{
+  "accepted": false,
+  "settled": false,
+  "residual_summary": "Candidate lacks explicit evidence needs and a risk caveat.",
+  "runtime_report": {
+    "missing_obligations": [
+      "benchmark evidence",
+      {
+        "type": "risk caveat",
+        "detail": "State what remains unverified."
+      }
+    ]
+  }
+}

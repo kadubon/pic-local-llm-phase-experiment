@@ -1,0 +1,18 @@
+task_id: task_008_documentation_gap
+title: Documentation gap analysis
+prompt: |
+  Analyze documentation gaps for this feature note:
+
+  "The CLI now supports `--profile quick` and `--profile strict`. Quick mode
+  skips slow validations. Strict mode treats warnings as errors."
+
+  Produce a gap analysis covering setup, examples, warnings, defaults, migration
+  notes, and testable acceptance criteria.
+expected_obligation_types:
+  - setup
+  - examples
+  - warning behavior
+  - default behavior
+  - migration note
+  - acceptance criteria
+notes: Synthetic documentation-gap task.

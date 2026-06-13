@@ -1,0 +1,16 @@
+task_id: task_010_agent_message_audit
+title: Agent-to-agent message audit
+prompt: |
+  Audit this agent-to-agent handoff message:
+
+  "I changed the parser. Continue from here and make sure everything is good."
+
+  Explain what is missing for a reliable handoff, propose a better handoff
+  message, and list unresolved obligations that should be preserved.
+expected_obligation_types:
+  - changed files
+  - current status
+  - verification
+  - unresolved obligation
+  - handoff clarity
+notes: Synthetic agent-handoff task.

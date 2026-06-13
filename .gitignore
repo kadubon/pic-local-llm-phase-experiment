@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Virtual environments and local tooling
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Local experiment artifacts
+external/
+results/*
+!results/.gitkeep
+reports/*
+!reports/.gitkeep
+*.log
+*.tmp
+*.temp
+
+# Large/local model artifacts
+models/
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.onnx
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

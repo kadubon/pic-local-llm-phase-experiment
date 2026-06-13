@@ -1,0 +1,22 @@
+task_id: task_002_python_bugfix
+title: Small Python bug-fix proposal
+prompt: |
+  Review the function below and propose a safe bug fix. Do not execute code.
+
+  ```python
+  def average(values):
+      total = 0
+      for value in values:
+          total += value
+      return total / len(values)
+  ```
+
+  The caller may pass an empty list, integers, or floats. Provide a patch-style
+  explanation, expected behavior, and tests to add.
+expected_obligation_types:
+  - failure mode
+  - patch explanation
+  - empty input behavior
+  - numeric input behavior
+  - tests
+notes: Synthetic local code-review task.

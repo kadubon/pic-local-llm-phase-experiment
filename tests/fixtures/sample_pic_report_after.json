@@ -1,0 +1,10 @@
+{
+  "accepted": true,
+  "settled": false,
+  "residual_summary": "Candidate preserves one remaining verification obligation.",
+  "runtime_report": {
+    "missing_obligations": [
+      "independent correctness review"
+    ]
+  }
+}
