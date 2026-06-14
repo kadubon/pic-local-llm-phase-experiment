@@ -35,6 +35,7 @@ def test_load_config_yaml(tmp_path: Path) -> None:
                 "pic_profile: development",
                 "output_dir: results/runs",
                 "timeout_seconds: 30",
+                "experiment_mode: shared_initial",
             ]
         ),
         encoding="utf-8",
@@ -44,6 +45,21 @@ def test_load_config_yaml(tmp_path: Path) -> None:
 
     assert config.model == "qwen3.5:35b-a3b"
     assert config.output_dir.as_posix() == "results/runs"
+    assert config.experiment_mode == "shared_initial"
+
+
+def test_default_config_preserves_separate_initial_mode() -> None:
+    config = ExperimentConfig()
+
+    assert config.experiment_mode == "separate_initial"
+
+
+def test_shared_initial_config_fixture_loads() -> None:
+    config = load_config(Path("configs/experiment.shared_initial.yaml"))
+
+    assert config.experiment_mode == "shared_initial"
+    assert config.max_tasks == 10
+    assert config.repair_rounds == 1
 
 
 def test_config_rejects_nonlocal_ollama_url() -> None:

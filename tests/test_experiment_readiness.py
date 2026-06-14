@@ -16,10 +16,30 @@ from pic_local_llm_phase_experiment.schemas import ExperimentConfig, PICReportSu
 def test_estimate_experiment_workload_default_full_run() -> None:
     estimate = estimate_experiment_workload(task_count=10, repair_rounds=1)
 
+    assert estimate["experiment_mode"] == "separate_initial"
+    assert estimate["shared_initial_answer_used"] is False
+    assert estimate["shared_initial_generation_count"] == 0
     assert estimate["baseline_generation_count"] == 30
     assert estimate["pic_candidate_generation_count"] == 10
     assert estimate["pic_repair_generation_count"] == 10
     assert estimate["ollama_generation_count"] == 50
+    assert estimate["pic_intake_count"] == 20
+
+
+def test_estimate_experiment_workload_shared_initial_full_run() -> None:
+    estimate = estimate_experiment_workload(
+        task_count=10,
+        repair_rounds=1,
+        experiment_mode="shared_initial",
+    )
+
+    assert estimate["experiment_mode"] == "shared_initial"
+    assert estimate["shared_initial_answer_used"] is True
+    assert estimate["shared_initial_generation_count"] == 10
+    assert estimate["baseline_generation_count"] == 20
+    assert estimate["pic_candidate_generation_count"] == 0
+    assert estimate["pic_repair_generation_count"] == 10
+    assert estimate["ollama_generation_count"] == 40
     assert estimate["pic_intake_count"] == 20
 
 
@@ -60,7 +80,22 @@ class FakeOllamaClient:
         )
 
 
+class SequencedFakeOllamaClient:
+    def __init__(self, outputs: list[str]) -> None:
+        self.outputs = outputs
+        self.prompts: list[str] = []
+
+    def generate(self, **kwargs) -> OllamaGeneration:
+        self.prompts.append(str(kwargs["prompt"]))
+        if not self.outputs:
+            raise AssertionError("unexpected extra generation")
+        return OllamaGeneration(text=self.outputs.pop(0), raw={})
+
+
 class FakePicRunner:
+    def __init__(self) -> None:
+        self.candidate_texts: list[str] = []
+
     def run_intake(
         self,
         *,
@@ -69,6 +104,7 @@ class FakePicRunner:
         report_path: Path,
         run_dir: Path,
     ) -> PICReportSummary:
+        self.candidate_texts.append(candidate_text)
         write_text(candidate_path, candidate_text)
         is_initial = "initial" in report_path.name
         write_json(
@@ -175,8 +211,11 @@ def test_run_manifest_contains_full_readiness_metadata(tmp_path: Path) -> None:
 
     assert manifest["config_path"] == "configs/experiment.default.yaml"
     assert manifest["task_ids"] == ["task_001_sample"]
+    assert manifest["experiment_mode"] == "separate_initial"
+    assert manifest["shared_initial_answer_used"] is False
     assert manifest["estimated_ollama_generation_count"] == 5
     assert manifest["estimated_pic_intake_count"] == 2
+    assert manifest["workload_estimate"]["experiment_mode"] == "separate_initial"
     assert manifest["workload_estimate"]["ollama_generation_count"] == 5
     assert manifest["timeout_seconds"] == 180
     assert manifest["generation_retries"] == 1
@@ -185,3 +224,55 @@ def test_run_manifest_contains_full_readiness_metadata(tmp_path: Path) -> None:
     assert manifest["pic_setup"]["status"] == "ok"
     assert manifest["pic_setup"]["pic_commit"] == "abc123"
     assert str(tmp_path) not in serialized
+
+
+def test_shared_initial_run_reuses_same_initial_for_baseline_and_pic(
+    tmp_path: Path,
+) -> None:
+    config_path = _write_minimal_project(tmp_path)
+    fake_pic = FakePicRunner()
+    runner = ExperimentRunner(
+        config=ExperimentConfig(max_tasks=1, experiment_mode="shared_initial"),
+        root=tmp_path,
+        ollama_client=SequencedFakeOllamaClient(
+            [
+                "Shared initial with evidence and unresolved obligations.",
+                "Self-review notes missing evidence.",
+                "Baseline final with evidence and unresolved obligations.",
+                "PIC repaired output with evidence, risk, tests, and next steps.",
+            ]
+        ),
+        pic_runner=fake_pic,
+        config_path=config_path,
+    )
+
+    run_dir = runner.run()
+    task_dir = run_dir / "task_001_sample"
+    shared_initial = (task_dir / "shared_initial_answer.txt").read_text(encoding="utf-8")
+    baseline_initial = (task_dir / "baseline_initial.txt").read_text(encoding="utf-8")
+    pic_initial = (task_dir / "pic_initial_candidate.txt").read_text(encoding="utf-8")
+    metrics = read_json(task_dir / "metrics.json")
+    manifest = read_json(run_dir / "run_manifest.json")
+
+    assert shared_initial == "Shared initial with evidence and unresolved obligations."
+    assert baseline_initial == shared_initial
+    assert pic_initial == shared_initial
+    assert fake_pic.candidate_texts[0] == shared_initial
+    assert metrics["experiment_mode"] == "shared_initial"
+    assert metrics["shared_initial_answer_used"] is True
+    assert metrics["shared_initial_answer_length"] == len(shared_initial)
+    assert metrics["baseline_final_length"] > 0
+    assert metrics["pic_repaired_output_length"] > 0
+    assert metrics["baseline_obligation_coverage"] >= 0
+    assert metrics["pic_obligation_coverage"] >= 0
+    assert "obligation_coverage_delta" in metrics
+    assert metrics["pic_missing_obligation_delta"] == 1
+    assert metrics["pic_residual_charge_delta"] == 1.0
+    assert metrics["pic_accepted_after"] is True
+    assert metrics["pic_operationally_usable_after"] is True
+    assert metrics["pic_settled_after"] is False
+    assert metrics["pic_schema_fields_usable"] is True
+    assert 0 <= metrics["local_phase_score"] <= 1
+    assert manifest["experiment_mode"] == "shared_initial"
+    assert manifest["shared_initial_answer_used"] is True
+    assert manifest["estimated_ollama_generation_count"] == 4

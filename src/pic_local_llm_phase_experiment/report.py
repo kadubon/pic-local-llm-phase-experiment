@@ -41,10 +41,26 @@ def _avg(rows: list[dict[str, Any]], key: str) -> float:
     return mean(values) if values else 0.0
 
 
-def _ratio(rows: list[dict[str, Any]], key: str) -> float:
+def _first(row: dict[str, Any], keys: tuple[str, ...], default: Any = "") -> Any:
+    for key in keys:
+        if key in row and row.get(key) is not None:
+            return row.get(key)
+    return default
+
+
+def _avg_first(rows: list[dict[str, Any]], keys: tuple[str, ...]) -> float:
+    values: list[float] = []
+    for row in rows:
+        value = _first(row, keys, None)
+        if value is not None:
+            values.append(_to_float(value))
+    return mean(values) if values else 0.0
+
+
+def _ratio_first(rows: list[dict[str, Any]], keys: tuple[str, ...]) -> float:
     if not rows:
         return 0.0
-    return sum(1 for row in rows if bool(row.get(key))) / len(rows)
+    return sum(1 for row in rows if bool(_first(row, keys, False))) / len(rows)
 
 
 def _format_value(value: Any) -> str:
@@ -57,18 +73,22 @@ def _format_value(value: Any) -> str:
 
 def _markdown_table(rows: list[dict[str, Any]]) -> str:
     columns = [
-        "task_id",
-        "baseline_heuristic_obligation_coverage",
-        "pic_heuristic_obligation_coverage",
-        "pic_missing_obligation_delta",
-        "pic_pic_operationally_usable_after",
-        "pic_pic_settled_after",
-        "pic_local_phase_score",
+        ("task_id",),
+        ("experiment_mode",),
+        ("baseline_obligation_coverage", "baseline_heuristic_obligation_coverage"),
+        ("pic_obligation_coverage", "pic_heuristic_obligation_coverage"),
+        ("obligation_coverage_delta",),
+        ("pic_missing_obligation_delta",),
+        ("pic_operationally_usable_after", "pic_pic_operationally_usable_after"),
+        ("pic_settled_after", "pic_pic_settled_after"),
+        ("local_phase_score", "pic_local_phase_score"),
     ]
     labels = [
         "task",
+        "mode",
         "baseline coverage",
         "PIC coverage",
+        "coverage delta",
         "missing obligation delta",
         "PIC usable after",
         "PIC settled after",
@@ -79,7 +99,7 @@ def _markdown_table(rows: list[dict[str, Any]]) -> str:
     body = []
     for row in rows:
         body.append(
-            "| " + " | ".join(_format_value(row.get(column, "")) for column in columns) + " |"
+            "| " + " | ".join(_format_value(_first(row, column)) for column in columns) + " |"
         )
     return "\n".join([header, separator, *body])
 
@@ -119,14 +139,23 @@ def render_report(
     manifest = manifest or {}
     setup_manifest = setup_manifest or {}
     avg_delta = _avg(rows, "pic_missing_obligation_delta")
-    avg_phase = _avg(rows, "pic_local_phase_score")
-    avg_baseline_coverage = _avg(rows, "baseline_heuristic_obligation_coverage")
-    avg_pic_coverage = _avg(rows, "pic_heuristic_obligation_coverage")
+    avg_phase = _avg_first(rows, ("local_phase_score", "pic_local_phase_score"))
+    avg_baseline_coverage = _avg_first(
+        rows, ("baseline_obligation_coverage", "baseline_heuristic_obligation_coverage")
+    )
+    avg_pic_coverage = _avg_first(
+        rows, ("pic_obligation_coverage", "pic_heuristic_obligation_coverage")
+    )
+    avg_coverage_delta = _avg_first(rows, ("obligation_coverage_delta",))
+    if rows and not any("obligation_coverage_delta" in row for row in rows):
+        avg_coverage_delta = avg_pic_coverage - avg_baseline_coverage
     avg_residual_charge_delta = _avg(rows, "pic_residual_charge_delta")
-    accepted_after_ratio = _ratio(rows, "pic_pic_accepted_after")
-    usable_after_ratio = _ratio(rows, "pic_pic_operationally_usable_after")
-    settled_after_ratio = _ratio(rows, "pic_pic_settled_after")
-    schema_ratio = _ratio(rows, "pic_pic_schema_fields_usable")
+    accepted_after_ratio = _ratio_first(rows, ("pic_accepted_after", "pic_pic_accepted_after"))
+    usable_after_ratio = _ratio_first(
+        rows, ("pic_operationally_usable_after", "pic_pic_operationally_usable_after")
+    )
+    settled_after_ratio = _ratio_first(rows, ("pic_settled_after", "pic_pic_settled_after"))
+    schema_ratio = _ratio_first(rows, ("pic_schema_fields_usable", "pic_pic_schema_fields_usable"))
 
     missing_obligation_observation = _interpret_missing_obligations(avg_delta)
     residual_observation = _interpret_residuals(rows)
@@ -136,6 +165,35 @@ def render_report(
     model = manifest.get("model", "unknown")
     run_id = manifest.get("run_id", rows[0].get("run_id", "unknown") if rows else "unknown")
     pic_commit = setup_manifest.get("pic_commit", "not recorded")
+    experiment_mode = str(
+        manifest.get(
+            "experiment_mode",
+            rows[0].get("experiment_mode", "separate_initial") if rows else "separate_initial",
+        )
+    )
+    shared_initial_used = bool(
+        manifest.get(
+            "shared_initial_answer_used",
+            any(bool(row.get("shared_initial_answer_used")) for row in rows),
+        )
+    )
+
+    if shared_initial_used or experiment_mode == "shared_initial":
+        shared_initial_note = (
+            "This report uses `shared_initial` mode. For each task, the baseline "
+            "and PIC-assisted branches start from the exact same initial local LLM "
+            "answer. The shared answer is saved as `shared_initial_answer.txt`, "
+            "copied to `baseline_initial.txt`, and passed to PIC as "
+            "`pic_initial_candidate.txt`."
+        )
+    else:
+        shared_initial_note = (
+            "This report uses `separate_initial` mode, preserving the v0.1.0 "
+            "behavior where the baseline branch and PIC-assisted branch each get "
+            "their own initial local LLM generation. v0.2.0 adds `shared_initial` "
+            "mode for runs that should reduce comparison noise from different "
+            "initial answers."
+        )
 
     non_claims = "\n".join(f"- {item}" for item in NON_CLAIMS)
     threats = "\n".join(f"- {item}" for item in THREATS_TO_VALIDITY)
@@ -186,6 +244,7 @@ initial PIC intake report.
 
 - Run id: `{run_id}`
 - Task count: {task_count}
+- Experiment mode: `{experiment_mode}`
 - Conditions: baseline LLM-only and PIC-assisted closed loop
 - Repair rounds: {manifest.get("repair_rounds", "unknown")}
 - Temperature: {manifest.get("temperature", "unknown")}
@@ -204,6 +263,16 @@ initial PIC intake report.
 - PIC repository: `https://github.com/kadubon/percolation-inversion-compiler`
 - PIC commit: `{pic_commit}`
 - PIC profile: `{manifest.get("pic_profile", "unknown")}`
+
+## Why Shared Initial Answer Matters
+
+{shared_initial_note}
+
+This matters because two independent initial generations can differ before PIC
+ever enters the loop. Shared-initial mode makes the comparison more direct: the
+baseline condition tests self-review from the shared answer, while the
+PIC-assisted condition tests whether PIC residuals and missing obligations help
+repair that same starting answer.
 
 ## Conditions
 
@@ -249,6 +318,7 @@ operational usability, and heuristic obligation coverage.
 
 - Average baseline heuristic obligation coverage: {avg_baseline_coverage:.3f}
 - Average PIC-assisted heuristic obligation coverage: {avg_pic_coverage:.3f}
+- Average obligation coverage delta: {avg_coverage_delta:.3f}
 - Average PIC missing-obligation delta: {avg_delta:.3f}
 - Average PIC residual charge delta: {avg_residual_charge_delta:.3f}
 - PIC accepted-after ratio: {accepted_after_ratio:.3f}

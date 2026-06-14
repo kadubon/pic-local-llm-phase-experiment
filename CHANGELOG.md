@@ -1,5 +1,76 @@
 # Changelog
 
+## v0.2.0 - 2026-06-14
+
+Shared-initial experiment release with a completed local v0.2.0 run.
+
+### Added
+
+- `experiment_mode` config field with `separate_initial` and `shared_initial`
+  modes.
+- `configs/experiment.shared_initial.yaml` for the v0.2.0 design.
+- Shared-initial runner path where baseline and PIC-assisted branches start from
+  the exact same local LLM initial answer.
+- `shared_initial_answer.txt` artifact for shared-initial task runs.
+- Mode-aware workload estimates:
+  - `separate_initial`: `50` local Ollama generations and `20` PIC intake calls
+    for the default 10-task run.
+  - `shared_initial`: `40` local Ollama generations and `20` PIC intake calls
+    for the default 10-task run.
+- Top-level metrics for experiment mode, shared-initial usage, obligation
+  coverage, PIC after flags, residual-charge delta, and local phase score.
+- `docs/EXPERIMENT_REPORT_v0.2.0.md`, the public shared-initial result report.
+- `docs/EXPERIMENT_REPORT_v0.2.0_TEMPLATE.md`, marked pending run.
+- `docs/PUBLIC_SAFETY_AUDIT_v0.2.0.md`.
+- `RELEASE_v0.2.0.md`.
+
+### Changed
+
+- Bumped package version to `0.2.0`.
+- Updated report rendering to show experiment mode and explain why shared
+  initial answers matter.
+- Updated README and reproducibility docs for v0.2.0 shared-initial execution.
+- Updated public safety audit default version to `0.2.0`.
+
+### Compatibility
+
+- `configs/experiment.default.yaml` remains valid and preserves v0.1.0 behavior
+  through the schema default `experiment_mode: separate_initial`.
+- Nested v0.1.0-style `baseline` and `pic` metrics remain present.
+- `docs/EXPERIMENT_REPORT_v0.1.0.md` remains unchanged as the historical public
+  report.
+
+### Scientific Interpretation
+
+Shared-initial branching worked as intended: all 10 tasks reused the exact same
+initial answer in the baseline and PIC-assisted branches.
+
+### Results
+
+- Reference run: `20260614-050311`
+- Tasks completed: `10 / 10`
+- Task errors: none
+- Shared-initial artifact equality: `10 / 10`
+- Average baseline heuristic obligation coverage: `0.960`
+- Average PIC-assisted heuristic obligation coverage: `0.980`
+- Average obligation coverage delta: `0.020`
+- Average PIC missing-obligation delta: `-0.200`
+- Average PIC residual charge delta: `-0.574`
+- PIC accepted-after ratio: `1.000`
+- PIC operationally-usable-after ratio: `0.000`
+- PIC settled-after ratio: `0.000`
+- PIC schema-field usable ratio: `1.000`
+- Average local phase score: `0.645`
+
+### Scientific Interpretation
+
+PIC improved diagnostic visibility and produced parseable runtime/schema fields
+on all tasks. One PIC-assisted repair round did not reduce missing obligations
+on average, did not reduce residual charge on average, and did not produce any
+operationally usable or settled PIC reports. The repository still makes no claim
+that PIC creates ASI, proves real ASI, or demonstrates external-world
+capability.
+
 ## v0.1.0 - 2026-06-14
 
 Initial public research release.

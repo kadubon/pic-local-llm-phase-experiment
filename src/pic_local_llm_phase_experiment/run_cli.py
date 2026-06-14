@@ -135,10 +135,12 @@ def main(argv: list[str] | None = None) -> int:
     workload = estimate_experiment_workload(
         task_count=len(tasks),
         repair_rounds=config.repair_rounds,
+        experiment_mode=config.experiment_mode,
     )
     print(
         "Preflight passed. Starting "
-        f"{len(tasks)} tasks with about {workload['ollama_generation_count']} local "
+        f"{len(tasks)} {config.experiment_mode} tasks with about "
+        f"{workload['ollama_generation_count']} local "
         f"Ollama generations and {workload['pic_intake_count']} PIC intakes."
     )
 

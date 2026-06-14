@@ -17,7 +17,12 @@ from pic_local_llm_phase_experiment.paths import (
     write_text,
 )
 from pic_local_llm_phase_experiment.pic_runner import PicRunner
-from pic_local_llm_phase_experiment.schemas import ExperimentConfig, TaskRunMetrics, TaskSpec
+from pic_local_llm_phase_experiment.schemas import (
+    ExperimentConfig,
+    ExperimentMode,
+    TaskRunMetrics,
+    TaskSpec,
+)
 from pic_local_llm_phase_experiment.task_loader import load_tasks
 
 LOCAL_BOUNDARY = """\
@@ -30,18 +35,34 @@ secrets, browsing, or arbitrary command execution. Produce useful reviewable tex
 SETUP_MANIFEST = Path("results") / "setup_manifest.json"
 
 
-def estimate_experiment_workload(task_count: int, repair_rounds: int) -> dict[str, int]:
-    baseline_generation_count = task_count * 3
-    pic_candidate_generation_count = task_count
+def estimate_experiment_workload(
+    task_count: int,
+    repair_rounds: int,
+    experiment_mode: ExperimentMode = "separate_initial",
+) -> dict[str, Any]:
+    if experiment_mode == "shared_initial":
+        shared_initial_generation_count = task_count
+        baseline_generation_count = task_count * 2
+        pic_candidate_generation_count = 0
+    else:
+        shared_initial_generation_count = 0
+        baseline_generation_count = task_count * 3
+        pic_candidate_generation_count = task_count
     pic_repair_generation_count = task_count * repair_rounds
     return {
+        "experiment_mode": experiment_mode,
+        "shared_initial_answer_used": experiment_mode == "shared_initial",
         "task_count": task_count,
         "repair_rounds": repair_rounds,
+        "shared_initial_generation_count": shared_initial_generation_count,
         "baseline_generation_count": baseline_generation_count,
         "pic_candidate_generation_count": pic_candidate_generation_count,
         "pic_repair_generation_count": pic_repair_generation_count,
         "ollama_generation_count": (
-            baseline_generation_count + pic_candidate_generation_count + pic_repair_generation_count
+            shared_initial_generation_count
+            + baseline_generation_count
+            + pic_candidate_generation_count
+            + pic_repair_generation_count
         ),
         "pic_intake_count": task_count * (1 + repair_rounds),
     }
@@ -211,6 +232,7 @@ class ExperimentRunner:
         workload = estimate_experiment_workload(
             task_count=len(tasks),
             repair_rounds=self.config.repair_rounds,
+            experiment_mode=self.config.experiment_mode,
         )
 
         manifest: dict[str, Any] = {
@@ -231,6 +253,8 @@ class ExperimentRunner:
             "generation_retries": self.config.generation_retries,
             "disable_ollama_thinking": self.config.disable_ollama_thinking,
             "abort_on_generation_error": self.config.abort_on_generation_error,
+            "experiment_mode": self.config.experiment_mode,
+            "shared_initial_answer_used": self.config.experiment_mode == "shared_initial",
             "pic_profile": self.config.pic_profile,
             "output_dir": self.config.output_dir.as_posix(),
             "task_count": len(tasks),
@@ -275,6 +299,28 @@ class ExperimentRunner:
         task_yaml = yaml.safe_dump(task.model_dump(), sort_keys=False, allow_unicode=True)
         write_text(task_dir / "task.yaml", task_yaml)
 
+        if self.config.experiment_mode == "shared_initial":
+            return self._run_task_shared_initial(
+                task=task,
+                task_dir=task_dir,
+                run_dir=run_dir,
+                errors=errors,
+            )
+        return self._run_task_separate_initial(
+            task=task,
+            task_dir=task_dir,
+            run_dir=run_dir,
+            errors=errors,
+        )
+
+    def _run_task_separate_initial(
+        self,
+        *,
+        task: TaskSpec,
+        task_dir: Path,
+        run_dir: Path,
+        errors: list[str],
+    ) -> TaskRunMetrics:
         initial_prompt = build_answer_prompt(task)
         baseline_initial = self._generate(initial_prompt, errors)
         write_text(task_dir / "baseline_initial.txt", baseline_initial)
@@ -322,6 +368,101 @@ class ExperimentRunner:
         if repaired_report.error_message:
             errors.append(repaired_report.error_message)
 
+        return self._build_task_metrics(
+            task=task,
+            experiment_mode="separate_initial",
+            shared_initial_answer="",
+            baseline_initial=baseline_initial,
+            baseline_self_review=baseline_self_review,
+            baseline_final=baseline_final,
+            pic_repaired=pic_repaired,
+            initial_report=initial_report,
+            repaired_report=repaired_report,
+            errors=errors,
+        )
+
+    def _run_task_shared_initial(
+        self,
+        *,
+        task: TaskSpec,
+        task_dir: Path,
+        run_dir: Path,
+        errors: list[str],
+    ) -> TaskRunMetrics:
+        initial_prompt = build_answer_prompt(task)
+        shared_initial = self._generate(initial_prompt, errors)
+        write_text(task_dir / "shared_initial_answer.txt", shared_initial)
+        write_text(task_dir / "baseline_initial.txt", shared_initial)
+
+        self_review_prompt = build_self_review_prompt(task, shared_initial)
+        baseline_self_review = self._generate(self_review_prompt, errors)
+        write_text(task_dir / "baseline_self_review.txt", baseline_self_review)
+
+        final_prompt = build_final_prompt(task, shared_initial, baseline_self_review)
+        baseline_final = self._generate(final_prompt, errors)
+        write_text(task_dir / "baseline_final.txt", baseline_final)
+
+        initial_report = self.pic_runner.run_intake(
+            candidate_text=shared_initial,
+            candidate_path=task_dir / "pic_initial_candidate.txt",
+            report_path=task_dir / "pic_initial_report.json",
+            run_dir=run_dir,
+        )
+
+        repair_prompt = build_pic_repair_prompt(
+            task=task,
+            initial_answer=shared_initial,
+            residual_summary=initial_report.residual_summary,
+            missing_obligations=initial_report.missing_obligations,
+            accepted=initial_report.accepted,
+            operationally_usable=initial_report.operationally_usable,
+            settled=initial_report.settled,
+            reasons=initial_report.reasons,
+            recommended_next_commands=initial_report.recommended_next_commands,
+        )
+        write_text(task_dir / "pic_repair_prompt.txt", repair_prompt)
+
+        pic_repaired = self._generate(repair_prompt, errors)
+        write_text(task_dir / "pic_repaired_output.txt", pic_repaired)
+        repaired_report = self.pic_runner.run_intake(
+            candidate_text=pic_repaired,
+            candidate_path=task_dir / "pic_repaired_candidate_for_pic.txt",
+            report_path=task_dir / "pic_repaired_report.json",
+            run_dir=run_dir,
+        )
+
+        if initial_report.error_message:
+            errors.append(initial_report.error_message)
+        if repaired_report.error_message:
+            errors.append(repaired_report.error_message)
+
+        return self._build_task_metrics(
+            task=task,
+            experiment_mode="shared_initial",
+            shared_initial_answer=shared_initial,
+            baseline_initial=shared_initial,
+            baseline_self_review=baseline_self_review,
+            baseline_final=baseline_final,
+            pic_repaired=pic_repaired,
+            initial_report=initial_report,
+            repaired_report=repaired_report,
+            errors=errors,
+        )
+
+    def _build_task_metrics(
+        self,
+        *,
+        task: TaskSpec,
+        experiment_mode: ExperimentMode,
+        shared_initial_answer: str,
+        baseline_initial: str,
+        baseline_self_review: str,
+        baseline_final: str,
+        pic_repaired: str,
+        initial_report: Any,
+        repaired_report: Any,
+        errors: list[str],
+    ) -> TaskRunMetrics:
         baseline_metrics = compute_baseline_metrics(
             task=task,
             initial_answer=baseline_initial,
@@ -334,10 +475,30 @@ class ExperimentRunner:
             repaired_report=repaired_report,
             repaired_output=pic_repaired,
         )
+        baseline_coverage = float(baseline_metrics["heuristic_obligation_coverage"])
+        pic_coverage = float(pic_metrics["heuristic_obligation_coverage"])
+        shared_initial_used = experiment_mode == "shared_initial"
 
         return TaskRunMetrics(
             task_id=task.task_id,
             title=task.title,
+            experiment_mode=experiment_mode,
+            shared_initial_answer_used=shared_initial_used,
+            shared_initial_answer_length=len(shared_initial_answer) if shared_initial_used else 0,
+            baseline_final_length=int(baseline_metrics["final_answer_length"]),
+            pic_repaired_output_length=len(pic_repaired),
+            baseline_obligation_coverage=baseline_coverage,
+            pic_obligation_coverage=pic_coverage,
+            obligation_coverage_delta=pic_coverage - baseline_coverage,
+            pic_missing_obligation_count_before=int(pic_metrics["missing_obligation_count_before"]),
+            pic_missing_obligation_count_after=int(pic_metrics["missing_obligation_count_after"]),
+            pic_missing_obligation_delta=int(pic_metrics["missing_obligation_delta"]),
+            pic_residual_charge_delta=float(pic_metrics["residual_charge_delta"]),
+            pic_accepted_after=bool(pic_metrics["pic_accepted_after"]),
+            pic_operationally_usable_after=bool(pic_metrics["pic_operationally_usable_after"]),
+            pic_settled_after=bool(pic_metrics["pic_settled_after"]),
+            pic_schema_fields_usable=bool(pic_metrics["pic_schema_fields_usable"]),
+            local_phase_score=float(pic_metrics["local_phase_score"]),
             baseline=baseline_metrics,
             pic=pic_metrics,
             errors=errors,

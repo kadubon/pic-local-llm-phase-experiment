@@ -163,9 +163,12 @@ def main(argv: list[str] | None = None) -> int:
             workload = estimate_experiment_workload(
                 task_count=len(tasks),
                 repair_rounds=config.repair_rounds,
+                experiment_mode=config.experiment_mode,
             )
             full_readiness.update(
                 {
+                    "experiment_mode": config.experiment_mode,
+                    "shared_initial_answer_used": config.experiment_mode == "shared_initial",
                     "task_count": len(tasks),
                     "task_ids": [task.task_id for task in tasks],
                     "estimated_ollama_generation_count": workload["ollama_generation_count"],
@@ -219,6 +222,10 @@ def main(argv: list[str] | None = None) -> int:
                     "ollama_url": ollama_url,
                     "repair_rounds": 0,
                     "pic_profile": pic_profile,
+                    "experiment_mode": config.experiment_mode if config else "separate_initial",
+                    "shared_initial_answer_used": (
+                        config.experiment_mode == "shared_initial" if config else False
+                    ),
                 },
             )
             write_text(root / "reports" / "smoke_experiment_report.md", report)

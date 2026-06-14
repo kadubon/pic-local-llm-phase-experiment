@@ -28,6 +28,7 @@ PUBLIC_ROOTS = (
     "LICENSE",
     "README.md",
     "RELEASE_v0.1.0.md",
+    "RELEASE_v0.2.0.md",
     "configs",
     "docs",
     "pyproject.toml",
@@ -158,7 +159,7 @@ def scan_release_version(root: Path, version: str) -> list[AuditFinding]:
     return findings
 
 
-def run_audit(root: Path, version: str = "0.1.0") -> list[AuditFinding]:
+def run_audit(root: Path, version: str = "0.2.0") -> list[AuditFinding]:
     findings: list[AuditFinding] = []
     findings.extend(scan_public_files(root))
     findings.extend(scan_tracked_artifacts(root))
@@ -168,7 +169,7 @@ def run_audit(root: Path, version: str = "0.1.0") -> list[AuditFinding]:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Run the public-release safety audit.")
-    parser.add_argument("--version", default="0.1.0")
+    parser.add_argument("--version", default="0.2.0")
     args = parser.parse_args(argv)
 
     root = Path.cwd()

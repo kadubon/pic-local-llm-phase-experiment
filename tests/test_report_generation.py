@@ -6,8 +6,11 @@ def test_report_contains_required_non_claims() -> None:
         {
             "task_id": "task_001",
             "run_id": "20260101-000000",
+            "experiment_mode": "shared_initial",
+            "shared_initial_answer_used": True,
             "baseline_heuristic_obligation_coverage": 0.4,
             "pic_heuristic_obligation_coverage": 0.8,
+            "obligation_coverage_delta": 0.4,
             "pic_missing_obligation_delta": 1,
             "pic_residual_charge_delta": 0.5,
             "pic_local_phase_score": 0.75,
@@ -25,6 +28,8 @@ def test_report_contains_required_non_claims() -> None:
             "run_id": "20260101-000000",
             "model": "qwen3.5:35b-a3b",
             "repair_rounds": 1,
+            "experiment_mode": "shared_initial",
+            "shared_initial_answer_used": True,
         },
         setup_manifest={"pic_commit": "abc123"},
     )
@@ -35,6 +40,10 @@ def test_report_contains_required_non_claims() -> None:
     assert "`accepted` is not equivalent to `settled`" in report
     assert "Interpretation Guide" in report
     assert "What This Report Cannot Conclude" in report
+    assert "Why Shared Initial Answer Matters" in report
+    assert "exact same initial local LLM answer" in report
+    assert "shared_initial_answer.txt" in report
+    assert "Experiment mode: `shared_initial`" in report
     assert "local, small-sample, model-dependent" in report
     assert "| task |" in report
 

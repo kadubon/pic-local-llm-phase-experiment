@@ -58,6 +58,21 @@ tasks. It compares two conditions:
    - ask for a repair attempt
    - run `pic agent intake` again
 
+The repository supports two initial-answer modes:
+
+- `separate_initial`: the v0.1.0-compatible design. Baseline and PIC-assisted
+  branches each receive their own initial local LLM generation.
+- `shared_initial`: the v0.2.0 design. Baseline and PIC-assisted branches start
+  from the exact same initial local LLM answer for each task.
+
+The shared-initial mode reduces one source of comparison noise: the branches no
+longer differ merely because the model produced two different initial answers.
+It does not make the result stronger than the recorded metrics allow.
+
+Use `configs/experiment.default.yaml` for the historical separate-initial mode.
+Use `configs/experiment.shared_initial.yaml` for the v0.2.0 shared-initial
+experiment.
+
 The default local model is:
 
 ```text
@@ -137,12 +152,26 @@ The tracked public v0.1.0 report is:
 docs/EXPERIMENT_REPORT_v0.1.0.md
 ```
 
+The tracked public v0.2.0 shared-initial report is:
+
+```text
+docs/EXPERIMENT_REPORT_v0.2.0.md
+```
+
 Release and audit documents:
 
 - `RELEASE_v0.1.0.md`
+- `RELEASE_v0.2.0.md`
 - `CHANGELOG.md`
 - `docs/PUBLIC_SAFETY_AUDIT_v0.1.0.md`
+- `docs/PUBLIC_SAFETY_AUDIT_v0.2.0.md`
 - `docs/REPRODUCIBILITY.md`
+
+The reusable v0.2.0 report template remains available for future reruns:
+
+```text
+docs/EXPERIMENT_REPORT_v0.2.0_TEMPLATE.md
+```
 
 Key terms:
 
@@ -239,6 +268,56 @@ results/smoke/
 reports/smoke_experiment_report.md
 ```
 
+## v0.2.0 Shared-Initial Experiment
+
+The v0.2.0 experiment should use:
+
+```text
+configs/experiment.shared_initial.yaml
+```
+
+In this mode, each task creates one initial local LLM answer and reuses it for
+both branches:
+
+- `shared_initial_answer.txt`: the one initial answer generated for the task
+- `baseline_initial.txt`: an identical copy used by the baseline self-review
+  branch
+- `pic_initial_candidate.txt`: the same text passed to `pic agent intake`
+
+The baseline branch then performs self-review and final revision. The
+PIC-assisted branch runs PIC intake on the same initial text, feeds PIC residuals
+and missing obligations into one repair prompt, and runs PIC intake again.
+
+With 10 tasks and one repair round, this mode estimates:
+
+```text
+40 local Ollama generations
+20 PIC intake calls
+```
+
+The completed public v0.2.0 run, `20260614-050311`, found:
+
+- shared-initial artifact equality: `10 / 10` tasks
+- average baseline heuristic obligation coverage: `0.960`
+- average PIC-assisted heuristic obligation coverage: `0.980`
+- average PIC missing-obligation delta: `-0.200`
+- average PIC residual charge delta: `-0.574`
+- PIC accepted-after ratio: `1.000`
+- PIC operationally-usable-after ratio: `0.000`
+- PIC settled-after ratio: `0.000`
+
+The cautious interpretation is that PIC improved diagnostic visibility, but one
+PIC-assisted repair round did not improve missing-obligation count, residual
+charge, operational usability, or settlement in this run.
+
+The older `configs/experiment.default.yaml` remains valid and preserves the
+v0.1.0-compatible `separate_initial` design:
+
+```text
+50 local Ollama generations
+20 PIC intake calls
+```
+
 ## Before The Full Run
 
 Use this checklist before starting the 10-task run:
@@ -250,12 +329,21 @@ Use this checklist before starting the 10-task run:
 - `uv run python scripts/smoke_check.py` passed
 - you have enough time for the local model to complete the run
 
-With the default config, the full experiment runs 10 tasks. Each task uses three
-baseline local generations, one PIC candidate generation, one PIC repair
-generation, and two PIC intake calls. That is about:
+With the default v0.1.0-compatible config, the full experiment runs 10 tasks.
+Each task uses three baseline local generations, one PIC candidate generation,
+one PIC repair generation, and two PIC intake calls. That is about:
 
 ```text
 50 local Ollama generations
+20 PIC intake calls
+```
+
+With the v0.2.0 shared-initial config, the full experiment runs 10 tasks. Each
+task uses one shared initial generation, two baseline local generations, one PIC
+repair generation, and two PIC intake calls. That is about:
+
+```text
+40 local Ollama generations
 20 PIC intake calls
 ```
 
@@ -267,12 +355,20 @@ stops and leaves partial artifacts under `results/runs/` for diagnosis.
 
 ## Run The Full Experiment
 
-Canonical full sequence:
+Canonical v0.2.0 shared-initial full sequence:
 
 ```powershell
 uv sync
 uv run python scripts/setup_pic.py
 uv run python scripts/smoke_check.py
+uv run python scripts/run_experiment.py --config configs/experiment.shared_initial.yaml
+uv run python scripts/analyze_results.py --run latest
+uv run python scripts/generate_report.py --run latest
+```
+
+Historical v0.1.0-compatible sequence:
+
+```powershell
 uv run python scripts/run_experiment.py --config configs/experiment.default.yaml
 uv run python scripts/analyze_results.py --run latest
 uv run python scripts/generate_report.py --run latest
@@ -283,7 +379,7 @@ Equivalent console scripts:
 ```bash
 uv run pic-phase-setup
 uv run pic-phase-smoke
-uv run pic-phase-run --config configs/experiment.default.yaml
+uv run pic-phase-run --config configs/experiment.shared_initial.yaml
 uv run pic-phase-analyze --run latest
 uv run pic-phase-report --run latest
 ```
@@ -292,7 +388,7 @@ For a quick rehearsal that still uses the real local model and PIC, limit the
 experiment to one task:
 
 ```powershell
-uv run python scripts/run_experiment.py --config configs/experiment.default.yaml --max-tasks 1
+uv run python scripts/run_experiment.py --config configs/experiment.shared_initial.yaml --max-tasks 1
 uv run python scripts/analyze_results.py --run latest
 uv run python scripts/generate_report.py --run latest
 ```
@@ -308,6 +404,7 @@ results/runs/YYYYMMDD-HHMMSS/
 Per-task artifacts include:
 
 - `task.yaml`
+- `shared_initial_answer.txt`, in `shared_initial` mode
 - `baseline_initial.txt`
 - `baseline_self_review.txt`
 - `baseline_final.txt`
@@ -315,6 +412,7 @@ Per-task artifacts include:
 - `pic_initial_report.json`
 - `pic_repair_prompt.txt`
 - `pic_repaired_output.txt`
+- `pic_repaired_candidate_for_pic.txt`
 - `pic_repaired_report.json`
 - `metrics.json`
 

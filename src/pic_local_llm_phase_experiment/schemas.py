@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
+
+ExperimentMode = Literal["separate_initial", "shared_initial"]
 
 
 class ExperimentConfig(BaseModel):
@@ -23,6 +25,7 @@ class ExperimentConfig(BaseModel):
     generation_retries: int = 1
     disable_ollama_thinking: bool = True
     abort_on_generation_error: bool = True
+    experiment_mode: ExperimentMode = "separate_initial"
 
     @field_validator("output_dir", mode="before")
     @classmethod
@@ -113,6 +116,23 @@ class PICReportSummary(BaseModel):
 class TaskRunMetrics(BaseModel):
     task_id: str
     title: str
+    experiment_mode: ExperimentMode = "separate_initial"
+    shared_initial_answer_used: bool = False
+    shared_initial_answer_length: int = 0
+    baseline_final_length: int = 0
+    pic_repaired_output_length: int = 0
+    baseline_obligation_coverage: float = 0.0
+    pic_obligation_coverage: float = 0.0
+    obligation_coverage_delta: float = 0.0
+    pic_missing_obligation_count_before: int = 0
+    pic_missing_obligation_count_after: int = 0
+    pic_missing_obligation_delta: int = 0
+    pic_residual_charge_delta: float = 0.0
+    pic_accepted_after: bool = False
+    pic_operationally_usable_after: bool = False
+    pic_settled_after: bool = False
+    pic_schema_fields_usable: bool = False
+    local_phase_score: float = 0.0
     baseline: dict[str, Any] = Field(default_factory=dict)
     pic: dict[str, Any] = Field(default_factory=dict)
     errors: list[str] = Field(default_factory=list)

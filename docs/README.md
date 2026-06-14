@@ -1,9 +1,13 @@
 # Documentation Index
 
-This directory contains the tracked public documentation for v0.1.0.
+This directory contains the tracked public documentation for the PIC local LLM
+phase experiment.
 
 - [v0.1.0 public experiment report](EXPERIMENT_REPORT_v0.1.0.md)
 - [v0.1.0 public safety audit](PUBLIC_SAFETY_AUDIT_v0.1.0.md)
+- [v0.2.0 public experiment report](EXPERIMENT_REPORT_v0.2.0.md)
+- [v0.2.0 rerun report template](EXPERIMENT_REPORT_v0.2.0_TEMPLATE.md)
+- [v0.2.0 public safety audit](PUBLIC_SAFETY_AUDIT_v0.2.0.md)
 - [Reproducibility guide](REPRODUCIBILITY.md)
 
 Generated run artifacts under `results/` and generated Markdown reports under
