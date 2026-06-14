@@ -68,6 +68,49 @@ def test_compute_pic_metrics() -> None:
     assert metrics["missing_obligation_delta"] == 1
     assert 0 <= metrics["local_phase_score"] <= 1
     assert metrics["pic_accepted_after"] is True
+    assert metrics["pic_settled_after"] is False
+    assert metrics["pic_accepted_after"] != metrics["pic_settled_after"]
+
+
+def test_compute_pic_metrics_keeps_operational_status_separate() -> None:
+    task = TaskSpec(task_id="t", title="T", prompt="Prompt")
+    before = PICReportSummary(
+        accepted=True,
+        operationally_usable=True,
+        settled=False,
+        missing_obligations=["evidence"],
+        missing_obligation_count=1,
+        runtime_report_present=True,
+        residual_summary_key_count=1,
+        residual_charge_total=1.0,
+        route_execution_request_count=1,
+        agent_task_count=1,
+    )
+    after = PICReportSummary(
+        accepted=True,
+        operationally_usable=False,
+        settled=False,
+        missing_obligations=[],
+        missing_obligation_count=0,
+        runtime_report_present=True,
+        residual_summary_key_count=0,
+        residual_charge_total=0.0,
+    )
+
+    metrics = compute_pic_metrics(
+        task=task,
+        initial_report=before,
+        repaired_report=after,
+        repaired_output="Evidence is now listed, but settlement is not claimed.",
+    )
+
+    assert metrics["pic_accepted_after"] is True
+    assert metrics["pic_operationally_usable_after"] is False
+    assert metrics["pic_settled_after"] is False
+    assert metrics["residual_charge_delta"] == 1.0
+    assert metrics["route_execution_request_count_before"] == 1
+    assert metrics["agent_task_count_before"] == 1
+    assert metrics["pic_schema_fields_usable"] is True
 
 
 def test_compute_baseline_metrics() -> None:

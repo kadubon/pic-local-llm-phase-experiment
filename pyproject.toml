@@ -46,6 +46,8 @@ pic-phase-setup = "pic_local_llm_phase_experiment.setup_cli:main"
 pic-phase-run = "pic_local_llm_phase_experiment.run_cli:main"
 pic-phase-analyze = "pic_local_llm_phase_experiment.analyze_cli:main"
 pic-phase-report = "pic_local_llm_phase_experiment.report_cli:main"
+pic-phase-smoke = "pic_local_llm_phase_experiment.smoke_cli:main"
+pic-phase-public-audit = "pic_local_llm_phase_experiment.public_audit:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/pic_local_llm_phase_experiment"]

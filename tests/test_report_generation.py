@@ -9,9 +9,14 @@ def test_report_contains_required_non_claims() -> None:
             "baseline_heuristic_obligation_coverage": 0.4,
             "pic_heuristic_obligation_coverage": 0.8,
             "pic_missing_obligation_delta": 1,
+            "pic_residual_charge_delta": 0.5,
             "pic_local_phase_score": 0.75,
             "pic_residual_summary_length_before": 32,
+            "pic_residual_charge_total_before": 1.0,
             "pic_pic_accepted_after": True,
+            "pic_pic_operationally_usable_after": True,
+            "pic_pic_settled_after": False,
+            "pic_pic_schema_fields_usable": True,
         }
     ]
     report = render_report(
@@ -25,9 +30,13 @@ def test_report_contains_required_non_claims() -> None:
     )
 
     assert "not a measure of real ASI" in report
+    assert "What Is PIC?" in report
     assert "PIC did not prove real ASI" in report
+    assert "`accepted` is not equivalent to `settled`" in report
+    assert "Interpretation Guide" in report
+    assert "What This Report Cannot Conclude" in report
     assert "local, small-sample, model-dependent" in report
-    assert "| task_id |" in report
+    assert "| task |" in report
 
 
 def test_report_generation_from_dummy_results_has_threats() -> None:
@@ -37,9 +46,13 @@ def test_report_generation_from_dummy_results_has_threats() -> None:
             "baseline_heuristic_obligation_coverage": 1.0,
             "pic_heuristic_obligation_coverage": 1.0,
             "pic_missing_obligation_delta": 0,
+            "pic_residual_charge_delta": 0.0,
             "pic_local_phase_score": 0.5,
             "pic_residual_summary_length_before": 0,
             "pic_pic_accepted_after": False,
+            "pic_pic_operationally_usable_after": False,
+            "pic_pic_settled_after": False,
+            "pic_pic_schema_fields_usable": False,
         }
     ]
 

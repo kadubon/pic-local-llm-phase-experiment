@@ -140,6 +140,18 @@ def local_phase_score(
     return bounded(score)
 
 
+def pic_schema_fields_usable(
+    initial_report: PICReportSummary,
+    repaired_report: PICReportSummary,
+) -> bool:
+    return (
+        not initial_report.command_failed
+        and not repaired_report.command_failed
+        and initial_report.runtime_report_present
+        and repaired_report.runtime_report_present
+    )
+
+
 def compute_baseline_metrics(
     *,
     task: TaskSpec,
@@ -185,10 +197,25 @@ def compute_pic_metrics(
         "missing_obligation_reduction_ratio": missing_reduction,
         "residual_summary_length_before": len(initial_report.residual_summary),
         "residual_summary_length_after": len(repaired_report.residual_summary),
+        "residual_summary_key_count_before": initial_report.residual_summary_key_count,
+        "residual_summary_key_count_after": repaired_report.residual_summary_key_count,
+        "residual_charge_total_before": initial_report.residual_charge_total,
+        "residual_charge_total_after": repaired_report.residual_charge_total,
+        "residual_charge_delta": (
+            initial_report.residual_charge_total - repaired_report.residual_charge_total
+        ),
         "pic_accepted_before": initial_report.accepted,
         "pic_accepted_after": repaired_report.accepted,
+        "pic_operationally_usable_before": initial_report.operationally_usable,
+        "pic_operationally_usable_after": repaired_report.operationally_usable,
         "pic_settled_before": initial_report.settled,
         "pic_settled_after": repaired_report.settled,
+        "route_execution_request_count_before": initial_report.route_execution_request_count,
+        "route_execution_request_count_after": repaired_report.route_execution_request_count,
+        "agent_task_count_before": initial_report.agent_task_count,
+        "agent_task_count_after": repaired_report.agent_task_count,
+        "pic_runtime_report_present_before": initial_report.runtime_report_present,
+        "pic_runtime_report_present_after": repaired_report.runtime_report_present,
         "repair_attempt_count": 1 if repaired_output.strip() else 0,
         "obligation_preservation_score": preservation,
         "self_contradiction_flags": self_contradiction_flags(repaired_output),
@@ -199,6 +226,7 @@ def compute_pic_metrics(
         "pic_report_fields_usable": not (
             initial_report.command_failed or repaired_report.command_failed
         ),
+        "pic_schema_fields_usable": pic_schema_fields_usable(initial_report, repaired_report),
         "llm_responded_to_pic_residuals": preservation > 0,
         "local_phase_score": local_phase_score(
             accepted_after=repaired_report.accepted,

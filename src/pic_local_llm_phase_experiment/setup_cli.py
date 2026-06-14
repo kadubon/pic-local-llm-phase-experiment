@@ -80,6 +80,10 @@ def main(argv: list[str] | None = None) -> int:
         if not _command_ok(steps["pic_help"]):
             raise RuntimeError("`pic --help` failed")
 
+        steps["pic_version"] = _run(["pic", "--version"], cwd=root)
+        if _command_ok(steps["pic_version"]):
+            manifest["pic_version"] = steps["pic_version"]["stdout_tail"].strip()
+
         steps["pic_agent_explain"] = _run(["pic", "agent", "explain"], cwd=root)
         manifest["pic_agent_explain_available"] = _command_ok(steps["pic_agent_explain"])
         manifest["status"] = "ok"

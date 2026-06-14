@@ -17,15 +17,79 @@ def _stringify_obligation(value: Any) -> str:
     return str(value)
 
 
+def _string_list(value: Any) -> list[str]:
+    if isinstance(value, list):
+        return [_stringify_obligation(item) for item in value]
+    if isinstance(value, str):
+        return [value]
+    return []
+
+
+def _count_items(value: Any) -> int:
+    if isinstance(value, list):
+        return len(value)
+    if isinstance(value, dict):
+        return len(value)
+    return 0
+
+
+def _coerce_float(value: Any) -> float | None:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _normalize_residual_summary(
+    value: Any,
+) -> tuple[str, dict[str, float] | str | None, int, float]:
+    if isinstance(value, dict):
+        normalized: dict[str, float] = {}
+        for key, raw_amount in value.items():
+            amount = _coerce_float(raw_amount)
+            if amount is not None:
+                normalized[str(key)] = amount
+        text = ", ".join(f"{key}={amount:g}" for key, amount in sorted(normalized.items()))
+        return text, normalized, len(normalized), sum(normalized.values())
+    if isinstance(value, str):
+        return value, value, 0, 0.0
+    if value is None:
+        return "", None, 0, 0.0
+    text = json.dumps(value, sort_keys=True, ensure_ascii=False)
+    return text, text, 0, 0.0
+
+
+def _residual_charge_from_ledger(runtime_report: dict[str, Any]) -> float:
+    residual_ledger = runtime_report.get("residual_ledger")
+    if not isinstance(residual_ledger, dict):
+        return 0.0
+    coordinates = residual_ledger.get("coordinates", [])
+    if isinstance(coordinates, dict):
+        iterable = coordinates.values()
+    elif isinstance(coordinates, list):
+        iterable = coordinates
+    else:
+        return 0.0
+    total = 0.0
+    for coordinate in iterable:
+        if isinstance(coordinate, dict):
+            amount = _coerce_float(coordinate.get("value", coordinate.get("charge")))
+            if amount is not None:
+                total += amount
+    return total
+
+
 def parse_pic_report(report_path: Path, base_dir: Path | None = None) -> PICReportSummary:
     raw = json.loads(report_path.read_text(encoding="utf-8"))
     runtime_report = raw.get("runtime_report")
     if not isinstance(runtime_report, dict):
         runtime_report = {}
 
-    residual_summary = raw.get("residual_summary") or runtime_report.get("residual_summary") or ""
-    if not isinstance(residual_summary, str):
-        residual_summary = json.dumps(residual_summary, sort_keys=True, ensure_ascii=False)
+    residual_text, residual_raw, residual_key_count, residual_total = _normalize_residual_summary(
+        raw.get("residual_summary", runtime_report.get("residual_summary"))
+    )
+    if residual_total == 0.0:
+        residual_total = _residual_charge_from_ledger(runtime_report)
 
     missing_raw = runtime_report.get("missing_obligations", raw.get("missing_obligations", []))
     if isinstance(missing_raw, dict):
@@ -43,11 +107,20 @@ def parse_pic_report(report_path: Path, base_dir: Path | None = None) -> PICRepo
 
     return PICReportSummary(
         accepted=bool(raw.get("accepted", False)),
+        operationally_usable=bool(raw.get("operationally_usable", False)),
         settled=bool(raw.get("settled", False)),
-        residual_summary=residual_summary,
+        reasons=_string_list(raw.get("reasons", [])),
+        recommended_next_commands=_string_list(raw.get("recommended_next_commands", [])),
+        residual_summary=residual_text,
+        residual_summary_raw=residual_raw,
+        residual_summary_key_count=residual_key_count,
+        residual_charge_total=residual_total,
         missing_obligations=missing_obligations,
         missing_obligation_count=len(missing_obligations),
         runtime_report=runtime_report,
+        runtime_report_present=isinstance(raw.get("runtime_report"), dict),
+        route_execution_request_count=_count_items(runtime_report.get("route_execution_requests")),
+        agent_task_count=_count_items(runtime_report.get("agent_tasks")),
         raw_report_path=raw_report_path,
     )
 
@@ -57,6 +130,61 @@ class PicRunner:
         self.profile = profile
         self.timeout_seconds = timeout_seconds
         self.command = command
+
+    def _run_command(self, args: list[str], *, cwd: Path) -> dict[str, Any]:
+        try:
+            completed = subprocess.run(
+                args,
+                cwd=cwd,
+                capture_output=True,
+                text=True,
+                timeout=self.timeout_seconds,
+                check=False,
+            )
+        except FileNotFoundError as exc:
+            return {
+                "args": args,
+                "returncode": 127,
+                "stdout_tail": "",
+                "stderr_tail": str(exc),
+                "ok": False,
+            }
+        except subprocess.TimeoutExpired as exc:
+            return {
+                "args": args,
+                "returncode": 124,
+                "stdout_tail": (exc.stdout or "")[-2000:],
+                "stderr_tail": ((exc.stderr or "") + "\nTimed out.")[-2000:],
+                "ok": False,
+            }
+        return {
+            "args": args,
+            "returncode": completed.returncode,
+            "stdout_tail": completed.stdout[-2000:],
+            "stderr_tail": completed.stderr[-2000:],
+            "ok": completed.returncode == 0,
+        }
+
+    def preflight(self, *, cwd: Path) -> dict[str, Any]:
+        checks = {
+            "pic_help": self._run_command([self.command, "--help"], cwd=cwd),
+            "pic_agent_explain": self._run_command([self.command, "agent", "explain"], cwd=cwd),
+            "pic_version": self._run_command([self.command, "--version"], cwd=cwd),
+        }
+        required = ("pic_help", "pic_agent_explain")
+        errors = []
+        for name in required:
+            check = checks[name]
+            if not check["ok"]:
+                stderr = check.get("stderr_tail") or check.get("stdout_tail") or "no output"
+                errors.append(f"{name} failed with exit code {check['returncode']}: {stderr}")
+        return {
+            "ok": not errors,
+            "profile": self.profile,
+            "command": self.command,
+            "checks": checks,
+            "errors": errors,
+        }
 
     def run_intake(
         self,

@@ -1,13 +1,50 @@
 {
-  "accepted": false,
+  "accepted": true,
+  "operationally_usable": true,
   "settled": false,
-  "residual_summary": "Candidate lacks explicit evidence needs and a risk caveat.",
+  "reasons": [
+    "missing finite benchmark evidence",
+    "risk caveat remains unresolved"
+  ],
+  "recommended_next_commands": [
+    "Inspect runtime_report.residual_ledger and runtime_report.missing_obligations.",
+    "Run another runtime step after new evidence or action results are available."
+  ],
+  "residual_summary": {
+    "missing-evidence": 1.0,
+    "risk_caveat": 0.5
+  },
   "runtime_report": {
+    "accepted": true,
+    "operationally_usable": true,
+    "settled": false,
     "missing_obligations": [
       "benchmark evidence",
       {
         "type": "risk caveat",
         "detail": "State what remains unverified."
+      }
+    ],
+    "residual_ledger": {
+      "coordinates": [
+        {
+          "kind": "missing-evidence",
+          "value": 1.0
+        },
+        {
+          "kind": "risk_caveat",
+          "value": 0.5
+        }
+      ]
+    },
+    "route_execution_requests": [
+      {
+        "route_id": "adapters.domain.verify_ecpt_proxy_target_contract"
+      }
+    ],
+    "agent_tasks": [
+      {
+        "task_id": "preserve-missing-obligations"
       }
     ]
   }

@@ -1,10 +1,32 @@
 {
   "accepted": true,
+  "operationally_usable": true,
   "settled": false,
-  "residual_summary": "Candidate preserves one remaining verification obligation.",
+  "reasons": [
+    "independent correctness review remains unresolved"
+  ],
+  "recommended_next_commands": [
+    "Preserve missing_obligations in the next runtime step."
+  ],
+  "residual_summary": {
+    "missing-evidence": 0.25
+  },
   "runtime_report": {
+    "accepted": true,
+    "operationally_usable": true,
+    "settled": false,
     "missing_obligations": [
       "independent correctness review"
-    ]
+    ],
+    "residual_ledger": {
+      "coordinates": [
+        {
+          "kind": "missing-evidence",
+          "value": 0.25
+        }
+      ]
+    },
+    "route_execution_requests": [],
+    "agent_tasks": []
   }
 }

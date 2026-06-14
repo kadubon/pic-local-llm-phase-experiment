@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -8,7 +9,13 @@ import yaml
 
 from pic_local_llm_phase_experiment.metrics import compute_baseline_metrics, compute_pic_metrics
 from pic_local_llm_phase_experiment.ollama_client import OllamaClient, OllamaError
-from pic_local_llm_phase_experiment.paths import ensure_dir, write_json, write_text
+from pic_local_llm_phase_experiment.paths import (
+    ensure_dir,
+    read_json,
+    relative_posix,
+    write_json,
+    write_text,
+)
 from pic_local_llm_phase_experiment.pic_runner import PicRunner
 from pic_local_llm_phase_experiment.schemas import ExperimentConfig, TaskRunMetrics, TaskSpec
 from pic_local_llm_phase_experiment.task_loader import load_tasks
@@ -19,6 +26,54 @@ Do not claim real ASI, autonomous superintelligence, oracle truth, physical-worl
 outcomes, or real-world capability acceleration. Do not request cloud APIs,
 secrets, browsing, or arbitrary command execution. Produce useful reviewable text.
 """
+
+SETUP_MANIFEST = Path("results") / "setup_manifest.json"
+
+
+def estimate_experiment_workload(task_count: int, repair_rounds: int) -> dict[str, int]:
+    baseline_generation_count = task_count * 3
+    pic_candidate_generation_count = task_count
+    pic_repair_generation_count = task_count * repair_rounds
+    return {
+        "task_count": task_count,
+        "repair_rounds": repair_rounds,
+        "baseline_generation_count": baseline_generation_count,
+        "pic_candidate_generation_count": pic_candidate_generation_count,
+        "pic_repair_generation_count": pic_repair_generation_count,
+        "ollama_generation_count": (
+            baseline_generation_count + pic_candidate_generation_count + pic_repair_generation_count
+        ),
+        "pic_intake_count": task_count * (1 + repair_rounds),
+    }
+
+
+def load_pic_setup_metadata(root: Path) -> dict[str, Any]:
+    manifest_path = root / SETUP_MANIFEST
+    if not manifest_path.exists():
+        return {
+            "status": "missing",
+            "manifest_path": SETUP_MANIFEST.as_posix(),
+        }
+    try:
+        raw = read_json(manifest_path)
+    except (OSError, json.JSONDecodeError) as exc:
+        return {
+            "status": "unreadable",
+            "manifest_path": SETUP_MANIFEST.as_posix(),
+            "error": str(exc),
+        }
+    if not isinstance(raw, dict):
+        return {
+            "status": "invalid",
+            "manifest_path": SETUP_MANIFEST.as_posix(),
+        }
+    return {
+        "status": str(raw.get("status", "unknown")),
+        "manifest_path": SETUP_MANIFEST.as_posix(),
+        "pic_commit": raw.get("pic_commit"),
+        "pic_version": raw.get("pic_version"),
+        "pic_agent_explain_available": bool(raw.get("pic_agent_explain_available", False)),
+    }
 
 
 def _expected_obligation_block(task: TaskSpec) -> str:
@@ -85,10 +140,17 @@ def build_pic_repair_prompt(
     residual_summary: str,
     missing_obligations: list[str],
     accepted: bool,
+    operationally_usable: bool,
     settled: bool,
+    reasons: list[str],
+    recommended_next_commands: list[str],
 ) -> str:
     missing_block = "\n".join(f"- {item}" for item in missing_obligations) or "- none reported"
     residual = residual_summary or "(no residual summary reported)"
+    reasons_block = "\n".join(f"- {item}" for item in reasons) or "- none reported"
+    commands_block = (
+        "\n".join(f"- {item}" for item in recommended_next_commands) or "- none reported"
+    )
     return f"""\
 {LOCAL_BOUNDARY}
 
@@ -106,6 +168,7 @@ Initial candidate:
 {initial_answer}
 
 PIC accepted before repair: {accepted}
+PIC operationally usable before repair: {operationally_usable}
 PIC settled before repair: {settled}
 
 PIC residual summary:
@@ -113,6 +176,12 @@ PIC residual summary:
 
 PIC missing obligations:
 {missing_block}
+
+PIC reasons:
+{reasons_block}
+
+PIC recommended next commands:
+{commands_block}
 
 Produce a repaired answer. Include a short "Residuals and obligations preserved"
 section that explains what remains unresolved if anything remains unresolved.
@@ -127,20 +196,29 @@ class ExperimentRunner:
         root: Path,
         ollama_client: OllamaClient,
         pic_runner: PicRunner,
+        config_path: Path | None = None,
     ) -> None:
         self.config = config
         self.root = root
         self.ollama_client = ollama_client
         self.pic_runner = pic_runner
+        self.config_path = config_path
 
     def run(self) -> Path:
         tasks = load_tasks(self.root / "tasks", max_tasks=self.config.max_tasks)
         run_id = datetime.now(UTC).strftime("%Y%m%d-%H%M%S")
         run_dir = ensure_dir(self.root / self.config.output_dir / run_id)
+        workload = estimate_experiment_workload(
+            task_count=len(tasks),
+            repair_rounds=self.config.repair_rounds,
+        )
 
         manifest: dict[str, Any] = {
             "run_id": run_id,
             "created_at_utc": datetime.now(UTC).isoformat(),
+            "config_path": (
+                relative_posix(self.config_path, self.root) if self.config_path else None
+            ),
             "model": self.config.model,
             "ollama_url": self.config.ollama_url,
             "temperature": self.config.temperature,
@@ -149,8 +227,18 @@ class ExperimentRunner:
             "num_predict": self.config.num_predict,
             "max_tasks": self.config.max_tasks,
             "repair_rounds": self.config.repair_rounds,
+            "timeout_seconds": self.config.timeout_seconds,
+            "generation_retries": self.config.generation_retries,
+            "disable_ollama_thinking": self.config.disable_ollama_thinking,
+            "abort_on_generation_error": self.config.abort_on_generation_error,
             "pic_profile": self.config.pic_profile,
+            "output_dir": self.config.output_dir.as_posix(),
             "task_count": len(tasks),
+            "task_ids": [task.task_id for task in tasks],
+            "workload_estimate": workload,
+            "estimated_ollama_generation_count": workload["ollama_generation_count"],
+            "estimated_pic_intake_count": workload["pic_intake_count"],
+            "pic_setup": load_pic_setup_metadata(self.root),
             "safety_boundary": "local-only; no cloud APIs; no arbitrary LLM command execution",
         }
         write_json(run_dir / "run_manifest.json", manifest)
@@ -176,6 +264,8 @@ class ExperimentRunner:
         except OllamaError as exc:
             message = f"Ollama generation failed: {exc}"
             errors.append(message)
+            if self.config.abort_on_generation_error:
+                raise RuntimeError(message) from exc
             return f"ERROR: {message}"
 
     def _run_task(self, *, task: TaskSpec, run_dir: Path) -> TaskRunMetrics:
@@ -211,7 +301,10 @@ class ExperimentRunner:
             residual_summary=initial_report.residual_summary,
             missing_obligations=initial_report.missing_obligations,
             accepted=initial_report.accepted,
+            operationally_usable=initial_report.operationally_usable,
             settled=initial_report.settled,
+            reasons=initial_report.reasons,
+            recommended_next_commands=initial_report.recommended_next_commands,
         )
         write_text(task_dir / "pic_repair_prompt.txt", repair_prompt)
 
