@@ -1,0 +1,121 @@
+{
+  "status": "PASS",
+  "scope": "Post-experiment publication documentation and read-only validation; does not replace frozen campaign validation or regrade answers.",
+  "checked_at_utc": "2026-10-20T05:46:14.344690+00:00",
+  "recorded_experiment_commit": "ddb2b68c3b23e2e343542e95f5fb696fe7094914",
+  "model_generations_added": 0,
+  "campaign_outputs_regenerated": false,
+  "checks": {
+    "r1_public_manifest": {
+      "status": "PASS",
+      "files": 32,
+      "worktree_and_recorded_git_blobs": true
+    },
+    "r2_public_manifest": {
+      "status": "PASS",
+      "files": 23,
+      "worktree_and_recorded_git_blobs": true
+    },
+    "r3_public_manifest": {
+      "status": "PASS",
+      "files": 36,
+      "worktree_and_recorded_git_blobs": true
+    },
+    "r3_frozen_pilot": {
+      "status": "PASS",
+      "files": 51
+    },
+    "r3_frozen_main": {
+      "status": "PASS",
+      "files": 51
+    },
+    "prior_snapshot_at_publication": {
+      "status": "PASS",
+      "protected_files_at_experiment_end": 1832,
+      "unchanged_bytes_at_publication": 1829,
+      "later_authorized_documentation_changes": [
+        "CHANGELOG.md",
+        "README.md",
+        "docs/README.md"
+      ],
+      "other_changes_or_missing_files": [],
+      "historical_manifest_modified": false
+    },
+    "recorded_tree_preservation": {
+      "status": "PASS",
+      "base_commit": "ddb2b68c3b23e2e343542e95f5fb696fe7094914",
+      "files_checked_except_authorized_docs": 154,
+      "r3_new_public_files_unchanged": 37
+    },
+    "r3_private_archive": {
+      "status": "PASS",
+      "bytes": 1633928,
+      "sha256": "e21a2384105f7756f9f5ead36e5d8b4a919e6e423f995d135759d54d7ccdf4e0",
+      "zip_integrity": true,
+      "excluded_from_public_git": true
+    },
+    "documentation_links": {
+      "status": "PASS",
+      "documents": [
+        "CHANGELOG.md",
+        "README.md",
+        "docs/README.md",
+        "docs/PUBLICATION_PIC_1_1_0_R3.md"
+      ],
+      "local_destinations_checked": 73
+    },
+    "research_history_public_safety": {
+      "status": "PASS",
+      "commits_checked": 3,
+      "changed_blob_versions_checked": 37,
+      "unique_paths": 37,
+      "forbidden_artifacts": []
+    },
+    "pytest": {
+      "status": "PASS",
+      "exit_code": 0,
+      "passed": 184,
+      "failed": 0,
+      "skipped": 0
+    },
+    "ruff": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "format": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "syntax": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "mypy": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "r3_arithmetic": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "r2_arithmetic": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "r1_arithmetic": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "safety": {
+      "status": "PASS",
+      "exit_code": 0
+    }
+  },
+  "documentation_hash_convention": "SHA256 with CRLF normalized to LF; validation file excluded",
+  "documentation_hashes": {
+    "CHANGELOG.md": "a3c2f82319a641956bad556a36d3cb0fd895e6a7f58d0b171c048aa81ae99dff",
+    "README.md": "7167bc501c5f129d74246284d807910e5b036efd28a281809cbae779bd47b391",
+    "docs/README.md": "fc834c8be30dd43b1523cbccd65162355667093e66308fa54d8fecb4e040ada9",
+    "docs/PUBLICATION_PIC_1_1_0_R3.md": "4744cc65cabef30ea9dd1a133679f056245dac5236406a5c693f90d60e886cfa"
+  }
+}

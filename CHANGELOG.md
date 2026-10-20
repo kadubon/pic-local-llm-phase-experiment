@@ -1,5 +1,35 @@
 # Changelog
 
+## Unreleased - PIC 1.1.0 R3 (2026-10-20)
+
+- Added a separate preregistered evidence-bound experiment: four pilot and
+  sixteen confirmatory tasks with shared initial answers, review A, independent
+  verifier plus strong generic ledger B, and the same evidence plus actual PIC C.
+  All 81 local generations including warmup completed without retry/truncation.
+- Recorded composite success A 0/16, B 15/16, C 13/16. C-B is -12.5 percentage
+  points, conservative 95% interval [-41.95, +22.88], exact McNemar p=0.5.
+  B/C both have correct decisions 16/16 and supported completion yield 7/7.
+  No arm makes an unsupported completion. The predeclared `HARM_OBSERVED`
+  label describes composite point degradation, without establishing general harm.
+- Added a descriptive endpoint audit: A discloses uncertainty but fails the
+  machine obligation-ID contract; C's two extra composite failures concern a
+  holding citation or extra obligation text. Frozen scoring remains unchanged.
+- Exercised real PIC native predicates, SDK/runtime and five CLI operations.
+  Four invalid deterministic cases pass raw packet promotion; a common outer
+  provenance/semantic gate protects both B/C. Protection is not PIC-only.
+- Recorded C/B measured workflow time ratio 2.043 and approximately twice the
+  allocated tokens. One valid main reuse skips verifier calls without a time
+  saving. No incremental efficacy, safety or resource-efficiency claim is supported
+  by this small, single-model finite benchmark.
+- Updated README and Docs for results, limitations and model-free checks.
+  Separate publication validation preserves all frozen R3 artifacts and earlier
+  results/raw archives; only three prior navigation/changelog files are updated.
+  No inference is repeated for publication. Package version remains 0.2.0.
+
+See the [R3 report](docs/EXPERIMENT_REPORT_PIC_1_1_0_R3.md),
+[endpoint audit](docs/PIC_1_1_0_R3_ENDPOINT_AUDIT.md) and
+[publication guide](docs/PUBLICATION_PIC_1_1_0_R3.md).
+
 ## Unreleased - PIC 1.1.0 research campaigns (2026-10-20)
 
 - Added an isolated, hash-locked PIC 1.1.0 profile using the installed local
