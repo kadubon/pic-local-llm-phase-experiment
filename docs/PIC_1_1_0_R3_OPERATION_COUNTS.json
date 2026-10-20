@@ -1,0 +1,30 @@
+{
+  "scope": "All pilot+confirmatory acquisition and deterministic no-cache diagnostics; excludes pre-registration integration and unit tests",
+  "actual_model_calls_including_warmup": 81,
+  "consumer_verifier_invocations": 20,
+  "producer_verifier_invocations": 5,
+  "no_cache_verifier_invocations": 20,
+  "consumer_independent_domain_calls": 9,
+  "producer_independent_domain_calls": 5,
+  "no_cache_independent_domain_calls": 11,
+  "consumer_native_PIC_calls": 17,
+  "producer_native_PIC_calls": 10,
+  "no_cache_native_PIC_calls": 10,
+  "actual_PIC_diagnoses": 30,
+  "final_answer_PIC_runtime_steps": 20,
+  "valid_reuse_consumers": 2,
+  "all_call_input_tokens": 63120,
+  "all_call_output_tokens": 5258,
+  "all_call_total_tokens": 68378,
+  "raw_invalid_attack_packet_promotions": [
+    "rehashed_forgery",
+    "unknown_id",
+    "receiver_mismatch",
+    "other_task"
+  ],
+  "protected_invalid_attack_promotions": 0,
+  "energy_joules": null,
+  "monetary_cost": null,
+  "FLOPs": null,
+  "GPU_utilization_continuous": null
+}
