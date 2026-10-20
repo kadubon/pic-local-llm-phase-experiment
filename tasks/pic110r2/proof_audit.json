@@ -1,0 +1,1105 @@
+[
+  {
+    "task_id": "r2_pilot_integration",
+    "world_count": 162,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01",
+          "E02",
+          "E03",
+          "E04",
+          "E05"
+        ],
+        "compatible_worlds": 1,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "stock": 63,
+              "reserved": 19,
+              "damaged": 5,
+              "received": true,
+              "incoming": 17
+            },
+            "counterexample_outcome": {
+              "decision": 56,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "stock": 72,
+              "reserved": 8,
+              "damaged": 5,
+              "received": true,
+              "incoming": 17
+            },
+            "counterexample_outcome": {
+              "decision": 76,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E03",
+            "counterexample_world": {
+              "stock": 72,
+              "reserved": 19,
+              "damaged": 2,
+              "received": true,
+              "incoming": 17
+            },
+            "counterexample_outcome": {
+              "decision": 68,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E04",
+            "counterexample_world": {
+              "stock": 72,
+              "reserved": 19,
+              "damaged": 5,
+              "received": false,
+              "incoming": 17
+            },
+            "counterexample_outcome": {
+              "decision": 48,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E05",
+            "counterexample_world": {
+              "stock": 72,
+              "reserved": 19,
+              "damaged": 5,
+              "received": true,
+              "incoming": 11
+            },
+            "counterexample_outcome": {
+              "decision": 59,
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_integrate_01",
+    "world_count": 162,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01",
+          "E02",
+          "E03",
+          "E04"
+        ],
+        "compatible_worlds": 3,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "stock": 63,
+              "reserved": 13,
+              "damaged": 9,
+              "received": false,
+              "incoming": 11
+            },
+            "counterexample_outcome": {
+              "decision": 41,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "stock": 87,
+              "reserved": 8,
+              "damaged": 9,
+              "received": false,
+              "incoming": 11
+            },
+            "counterexample_outcome": {
+              "decision": 70,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E03",
+            "counterexample_world": {
+              "stock": 87,
+              "reserved": 13,
+              "damaged": 2,
+              "received": false,
+              "incoming": 11
+            },
+            "counterexample_outcome": {
+              "decision": 72,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E04",
+            "counterexample_world": {
+              "stock": 87,
+              "reserved": 13,
+              "damaged": 9,
+              "received": true,
+              "incoming": 11
+            },
+            "counterexample_outcome": {
+              "decision": 76,
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_integrate_02",
+    "world_count": 162,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01",
+          "E02",
+          "E03",
+          "E04",
+          "E05"
+        ],
+        "compatible_worlds": 1,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "stock": 72,
+              "reserved": 8,
+              "damaged": 5,
+              "received": true,
+              "incoming": 11
+            },
+            "counterexample_outcome": {
+              "decision": 70,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "stock": 63,
+              "reserved": 13,
+              "damaged": 5,
+              "received": true,
+              "incoming": 11
+            },
+            "counterexample_outcome": {
+              "decision": 56,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E03",
+            "counterexample_world": {
+              "stock": 63,
+              "reserved": 8,
+              "damaged": 2,
+              "received": true,
+              "incoming": 11
+            },
+            "counterexample_outcome": {
+              "decision": 64,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E04",
+            "counterexample_world": {
+              "stock": 63,
+              "reserved": 8,
+              "damaged": 5,
+              "received": false,
+              "incoming": 11
+            },
+            "counterexample_outcome": {
+              "decision": 50,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E05",
+            "counterexample_world": {
+              "stock": 63,
+              "reserved": 8,
+              "damaged": 5,
+              "received": true,
+              "incoming": 17
+            },
+            "counterexample_outcome": {
+              "decision": 67,
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_integrate_03",
+    "world_count": 27,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01",
+          "E02",
+          "E03"
+        ],
+        "compatible_worlds": 1,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "payment_a": 73,
+              "payment_b": 57,
+              "refund": 16
+            },
+            "counterexample_outcome": {
+              "decision": 114,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "payment_a": 96,
+              "payment_b": 38,
+              "refund": 16
+            },
+            "counterexample_outcome": {
+              "decision": 118,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E03",
+            "counterexample_world": {
+              "payment_a": 96,
+              "payment_b": 57,
+              "refund": 7
+            },
+            "counterexample_outcome": {
+              "decision": 146,
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      },
+      {
+        "ids": [
+          "E02",
+          "E03",
+          "E04"
+        ],
+        "compatible_worlds": 1,
+        "necessity": [
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "payment_a": 96,
+              "payment_b": 38,
+              "refund": 16
+            },
+            "counterexample_outcome": {
+              "decision": 118,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E03",
+            "counterexample_world": {
+              "payment_a": 96,
+              "payment_b": 57,
+              "refund": 7
+            },
+            "counterexample_outcome": {
+              "decision": 146,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E04",
+            "counterexample_world": {
+              "payment_a": 73,
+              "payment_b": 57,
+              "refund": 16
+            },
+            "counterexample_outcome": {
+              "decision": 114,
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_integrate_04",
+    "world_count": 54,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01",
+          "E02",
+          "E03"
+        ],
+        "compatible_worlds": 2,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "boxes": 4,
+              "loose": 7,
+              "reserved": 18,
+              "forecast": 20
+            },
+            "counterexample_outcome": {
+              "decision": 25,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "boxes": 6,
+              "loose": 2,
+              "reserved": 18,
+              "forecast": 20
+            },
+            "counterexample_outcome": {
+              "decision": 38,
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E03",
+            "counterexample_world": {
+              "boxes": 6,
+              "loose": 7,
+              "reserved": 11,
+              "forecast": 20
+            },
+            "counterexample_outcome": {
+              "decision": 50,
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_pilot_policy",
+    "world_count": 27,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E02"
+        ],
+        "compatible_worlds": 9,
+        "necessity": [
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "v1": 25,
+              "v2": 70,
+              "v3": 35
+            },
+            "counterexample_outcome": {
+              "decision": "permit",
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_policy_01",
+    "world_count": 27,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E02"
+        ],
+        "compatible_worlds": 9,
+        "necessity": [
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "v1": 25,
+              "v2": 50,
+              "v3": 35
+            },
+            "counterexample_outcome": {
+              "decision": "permit",
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_policy_02",
+    "world_count": 27,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01"
+        ],
+        "compatible_worlds": 9,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "v1": 25,
+              "v2": 30,
+              "v3": 35
+            },
+            "counterexample_outcome": {
+              "decision": "deny",
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_policy_03",
+    "world_count": 54,
+    "full_compatible_worlds": 3,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E03"
+        ],
+        "compatible_worlds": 27,
+        "necessity": [
+          {
+            "removed": "E03",
+            "counterexample_world": {
+              "v1": 25,
+              "v2": 30,
+              "v3": 35,
+              "active_available": true
+            },
+            "counterexample_outcome": {
+              "decision": "deny",
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_policy_04",
+    "world_count": 12,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01"
+        ],
+        "compatible_worlds": 4,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "v1": 14,
+              "v2": 60,
+              "v3": 120
+            },
+            "counterexample_outcome": {
+              "decision": 14,
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_pilot_evidence",
+    "world_count": 8,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01",
+          "E02"
+        ],
+        "compatible_worlds": 2,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "lab_a": true,
+              "lab_b": true,
+              "local_claim": false
+            },
+            "counterexample_outcome": {
+              "decision": "pass",
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "lab_a": false,
+              "lab_b": false,
+              "local_claim": false
+            },
+            "counterexample_outcome": {
+              "decision": "fail",
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_evidence_01",
+    "world_count": 16,
+    "full_compatible_worlds": 4,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01"
+        ],
+        "compatible_worlds": 8,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "available": true,
+              "signed": false,
+              "approved": false,
+              "local_claim": false
+            },
+            "counterexample_outcome": {
+              "decision": null,
+              "complete": false,
+              "unresolved": [
+                "approval-signature"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_evidence_02",
+    "world_count": 16,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01",
+          "E02"
+        ],
+        "compatible_worlds": 4,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "available": false,
+              "signed": false,
+              "approved": false,
+              "local_claim": false
+            },
+            "counterexample_outcome": {
+              "decision": null,
+              "complete": false,
+              "unresolved": [
+                "approval-record"
+              ]
+            }
+          },
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "available": true,
+              "signed": true,
+              "approved": false,
+              "local_claim": false
+            },
+            "counterexample_outcome": {
+              "decision": "deny",
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_evidence_03",
+    "world_count": 8,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01",
+          "E02"
+        ],
+        "compatible_worlds": 2,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "lab_a": false,
+              "lab_b": false,
+              "local_claim": false
+            },
+            "counterexample_outcome": {
+              "decision": "fail",
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "lab_a": true,
+              "lab_b": true,
+              "local_claim": false
+            },
+            "counterexample_outcome": {
+              "decision": "pass",
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_evidence_04",
+    "world_count": 8,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01",
+          "E02"
+        ],
+        "compatible_worlds": 2,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "lab_a": true,
+              "lab_b": false,
+              "local_claim": false
+            },
+            "counterexample_outcome": {
+              "decision": null,
+              "complete": false,
+              "unresolved": [
+                "reconcile-reports"
+              ]
+            }
+          },
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "lab_a": false,
+              "lab_b": true,
+              "local_claim": false
+            },
+            "counterexample_outcome": {
+              "decision": null,
+              "complete": false,
+              "unresolved": [
+                "reconcile-reports"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_pilot_validation",
+    "world_count": 19683,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01",
+          "E02",
+          "E03"
+        ],
+        "compatible_worlds": 1,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "alpha_id": "K",
+              "alpha_qty": 0,
+              "alpha_status": "new",
+              "beta_id": "L",
+              "beta_qty": true,
+              "beta_status": "done",
+              "gamma_id": "M",
+              "gamma_qty": 2,
+              "gamma_status": "pending"
+            },
+            "counterexample_outcome": {
+              "decision": [
+                "alpha",
+                "beta",
+                "gamma"
+              ],
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "alpha_id": "K",
+              "alpha_qty": 2,
+              "alpha_status": "new",
+              "beta_id": "K",
+              "beta_qty": 0,
+              "beta_status": "new",
+              "gamma_id": "M",
+              "gamma_qty": 2,
+              "gamma_status": "pending"
+            },
+            "counterexample_outcome": {
+              "decision": [
+                "alpha",
+                "beta",
+                "gamma"
+              ],
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E03",
+            "counterexample_world": {
+              "alpha_id": "K",
+              "alpha_qty": 2,
+              "alpha_status": "new",
+              "beta_id": "L",
+              "beta_qty": true,
+              "beta_status": "done",
+              "gamma_id": "K",
+              "gamma_qty": 0,
+              "gamma_status": "new"
+            },
+            "counterexample_outcome": {
+              "decision": [
+                "alpha",
+                "beta",
+                "gamma"
+              ],
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_validate_01",
+    "world_count": 19683,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01",
+          "E02",
+          "E03"
+        ],
+        "compatible_worlds": 1,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "alpha_id": "L",
+              "alpha_qty": 0,
+              "alpha_status": "new",
+              "beta_id": "K",
+              "beta_qty": 2,
+              "beta_status": "done",
+              "gamma_id": "M",
+              "gamma_qty": 2,
+              "gamma_status": "new"
+            },
+            "counterexample_outcome": {
+              "decision": [
+                "alpha"
+              ],
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "alpha_id": "K",
+              "alpha_qty": 2,
+              "alpha_status": "new",
+              "beta_id": "L",
+              "beta_qty": 0,
+              "beta_status": "new",
+              "gamma_id": "M",
+              "gamma_qty": 2,
+              "gamma_status": "new"
+            },
+            "counterexample_outcome": {
+              "decision": [
+                "beta"
+              ],
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E03",
+            "counterexample_world": {
+              "alpha_id": "K",
+              "alpha_qty": 2,
+              "alpha_status": "new",
+              "beta_id": "K",
+              "beta_qty": 2,
+              "beta_status": "done",
+              "gamma_id": "K",
+              "gamma_qty": 0,
+              "gamma_status": "new"
+            },
+            "counterexample_outcome": {
+              "decision": [
+                "alpha",
+                "beta",
+                "gamma"
+              ],
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_validate_02",
+    "world_count": 19683,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01",
+          "E02",
+          "E03"
+        ],
+        "compatible_worlds": 1,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "alpha_id": "K",
+              "alpha_qty": 2,
+              "alpha_status": "new",
+              "beta_id": "L",
+              "beta_qty": 0,
+              "beta_status": "done",
+              "gamma_id": "M",
+              "gamma_qty": 2,
+              "gamma_status": "pending"
+            },
+            "counterexample_outcome": {
+              "decision": [
+                "beta",
+                "gamma"
+              ],
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E02",
+            "counterexample_world": {
+              "alpha_id": "K",
+              "alpha_qty": true,
+              "alpha_status": "new",
+              "beta_id": "L",
+              "beta_qty": 2,
+              "beta_status": "new",
+              "gamma_id": "M",
+              "gamma_qty": 2,
+              "gamma_status": "pending"
+            },
+            "counterexample_outcome": {
+              "decision": [
+                "alpha",
+                "gamma"
+              ],
+              "complete": true,
+              "unresolved": []
+            }
+          },
+          {
+            "removed": "E03",
+            "counterexample_world": {
+              "alpha_id": "K",
+              "alpha_qty": true,
+              "alpha_status": "new",
+              "beta_id": "L",
+              "beta_qty": 0,
+              "beta_status": "done",
+              "gamma_id": "M",
+              "gamma_qty": 2,
+              "gamma_status": "new"
+            },
+            "counterexample_outcome": {
+              "decision": [
+                "alpha",
+                "beta"
+              ],
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_validate_03",
+    "world_count": 3,
+    "full_compatible_worlds": 1,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01"
+        ],
+        "compatible_worlds": 1,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "raw": "{\"id\":\"probe\",\"reading\":0.6}"
+            },
+            "counterexample_outcome": {
+              "decision": "pass",
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  },
+  {
+    "task_id": "r2_validate_04",
+    "world_count": 8,
+    "full_compatible_worlds": 2,
+    "all_minimal_proofs": [
+      {
+        "ids": [
+          "E01"
+        ],
+        "compatible_worlds": 4,
+        "necessity": [
+          {
+            "removed": "E01",
+            "counterexample_world": {
+              "artifact_available": true,
+              "observed": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "local_claim": false
+            },
+            "counterexample_outcome": {
+              "decision": "pass",
+              "complete": true,
+              "unresolved": []
+            }
+          }
+        ]
+      }
+    ],
+    "method": "exhaustive finite-model entailment and deletion counterexamples"
+  }
+]
