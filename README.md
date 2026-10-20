@@ -1,13 +1,34 @@
 # PIC Local LLM Phase Experiment
 
-For the independent PIC 1.1.0 comparison with a matched one-call generic
-review, a separate task oracle and resource accounting, see
-[the preregistered protocol](docs/PROTOCOL_PIC_1_1_0.md) and
-[reproduction instructions](docs/REPRODUCIBILITY_PIC_1_1_0.md).
-The [recorded report](docs/EXPERIMENT_REPORT_PIC_1_1_0.md) distinguishes the
-completed 12-task confirmation from the incomplete historical panel and
-documents limitations of the strict evidence oracle.
-The historical v0.1.0/v0.2.0 workflow below is retained.
+The latest completed comparison is **PIC 1.1.0 R2**, recorded on 2026-10-20.
+It prospectively fixes citation/type ambiguity and overinclusive evidence
+requirements, then compares a generic review (A) with PIC feedback (B) on
+sixteen fresh confirmatory tasks. Both arms use the same local `gemma4:e4b`
+digest, the exact same initial answer, and one revision with matched generation
+limits. Four pilot tasks are excluded from the primary estimates.
+
+| R2 confirmatory endpoint | Generic review A | PIC feedback B |
+| --- | ---: | ---: |
+| Independently graded success | 8/16 | 9/16 |
+| Substantive false completion | 7/16 | 6/16 |
+| Allocated measured workflow time | 191.2 s | 479.5 s |
+
+The success difference is +6.25 percentage points (conservative 95% interval
+[-23.9, +33.8]). The sole discordance is an A revision losing a correct initial
+answer; B preserves it. B improves no initial success label and costs about
+2.51 times as much measured workflow time. This small experiment does not
+establish incremental superiority or a resource-efficiency advantage. Matched
+call/output limits do not imply equal realized prompt tokens or runtime.
+
+Start with the [R2 report](docs/EXPERIMENT_REPORT_PIC_1_1_0_R2.md),
+[fixed protocol](docs/PROTOCOL_PIC_1_1_0_R2.md),
+[reproduction guide](docs/REPRODUCIBILITY_PIC_1_1_0_R2.md), and
+[publication and offline-check guide](docs/PUBLICATION_PIC_1_1_0.md).
+The [documentation index](docs/README.md) distinguishes R2, the earlier PIC
+1.1.0 comparison with oracle limitations and an incomplete historical panel,
+and the retained v0.1.0/v0.2.0 workflow below. Experiment reports and frozen
+identities retain their recorded state; subsequent publication is documented
+separately. The experiment package version remains 0.2.0; PIC is pinned to 1.1.0.
 
 This repository is an English-first, local-only research scaffold for testing
 whether the Percolation Inversion Compiler (PIC) improves finite workflow
@@ -49,8 +70,10 @@ Useful upstream references:
 
 ## What This Repository Does
 
-This repository runs a small, synthetic, local experiment over ten review-style
-tasks. It compares two conditions:
+The historical v0.1.0/v0.2.0 workflow described in the following sections runs
+a small, synthetic, local experiment over ten review-style tasks. For R2's
+distinct commands and endpoints, use the guides above. The historical workflow
+compares two conditions:
 
 1. **Baseline LLM-only loop**
    - ask the local LLM to answer a task
@@ -82,7 +105,7 @@ Use `configs/experiment.default.yaml` for the historical separate-initial mode.
 Use `configs/experiment.shared_initial.yaml` for the v0.2.0 shared-initial
 experiment.
 
-The default local model is:
+The historical default local model is:
 
 ```text
 qwen3.5:35b-a3b

@@ -1,5 +1,39 @@
 # Changelog
 
+## Unreleased - PIC 1.1.0 research campaigns (2026-10-20)
+
+- Added an isolated, hash-locked PIC 1.1.0 profile using the installed local
+  `gemma4:e4b` digest, shared initial answers, one revision per arm, an
+  independent oracle, bounded stop rules and measured resource accounting.
+- Recorded the first campaign's completed 12-task confirmation, stopped
+  historical panel, failed/truncated attempts and oracle-validity audit.
+  Post-hoc normalization sensitivity is separate from confirmatory results.
+- Prospectively fixed source-ID/type semantics and evidence sufficiency in
+  R2, with twenty fresh tasks, exhaustive finite-domain proof enumeration,
+  deletion counterexamples, separate formatting metrics and substantive false
+  completion scoring. Protocol/code/gold were committed locally before pilot
+  inference; the confirmatory manifest was frozen before main inference.
+- Completed R2: four pilot tasks and sixteen confirmatory tasks, 61 actual
+  local generations including warmup, with no generation failure/truncation.
+  Confirmatory success is A 8/16 versus B 9/16; false completion is 7/16 versus
+  6/16. The success difference is +6.25 percentage points, conservative 95%
+  interval [-23.9, +33.8]; superiority is not established. The only discordance
+  reflects A losing an initially correct answer. Allocated measured workflow
+  time is 191.2 s versus 479.5 s; no resource-efficiency advantage is shown.
+- Added sanitized per-answer metrics, protocols, frozen manifests, validation,
+  obligation audits and offline arithmetic checks. Raw outputs, private
+  archives, local environment details and weights remain excluded from Git.
+- Updated the README and documentation index, with a separate publication
+  guide explaining immutable experiment snapshots and later Docs updates.
+  Prior results/configurations and experiment identities remain preserved.
+- Retained package version 0.2.0 and historical workflow behavior. This is a
+  research update using PIC 1.1.0, not a new package release or a rerun of the
+  historical v0.1.0/v0.2.0 reports.
+
+See the [documentation index](docs/README.md) and
+[publication guide](docs/PUBLICATION_PIC_1_1_0.md) for the recorded evidence and
+the distinction between local preregistration and later public availability.
+
 ## v0.2.0 - 2026-06-14
 
 Shared-initial experiment release with a completed local v0.2.0 run.

@@ -1,0 +1,100 @@
+{
+  "status": "PASS",
+  "scope": "Post-experiment documentation and publication validation; does not replace recorded campaign validation or regrade raw answers.",
+  "checked_at_utc": "2026-10-20T04:17:09.446963+00:00",
+  "recorded_experiment_commit": "a771ce4",
+  "inference_or_pic_calls_added": 0,
+  "checks": {
+    "r1_public_manifest": {
+      "status": "PASS",
+      "files": 32,
+      "worktree_and_recorded_git_blobs": true
+    },
+    "r2_public_manifest": {
+      "status": "PASS",
+      "files": 23,
+      "worktree_and_recorded_git_blobs": true
+    },
+    "r2_frozen_pilot": {
+      "status": "PASS",
+      "files": 16
+    },
+    "r2_frozen_main": {
+      "status": "PASS",
+      "files": 16
+    },
+    "prior_snapshot_at_publication": {
+      "status": "PASS",
+      "protected_files_at_experiment_end": 957,
+      "unchanged_bytes_at_publication": 954,
+      "later_authorized_documentation_changes": [
+        "CHANGELOG.md",
+        "README.md",
+        "docs/README.md"
+      ],
+      "other_changes_or_missing_files": [],
+      "historical_manifest_modified": false
+    },
+    "recorded_tree_preservation": {
+      "status": "PASS",
+      "base_commit": "a771ce4",
+      "files_checked_except_authorized_docs": 115
+    },
+    "documentation_links": {
+      "status": "PASS",
+      "documents": [
+        "CHANGELOG.md",
+        "README.md",
+        "docs/PUBLICATION_PIC_1_1_0.md",
+        "docs/README.md"
+      ],
+      "local_destinations_checked": 48
+    },
+    "tracked_artifact_exclusion": {
+      "status": "PASS",
+      "unexpected_tracked_artifacts": []
+    },
+    "pytest": {
+      "status": "PASS",
+      "exit_code": 0,
+      "passed": 138,
+      "failed": 0,
+      "skipped": 0
+    },
+    "ruff": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "format": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "syntax": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "mypy": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "safety": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "r2_arithmetic": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "r1_arithmetic": {
+      "status": "PASS",
+      "exit_code": 0
+    }
+  },
+  "documentation_hash_convention": "SHA256 with CRLF normalized to LF; validation file excluded",
+  "documentation_hashes": {
+    "CHANGELOG.md": "eb6a0aa51ff67b9e960c01e86f5bb692bc0e947c5f388d1a55d8a645ed6578a8",
+    "README.md": "9a97591535e83c65ea5d5f405780eda14ab64cf80cfe6ba804b5f66088266a1a",
+    "docs/PUBLICATION_PIC_1_1_0.md": "d48090c69e3f03b75cd3ee9592b3942edb334059a7b482ba806f83994808ccc7",
+    "docs/README.md": "ca203870c3eb7d0d04a8b352ff3fa78df064824f2de5f5fc444a67fcc59a81e9"
+  }
+}
