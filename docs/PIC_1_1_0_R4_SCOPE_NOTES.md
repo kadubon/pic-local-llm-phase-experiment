@@ -63,6 +63,16 @@ observed minimal generation time counterfactually for each backend, rather
 than executing an extra model call. They must never be summed and presented
 as actual physical compute.
 
+With equal valid hit rates and the same independent verifier, both caches save
+the same common verification work. Making that verifier more expensive can
+increase the value of caching in both workflows without creating an incremental
+PIC advantage. Reusing native PIC results can reduce work introduced by the
+PIC path itself; that is distinct from outperforming the generic cache.
+Additional PIC utility would need another measured mechanism, such as more
+valid reuse at equal safety, better allocation, fewer integration mistakes or
+lower audit effort. These are hypotheses, not effects established by the cache
+call-count identity. This interpretation is specified before reuse measurement.
+
 ## What remains outside this experiment
 
 Sources, authority roots, faults and policy context snapshots are synthetic.
