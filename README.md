@@ -1,5 +1,11 @@
 # PIC Local LLM Phase Experiment
 
+For the independent PIC 1.1.0 comparison with a matched one-call generic
+review, a separate task oracle and resource accounting, see
+[the preregistered protocol](docs/PROTOCOL_PIC_1_1_0.md) and
+[reproduction instructions](docs/REPRODUCIBILITY_PIC_1_1_0.md).
+The historical v0.1.0/v0.2.0 workflow below is retained.
+
 This repository is an English-first, local-only research scaffold for testing
 whether the Percolation Inversion Compiler (PIC) improves finite workflow
 diagnostics in local LLM loops.
