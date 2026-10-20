@@ -1,0 +1,24 @@
+{
+  "scope": "Protocol-consistent secondary eligible yield; no primary or grade changes",
+  "disclosure": "Frozen secondary helper includes all 32 planned cases, including holding cases. The protocol and arm table define supported yield over 23 determinable cases. Retain the original field as per-planned-case contribution and report eligible rates separately. Its 32-pair uncertainty is not a 23-eligible-pair interval.",
+  "primary_and_contract_scores_unchanged": true,
+  "model_calls_added": 0,
+  "frozen_helper_planned_pairs": 32,
+  "frozen_helper_difference": 0.0,
+  "eligible_rates": {
+    "G_minimal": {
+      "count": 23,
+      "eligible": 23,
+      "rate": 1.0
+    },
+    "P_minimal": {
+      "count": 23,
+      "eligible": 23,
+      "rate": 1.0
+    }
+  },
+  "eligible_difference_P_minus_G": 0.0,
+  "inference_scope": "Descriptive secondary correction only; backend replay is not a population equivalence test. No replacement primary test or superiority claim.",
+  "component_field_definition": "decision_correct requires both decision and complete flag",
+  "summary_sha256_normalized_lf": "c9a1d5c18856060240261d49a25c7e80358617e12b215ee29ca0f3a5c79f1279"
+}

@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "decision": "PROCEED_UNCHANGED",
+  "preregistration_commit": "282548846d44530b57d121c32a9d96fb5a4b0360",
+  "actual_pilot_generations": 8,
+  "attempt_states": {
+    "OK": 8
+  },
+  "model_effect_scores_inspected": false,
+  "private_gold_parsed": false,
+  "technical_amendments": [],
+  "maximum_observed_prompt_bytes": 14342,
+  "actual_calls_including_warmup": 9,
+  "checks": [
+    "exact frozen prompt transmission",
+    "Ollama response completion",
+    "context boundary",
+    "raw artifacts and final PIC runtime recorded",
+    "same minimal answer replay design",
+    "prior preservation",
+    "unchanged PIC wheel"
+  ]
+}

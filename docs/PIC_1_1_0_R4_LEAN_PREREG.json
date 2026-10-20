@@ -1,0 +1,293 @@
+{
+  "registered_utc": "2026-10-20T07:35:58.419262+00:00",
+  "git_head": "3ab0ebd421b1f5c80fd44b4980e29049d28f11f9",
+  "scope": "Separate cost replication before any reuse results; no R4 amendment",
+  "hashes": {
+    "scripts/benchmark_pic110r4_lean.py": "c639051c620e8b1d97cf757b498ef33198d4ccd8d762ac2154810a1d78bf1836",
+    "docs/PROTOCOL_PIC_1_1_0_R4_LEAN.md": "6f24aeba93621e06efbb9fee84f9cf21f67efcb80dfcefd90313b34d6fdce84b",
+    "src/pic_local_llm_phase_experiment/pic110r4_reuse.py": "22e9d13b260a2ed7cd1e8cbe3a0632da551007e690978831ca92dab429802609",
+    "src/pic_local_llm_phase_experiment/pic110r4_common.py": "5680a6d74775095dd49c654b110ee527689bc5e940a65896181eb79e8f02d1f3",
+    "src/pic_local_llm_phase_experiment/pic110r3_verifiers.py": "65be2fc42accb9c742441b3de22ddf231f51e5984283e203b5a483ce3d36d97a",
+    "src/pic_local_llm_phase_experiment/pic110r3_pic_adapter.py": "ee7a2c7d05e452c4eee3423e5c1b777b3dc99acfa87bf6a7541bbc19e443dc87",
+    "results/pic110r4/setup/installed_pic_hashes.json": "ef10a1e3aec131763c30bf41865703ef2089130e2bb5830c9a99ce8b8dbb20fd"
+  },
+  "settings": {
+    "model": "gemma4:e4b",
+    "model_digest": "dc35e8d9c6061baa6f0fa870975ab6932e2542b579b13ea0f199fa4bb7300c9c",
+    "pic_version": "1.1.0",
+    "pic_distribution_hash": "2d23def1bb734d12a6746caeabcc76fdce985476ed126545caba4a16838c0bb7",
+    "ollama_url": "http://localhost:11434",
+    "temperature": 0,
+    "top_p": 1,
+    "seed": 20261020,
+    "num_predict": 768,
+    "num_ctx": 16384,
+    "max_prompt_bytes": 24000,
+    "max_input_tokens": 1752032,
+    "max_output_tokens": 55360,
+    "max_calls_including_warmup": 73,
+    "max_wall_seconds": 3600,
+    "request_timeout_seconds": 180,
+    "max_consecutive_failures": 3,
+    "max_ram_percent": 92,
+    "think": false,
+    "keep_alive": "10m",
+    "retries": 0,
+    "order_seed": 11042026,
+    "reuse_sizes": [
+      16,
+      4096,
+      65536
+    ],
+    "reuse_fanouts": [
+      1,
+      8
+    ],
+    "reuse_repeats": 2,
+    "reuse_wall_seconds": 1200,
+    "worker_timeout_seconds": 90,
+    "max_reuse_processes": 72
+  },
+  "grid": [
+    {
+      "size": 16,
+      "fanout": 1,
+      "repeat": 0,
+      "backend": "pic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 16,
+      "fanout": 1,
+      "repeat": 0,
+      "backend": "generic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 16,
+      "fanout": 1,
+      "repeat": 1,
+      "backend": "generic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 16,
+      "fanout": 1,
+      "repeat": 1,
+      "backend": "pic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 16,
+      "fanout": 8,
+      "repeat": 0,
+      "backend": "generic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 16,
+      "fanout": 8,
+      "repeat": 0,
+      "backend": "pic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 16,
+      "fanout": 8,
+      "repeat": 1,
+      "backend": "pic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 16,
+      "fanout": 8,
+      "repeat": 1,
+      "backend": "generic",
+      "consumer_order": [
+        "cached",
+        "no_cache"
+      ]
+    },
+    {
+      "size": 4096,
+      "fanout": 1,
+      "repeat": 0,
+      "backend": "generic",
+      "consumer_order": [
+        "cached",
+        "no_cache"
+      ]
+    },
+    {
+      "size": 4096,
+      "fanout": 1,
+      "repeat": 0,
+      "backend": "pic",
+      "consumer_order": [
+        "cached",
+        "no_cache"
+      ]
+    },
+    {
+      "size": 4096,
+      "fanout": 1,
+      "repeat": 1,
+      "backend": "pic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 4096,
+      "fanout": 1,
+      "repeat": 1,
+      "backend": "generic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 4096,
+      "fanout": 8,
+      "repeat": 0,
+      "backend": "pic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 4096,
+      "fanout": 8,
+      "repeat": 0,
+      "backend": "generic",
+      "consumer_order": [
+        "cached",
+        "no_cache"
+      ]
+    },
+    {
+      "size": 4096,
+      "fanout": 8,
+      "repeat": 1,
+      "backend": "generic",
+      "consumer_order": [
+        "cached",
+        "no_cache"
+      ]
+    },
+    {
+      "size": 4096,
+      "fanout": 8,
+      "repeat": 1,
+      "backend": "pic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 65536,
+      "fanout": 1,
+      "repeat": 0,
+      "backend": "generic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 65536,
+      "fanout": 1,
+      "repeat": 0,
+      "backend": "pic",
+      "consumer_order": [
+        "no_cache",
+        "cached"
+      ]
+    },
+    {
+      "size": 65536,
+      "fanout": 1,
+      "repeat": 1,
+      "backend": "generic",
+      "consumer_order": [
+        "cached",
+        "no_cache"
+      ]
+    },
+    {
+      "size": 65536,
+      "fanout": 1,
+      "repeat": 1,
+      "backend": "pic",
+      "consumer_order": [
+        "cached",
+        "no_cache"
+      ]
+    },
+    {
+      "size": 65536,
+      "fanout": 8,
+      "repeat": 0,
+      "backend": "generic",
+      "consumer_order": [
+        "cached",
+        "no_cache"
+      ]
+    },
+    {
+      "size": 65536,
+      "fanout": 8,
+      "repeat": 0,
+      "backend": "pic",
+      "consumer_order": [
+        "cached",
+        "no_cache"
+      ]
+    },
+    {
+      "size": 65536,
+      "fanout": 8,
+      "repeat": 1,
+      "backend": "pic",
+      "consumer_order": [
+        "cached",
+        "no_cache"
+      ]
+    },
+    {
+      "size": 65536,
+      "fanout": 8,
+      "repeat": 1,
+      "backend": "generic",
+      "consumer_order": [
+        "cached",
+        "no_cache"
+      ]
+    }
+  ]
+}

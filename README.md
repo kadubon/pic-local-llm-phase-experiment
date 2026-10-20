@@ -1,52 +1,62 @@
 # PIC Local LLM Phase Experiment
 
-The latest completed comparison is **PIC 1.1.0 R3**, recorded on 2026-10-20.
-It separates evidence acquisition from PIC's additional contribution: A uses
-generic self-review, B receives an independent verifier's evidence through a
-strong typed ledger, and C receives the same evidence through actual PIC
-native checks and evidence/runtime processing. All arms share the same local
-`gemma4:e4b` digest, initial answer, one revision and generation limits.
-Four pilot tasks precede sixteen fresh confirmatory tasks; all 81 actual
-generations including warmup completed without retry or truncation.
+The latest completed comparison is **PIC 1.1.0 R4**, recorded on 2026-10-20,
+with PIC itself unchanged. R4 separates backend integration, model feedback
+and evidence reuse after R3 bundled those mechanisms. It uses 32 fresh decisions
+in eight episodes, the same pinned local `gemma4:e4b` digest, and matched allowed
+generation limits. An independent verifier supplies the same source verdicts
+to a strong generic ledger and actual PIC processing.
 
-| R3 confirmatory endpoint | Review A | Verifier + ledger B | Verifier + PIC C |
+`G_minimal` and `P_minimal` replay one identical minimal-prompt model answer
+through different backends. This is a structural negative control, not two
+independent model samples. `P_full` generates a separate answer with the same
+receipt facts plus detailed PIC feedback. The primary comparison is
+`P_full` minus `P_minimal`; representation, metadata and prompt length change
+together, without additional authoritative observations.
+
+| R4 confirmatory endpoint | Generic + minimal | PIC + minimal | PIC + detail |
 | --- | ---: | ---: | ---: |
-| Frozen composite success | 0/16 | 15/16 | 13/16 |
-| Correct decision label | 9/16 | 16/16 | 16/16 |
-| Evidence-supported completion yield | 0/7 | 7/7 | 7/7 |
-| Unsupported model completions | 0/16 | 0/16 | 0/16 |
-| Allocated measured workflow time | 151.8 s | 177.2 s | 362.1 s |
+| Supported decision after frozen JSON extraction | 32/32 | 32/32 | 32/32 |
+| Parsed field/ID contract | 32/32 | 32/32 | 32/32 |
+| Evidence-supported completion yield | 23/23 | 23/23 | 23/23 |
+| Unsupported model completions / unsafe gate admissions | 0/32 / 0/32 | 0/32 / 0/32 | 0/32 / 0/32 |
+| Estimated standalone workflow seconds | 423.181 | 424.836 | 2323.767 |
 
-The primary PIC increment C-B is **-12.5 percentage points**, conservative 95%
-interval **[-41.95, +22.88]**, exact paired McNemar p=0.5. Two C-only composite
-failures concern a draft citation or an extra unresolved item on holding
-outputs. Both B/C preserve the correct decisions and required obligations.
-The predeclared `HARM_OBSERVED` label describes the observed composite decline;
-it does not establish general or statistically conclusive harm. PIC's
-incremental superiority is not demonstrated.
+The primary increment is **0 percentage points**, with 0 wins, 32 ties and
+0 losses; main answer hashes also match in every feedback pair. Both conditions
+reach this benchmark's ceiling. Eight authored episodes, one model/seed/host
+and explicit source verdicts leave limited headroom. These results establish
+neither equivalence nor universal PIC ineffectiveness.
 
-A's zero composite score includes failure to use prescribed machine obligation
-IDs: it discloses missing observations in free text on every task. B-A combines
-evidence acquisition, explicit verifier verdicts and contract adherence; it does
-not measure intrinsic model improvement. Equal allowed limits also do not imply
-equal realized compute: C costs **2.04 times B's measured workflow time** and
-about twice its allocated tokens. One valid main reuse case skips verifier
-calls but shows no time saving. Energy and continuous GPU use are unknown.
+Detailed feedback costs **5.47 times** the estimated PIC + minimal workflow
+time, with 6.575 times its model input tokens. Minimal PIC integration adds
+about **1.66 seconds across 32 cases (0.39%)** in this implementation.
+Standalone estimates assign the one observed minimal generation to each
+hypothetical backend; they must not be summed as actual compute. The campaign
+made 73 actual model calls, including pilot and warmup, without retry or
+truncation. Energy, FLOPs and continuous GPU utilization remain unmeasured.
 
-Start with the [R3 report](docs/EXPERIMENT_REPORT_PIC_1_1_0_R3.md),
-[fixed protocol](docs/PROTOCOL_PIC_1_1_0_R3.md),
-[endpoint audit](docs/PIC_1_1_0_R3_ENDPOINT_AUDIT.md),
-[reproduction guide](docs/REPRODUCIBILITY_PIC_1_1_0_R3.md), and
-[publication and offline checks](docs/PUBLICATION_PIC_1_1_0_R3.md).
-This small, authored finite benchmark uses one model/seed/host, a strong
-explicit-verdict control and synthetic trust roots. Four invalid cases pass
-raw PIC packet promotion in deterministic integration tests; a common outer
-provenance/semantic gate rejects them in both B/C. That protection cannot be
-credited to PIC alone. Independent agents, production identity assurance and
-real-world evidence acquisition remain untested. The result supports no
-efficacy or resource-efficiency claim for PIC in this setting.
+Two separate reuse benchmarks each completed 72 child processes. The second
+excludes PIC imports from generic workers. Both backends save common verifier
+calls. In its largest fanout case, PIC caching saves time against its own
+no-cache path but remains slower than generic caching. This demonstrates reuse
+in the composition, without establishing a PIC-specific resource advantage.
 
-The [documentation index](docs/README.md) retains R2, the first PIC 1.1.0
+Scores above use the frozen JSON extractor: all actual main answers contain
+Markdown fences, so **raw JSON-only compliance is 0/32 per feedback condition**.
+A separate audit also corrects a secondary helper's planned-case denominator
+to the protocol's 23 eligible cases, preserving the frozen outputs and primary
+analysis. Shared trust, acquisition, aggregate proof rules and caching are
+supplied externally; their protection cannot be credited to PIC alone.
+
+Start with the [R4 results and limitations](docs/README_PIC_1_1_0_R4.md),
+[frozen report](docs/EXPERIMENT_REPORT_PIC_1_1_0_R4.md),
+[fixed protocol](docs/PROTOCOL_PIC_1_1_0_R4.md), and
+[publication and read-only checks](docs/PUBLICATION_PIC_1_1_0_R4.md).
+Routing is manually supplied; autonomous planning, real-world acquisition,
+production identity assurance and auditability benefits remain untested.
+
+The [documentation index](docs/README.md) retains R3, R2, the first PIC 1.1.0
 campaign and v0.1.0/v0.2.0 as separate historical profiles. Frozen experimental
 records are preserved; later publication Docs are recorded separately.
 The experiment package version remains 0.2.0; PIC is pinned to 1.1.0.
@@ -92,7 +102,7 @@ Useful upstream references:
 ## What This Repository Does
 
 The historical v0.1.0/v0.2.0 workflow described in the following sections runs
-a small, synthetic, local experiment over ten review-style tasks. For R3's
+a small, synthetic, local experiment over ten review-style tasks. For R4's
 distinct commands and endpoints, use the guides above. The historical workflow
 compares two conditions:
 

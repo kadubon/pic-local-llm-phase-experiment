@@ -1,15 +1,78 @@
 # Documentation Index
 
-Start with the completed R3 comparison. The experiment profiles below have
+Start with the completed R4 comparison. The experiment profiles below have
 different tasks, endpoints and execution status; their results are not pooled.
 
 | Profile | Recorded status | Entry points |
 | --- | --- | --- |
+| PIC 1.1.0 R4 | Pilot 4 decisions; confirmation 32 decisions in eight episodes; two actual feedback generations per decision; two separate 72-process reuse benchmarks | [Results and limits](README_PIC_1_1_0_R4.md), [protocol](PROTOCOL_PIC_1_1_0_R4.md), [publication/checks](PUBLICATION_PIC_1_1_0_R4.md) |
 | PIC 1.1.0 R3 | Pilot 4/4; confirmation 16/16 completed; three arms sharing initial answers | [Report](EXPERIMENT_REPORT_PIC_1_1_0_R3.md), [protocol](PROTOCOL_PIC_1_1_0_R3.md), [reproduction](REPRODUCIBILITY_PIC_1_1_0_R3.md) |
 | PIC 1.1.0 R2 | Pilot 4/4; confirmation 16/16 completed | [Report](EXPERIMENT_REPORT_PIC_1_1_0_R2.md), [protocol](PROTOCOL_PIC_1_1_0_R2.md), [reproduction](REPRODUCIBILITY_PIC_1_1_0_R2.md) |
 | First PIC 1.1.0 campaign | Confirmation 12/12 completed; historical panel stopped and incomplete; oracle limitations recorded | [Report](EXPERIMENT_REPORT_PIC_1_1_0.md), [protocol](PROTOCOL_PIC_1_1_0.md), [reproduction](REPRODUCIBILITY_PIC_1_1_0.md) |
 | Historical v0.2.0 | Completed shared-initial reference run; heuristic endpoints | [Report](EXPERIMENT_REPORT_v0.2.0.md), [audit](PUBLIC_SAFETY_AUDIT_v0.2.0.md) |
 | Historical v0.1.0 | Completed separate-initial reference run; heuristic endpoints | [Report](EXPERIMENT_REPORT_v0.1.0.md), [audit](PUBLIC_SAFETY_AUDIT_v0.1.0.md) |
+
+## R4 results and interpretation
+
+PIC 1.1.0 remains unchanged. R4 separates actual backend processing from
+feedback exposure: G_minimal and P_minimal replay one answer through generic
+and PIC backends, while P_full generates a separate answer using the same
+receipt facts plus detailed PIC metadata. The same local model digest and
+allowed generation limits apply. The replay is a structural model-channel
+negative control, not independent evidence of model equivalence.
+
+All three logical workflows achieve supported decisions 32/32, parsed field/ID
+contracts 32/32 and supported completion yield 23/23, with no unsupported
+completion or unsafe admission. P_full minus P_minimal is 0 percentage points,
+0 wins / 32 ties / 0 losses; the actual main answer hashes are identical.
+Episode sign-flip p=1.0 and the degenerate empirical bootstrap do not establish
+equivalence. A strong explicit-verdict control reaches a ceiling on these
+eight authored episodes; one model/seed/host limits generalization.
+
+Estimated standalone workflow seconds are G_minimal 423.181, P_minimal 424.836
+and P_full 2323.767. Detailed feedback costs 5.470 times PIC + minimal, with
+6.575 times the input tokens. Minimal PIC integration adds about 1.656 seconds
+(0.391%) over the generic estimate. Both minimal workflows are assigned the
+same observed generation; these are counterfactual standalone allocations,
+not three independent executions. The campaign made 73 actual model calls,
+including warmup/pilot, without retry or truncation. Representation, metadata
+and length change jointly; pure length effects and energy costs are unknown.
+
+The original reuse harness and separate lean-import replication each record
+24 conditions / 72 child processes. Both skip 54 common domain calls; PIC also
+skips 54 native calls introduced by its own backend. In the largest lean case,
+PIC cached/no-cache means are 2.819/3.066 seconds versus generic cached 0.645
+seconds, including producer, fresh imports and I/O. Two repeats establish no
+general break-even threshold. The original generic worker imports PIC; lean
+generic workers do not. Keep these studies separate. Shared verification
+savings are not a PIC-specific advantage.
+
+All 64 actual main responses contain Markdown fences. The frozen extractor
+accepts their JSON objects, but raw JSON-only compliance is 0/32 per feedback
+condition. A separately disclosed secondary audit uses 23 eligible yield cases
+instead of the frozen helper's 32 planned cases; arm yield and primary scores
+remain unchanged. Common trust/TTL, acquisition, aggregate proofs and storage
+are external. Manual routes, synthetic identities and simulated policy times
+do not test autonomous coordination or production assurance.
+
+## R4 evidence and provenance
+
+- [Results, cost tables and interpretation](README_PIC_1_1_0_R4.md), [frozen report](EXPERIMENT_REPORT_PIC_1_1_0_R4.md), [sanitized metrics/rows](EXPERIMENT_SUMMARY_PIC_1_1_0_R4.json)
+- [Fixed protocol](PROTOCOL_PIC_1_1_0_R4.md), [reproduction guide](REPRODUCIBILITY_PIC_1_1_0_R4.md), [scope notes](PIC_1_1_0_R4_SCOPE_NOTES.md)
+- [Pilot gate](PIC_1_1_0_R4_PILOT_GATE.json), [pilot freeze](PIC_1_1_0_R4_PREREG_PILOT.json), [main freeze](PIC_1_1_0_R4_PREREG_MAIN.json)
+- [Installed-PIC inspection](PIC_1_1_0_R4_INSPECTION.json) and [preflight](PIC_1_1_0_R4_PREFLIGHT.json)
+- [Lean replication protocol](PROTOCOL_PIC_1_1_0_R4_LEAN.md), [registration](PIC_1_1_0_R4_LEAN_PREREG.json), [timings and import checks](PIC_1_1_0_R4_LEAN_RESULTS.json)
+- [Raw-format audit](PIC_1_1_0_R4_CONTRACT_AUDIT.json) and [secondary denominator audit](PIC_1_1_0_R4_ANALYSIS_AUDIT.json)
+- [Scientific validation](PIC_1_1_0_R4_VALIDATION.json), [record validation](PIC_1_1_0_R4_RECORD_VALIDATION.json), [public file identities](PIC_1_1_0_R4_PUBLIC_MANIFEST.json)
+- [Private archive identity](PIC_1_1_0_R4_PRIVATE_ARCHIVE_IDENTITY.json) and [lean archive identity](PIC_1_1_0_R4_LEAN_PRIVATE_ARCHIVE_IDENTITY.json); contents remain private
+- [Publication chronology, preservation and read-only checks](PUBLICATION_PIC_1_1_0_R4.md), with [publication validation](PUBLICATION_VALIDATION_PIC_1_1_0_R4.json)
+
+Local method commits precede pilot/main inference; they were not independently
+timestamped public registrations. Later publication retains their identities
+with a merge commit. Frozen experimental files are unchanged; navigation and
+publication validation are recorded separately.
+
+## R3 results and interpretation
 
 R3 compares review A, independent verifier plus strong generic ledger B, and
 the same verifier/evidence plus actual PIC C. Composite success is 0/16,

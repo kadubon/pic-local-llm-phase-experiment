@@ -1,5 +1,39 @@
 # Changelog
 
+## Unreleased - PIC 1.1.0 R4 (2026-10-20)
+
+- Added a separate experiment with unchanged PIC, four pilot decisions and
+  32 new confirmatory decisions in eight episodes. Generic/PIC minimal backends
+  replay one model answer; detailed PIC feedback has a separate generation
+  with the same receipt facts. All 73 actual calls including warmup complete
+  without retry or truncation. Replay equality is a structural control.
+- Recorded supported decisions and parsed contracts 32/32 in every workflow,
+  supported completion yield 23/23 and no unsupported completion/unsafe gate
+  admission. The primary detail-minus-minimal difference is 0 percentage points;
+  both reach a ceiling. This does not establish equivalence or universal
+  ineffectiveness on unseen tasks.
+- Recorded standalone workflow estimates of 423.181 / 424.836 / 2323.767 seconds.
+  Detailed PIC feedback costs 5.470 times PIC + minimal; minimal backend
+  integration adds about 1.656 seconds (0.391%) across the 32 cases. Minimal
+  generation cost is shared in the accounting, not independently executed twice.
+- Added two separate 72-process reuse benchmarks, including a prospectively
+  registered replication excluding PIC imports from generic workers. Caching
+  saves shared verifier work in both backends. PIC can save its own native
+  rechecks, without demonstrating an advantage over generic caching.
+- Preserved frozen scoring and disclosed two boundaries separately: all main
+  responses are fenced JSON (raw JSON-only compliance 0/32 per condition), and
+  the frozen secondary yield helper uses 32 planned cases instead of 23 eligible
+  cases. The eligible-case audit retains 23/23 versus 23/23; primary scores do
+  not change.
+- Updated README/Docs and added separate publication validation. All R4 frozen
+  artifacts, PIC payload and prior results/private archives remain unchanged;
+  only three earlier navigation/changelog files change for publication. No
+  additional inference or package release is performed; version remains 0.2.0.
+
+See the [R4 results and limits](docs/README_PIC_1_1_0_R4.md),
+[fixed protocol](docs/PROTOCOL_PIC_1_1_0_R4.md) and
+[publication guide](docs/PUBLICATION_PIC_1_1_0_R4.md).
+
 ## Unreleased - PIC 1.1.0 R3 (2026-10-20)
 
 - Added a separate preregistered evidence-bound experiment: four pilot and
