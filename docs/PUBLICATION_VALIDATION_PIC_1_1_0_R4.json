@@ -1,0 +1,135 @@
+{
+  "status": "PASS",
+  "scope": "Later publication documentation and read-only validation; no regrading or replacement of frozen campaign records.",
+  "checked_at_utc": "2026-10-20T09:11:47.815035+00:00",
+  "recorded_experiment_commit": "62e6f72aaea735cb01e9ada847a1c1d2124fd822",
+  "model_generations_added": 0,
+  "campaign_outputs_regenerated": false,
+  "checks": {
+    "r1_public_manifest": {
+      "status": "PASS",
+      "files": 32,
+      "worktree_and_recorded_git_blobs": true
+    },
+    "r2_public_manifest": {
+      "status": "PASS",
+      "files": 23,
+      "worktree_and_recorded_git_blobs": true
+    },
+    "r3_public_manifest": {
+      "status": "PASS",
+      "files": 36,
+      "worktree_and_recorded_git_blobs": true
+    },
+    "r4_public_manifest": {
+      "status": "PASS",
+      "files": 33,
+      "worktree_and_recorded_git_blobs": true
+    },
+    "r4_frozen_pilot": {
+      "status": "PASS",
+      "files": 54
+    },
+    "r4_frozen_main": {
+      "status": "PASS",
+      "files": 54
+    },
+    "unchanged_pic": {
+      "status": "PASS",
+      "unchanged_wheel_payload_files": 617
+    },
+    "prior_snapshot_at_publication": {
+      "status": "PASS",
+      "protected_files_at_experiment_end": 2884,
+      "unchanged_bytes_at_publication": 2881,
+      "later_authorized_documentation_changes": [
+        "CHANGELOG.md",
+        "README.md",
+        "docs/README.md"
+      ],
+      "other_changes_or_missing_files": [],
+      "historical_manifest_modified": false
+    },
+    "recorded_tree_preservation": {
+      "status": "PASS",
+      "base_commit": "62e6f72aaea735cb01e9ada847a1c1d2124fd822",
+      "files_checked_except_authorized_docs": 190,
+      "r4_new_public_files_unchanged": 34
+    },
+    "PIC_1_1_0_R4_private_archive": {
+      "status": "PASS",
+      "bytes": 7327200,
+      "sha256": "b9d0022e3bc8fd5afba649fb69a3d0b02540f5b26df2856435044ce10bce6c1d",
+      "zip_integrity": true,
+      "excluded_from_public_git": true,
+      "retained_raw_members_byte_identical": 3023
+    },
+    "PIC_1_1_0_R4_LEAN_private_archive": {
+      "status": "PASS",
+      "bytes": 2327553,
+      "sha256": "a894da423440333e5e217b0b599da59a63150543b14d020564865d07ea3af44b",
+      "zip_integrity": true,
+      "excluded_from_public_git": true,
+      "retained_raw_members_byte_identical": 964
+    },
+    "research_history_public_safety": {
+      "status": "PASS",
+      "commits_checked": 7,
+      "changed_blob_versions_checked": 37,
+      "unique_paths": 34,
+      "forbidden_artifacts": []
+    },
+    "documentation_links": {
+      "status": "PASS",
+      "documents": [
+        "README.md",
+        "CHANGELOG.md",
+        "docs/README.md",
+        "docs/PUBLICATION_PIC_1_1_0_R4.md"
+      ],
+      "local_destinations_checked": 101
+    },
+    "pytest": {
+      "status": "PASS",
+      "exit_code": 0,
+      "passed": 267,
+      "failed": 0,
+      "skipped": 0
+    },
+    "ruff": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "format": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "syntax": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "mypy": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "r4_arithmetic": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "r4_secondary_arithmetic": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "safety": {
+      "status": "PASS",
+      "exit_code": 0
+    }
+  },
+  "documentation_hash_convention": "SHA256 with CRLF normalized to LF; validation file excluded",
+  "documentation_hashes": {
+    "README.md": "524f66002d98954c3a52774832718eec2de70e71c701582d735e17687c509d8f",
+    "CHANGELOG.md": "74b51a5d450d17d7951884cb1e9bfe88293ac7dc4504e59bc6fb3c4191fc6e4e",
+    "docs/README.md": "9c08867aaf1f2fe40588126e421eaab9cd9e4b355752a2967cd66511e8630e36",
+    "docs/PUBLICATION_PIC_1_1_0_R4.md": "0d2b2fd91ea442bfff448f436d28dc34021260d2776b2fd63e5a2e161af68fa4"
+  }
+}
