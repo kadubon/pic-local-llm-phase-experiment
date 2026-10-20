@@ -1,0 +1,10 @@
+{
+  "visibility": "LOCAL_IGNORED_NOT_PUBLISHED",
+  "archive_basename": "pic110-private-recorded-run.zip",
+  "archive_sha256": "2ad399eccf05b54f614203da6545ce9473cbdb7c5e85a89711662ca45071bbf6",
+  "archive_bytes": 2457028,
+  "raw_files": 862,
+  "frozen_source_files": 21,
+  "crc_verification": "PASS",
+  "note": "Contains raw answers and private environment paths. Not a public artifact."
+}

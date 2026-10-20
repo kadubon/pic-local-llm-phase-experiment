@@ -26,7 +26,7 @@ PIC returned the same two missing obligations for every pilot answer:
 `obligation:baseline-safety` and `proxy-target-grounding-proof`, with residual
 burden 2.02. All compact checks had accepted=true, workflow_usable=true,
 operationally_usable=false, settled=false. The certification field was absent.
-These are stable general framework diagnostics, not task-specific verification
+These are stable general framework diagnostics, not task specific verification
 requirements. No concrete task evidence acquisition was performed or inferred.
 
 The panel took 172.269 seconds. Recorded model wall times were 36.283 seconds

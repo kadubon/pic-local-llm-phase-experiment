@@ -1,0 +1,10 @@
+{
+  "pilot": {
+    "frozen_manifest_sha256": "ea0b04247e429e6659f34d884902cb4d9298e81223c22562833c6f661927c0a0",
+    "normalized_lf_sha256": "9bcf6aea24429ba3f0a4307a49ac7568c4684512a36a1914699741c265cc0389"
+  },
+  "main": {
+    "frozen_manifest_sha256": "3ad939865c8c50a340f434d0995483d1d0cd7dd1738ed147d7442df8adc1479e",
+    "normalized_lf_sha256": "f404f9581b8f67bdbeea01485ab7fcb00221add5ee05a10cdd756718394a15e9"
+  }
+}

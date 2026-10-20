@@ -61,6 +61,10 @@ protocol locally before main inference, then freeze the main manifest:
 .venv-pic110/Scripts/python.exe -m pic_local_llm_phase_experiment.pic110_runner run --panel confirmatory
 .venv-pic110/Scripts/python.exe -m pic_local_llm_phase_experiment.pic110_runner run --panel historical
 .venv-pic110/Scripts/python.exe -m pic_local_llm_phase_experiment.pic110_analysis --export
+.venv-pic110/Scripts/python.exe scripts/audit_pic110_oracle.py
+.venv-pic110/Scripts/python.exe scripts/probe_pic110_boundary.py
+.venv-pic110/Scripts/python.exe scripts/report_pic110.py
+.venv-pic110/Scripts/python.exe scripts/validate_pic110.py
 ```
 
 The campaign has a 5,400-second wall limit, 80 actual-call cap including warmup,
@@ -68,6 +72,12 @@ The campaign has a 5,400-second wall limit, 80 actual-call cap including warmup,
 bounds. The wall clock includes time between panels; do not pause indefinitely
 between commands. No automatic resume or overwrite is performed. Incomplete
 requests and scheduled not-run trials remain visible. Check panel statuses.
+The recorded run stopped in historical task 003 after three consecutive
+truncations; its total is 58 real calls. Pilot and confirmation completed;
+seven historical tasks were not run. Do not remove this stopping condition
+to relabel the recorded campaign as complete. The report renderer describes
+this recorded outcome pattern; if a new run differs, its narrative must be
+reviewed using the freshly computed JSON rather than copying this report.
 
 ## Reanalysis, provenance and privacy
 
@@ -89,12 +99,29 @@ metrics and hashes, not raw answer text, prompts or local absolute paths.
 Evaluator CPU timings will vary on reanalysis; substantive counts, recorded
 inference/PIC timings and deterministic confidence intervals remain unchanged.
 
+For arithmetic reanalysis using only committed sanitized per-task metrics:
+
+```powershell
+.venv-pic110/Scripts/python.exe scripts/reanalyze_pic110_public.py
+```
+
+The separate `audit_pic110_oracle.py` is a post hoc measurement audit. It exposes
+strict citation/type artifacts and an exploratory notation-normalization
+sensitivity. It never changes the frozen oracle, primary labels or hypothesis
+test. Its exploratory difference is not confirmatory evidence of benefit.
+
 Raw artifacts are deliberately not publicly tracked. A third party can
 recompute published aggregate estimates from the sanitized per-task metrics;
 independent regrading of these exact raw answers requires private access to
 the preserved raw archive or a fresh local run. Hashes establish identity but
 cannot by themselves establish answer correctness. No public claim should
 imply that withholding raw answers permits complete public regrading.
+The original local raw files and exact frozen source bytes are also preserved
+in an ignored ZIP archive; `PIC_1_1_0_PRIVATE_ARCHIVE_IDENTITY.json` records its
+SHA-256 and CRC check. The archive contains private environment paths and must
+not be treated as a publication artifact. `PIC_1_1_0_ATTEMPT_LEDGER.json` lists
+all 78 scheduled generation slots, including the three truncations and 21
+not-run entries, without raw answer text.
 
 PIC's generic intake includes modeled proxy quantities. These are not observed
 LLM cost or speed gains and are not converted into an acceleration certificate.

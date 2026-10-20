@@ -4,6 +4,9 @@ For the independent PIC 1.1.0 comparison with a matched one-call generic
 review, a separate task oracle and resource accounting, see
 [the preregistered protocol](docs/PROTOCOL_PIC_1_1_0.md) and
 [reproduction instructions](docs/REPRODUCIBILITY_PIC_1_1_0.md).
+The [recorded report](docs/EXPERIMENT_REPORT_PIC_1_1_0.md) distinguishes the
+completed 12-task confirmation from the incomplete historical panel and
+documents limitations of the strict evidence oracle.
 The historical v0.1.0/v0.2.0 workflow below is retained.
 
 This repository is an English-first, local-only research scaffold for testing
