@@ -29,6 +29,14 @@ reasoning. Decision correctness and canonical obligation-ID adherence are
 reported independently. Supported model output and actual gate admission are
 also separate; a correct answer can be withheld by a stricter gate.
 
+The frozen summary contains obligation/citation validity flags. A separate
+`scripts/audit_pic110r4_contracts.py`, written before answer grading, supplies
+the protocol-declared missing/extra-ID and invalid-reference counts without
+changing any grades. Unexpected model strings are hashed for public release.
+The inherited answer parser can extract a JSON object from surrounding text;
+raw JSON without wrappers is additionally described rather than retroactively
+tightening the frozen format endpoint.
+
 ## Reuse harness startup
 
 The frozen `pic110r4_reuse` module imports the unchanged R3 PIC adapter at module
