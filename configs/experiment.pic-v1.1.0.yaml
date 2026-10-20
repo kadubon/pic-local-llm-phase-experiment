@@ -1,0 +1,29 @@
+schema_version: 1
+model: gemma4:e4b
+model_digest: dc35e8d9c6061baa6f0fa870975ab6932e2542b579b13ea0f199fa4bb7300c9c
+pic_version: 1.1.0
+pic_distribution_hash: 2d23def1bb734d12a6746caeabcc76fdce985476ed126545caba4a16838c0bb7
+ollama_url: http://localhost:11434
+temperature: 0
+top_p: 1
+seed: 20261020
+num_predict: 768
+num_ctx: 16384
+max_prompt_bytes: 14000
+max_input_tokens: 1120000
+max_output_tokens: 61440
+max_calls_including_warmup: 80
+max_wall_seconds: 5400
+request_timeout_seconds: 180
+pic_timeout_seconds: 30
+max_consecutive_failures: 3
+max_ram_percent: 92
+retries: 0
+think: false
+keep_alive: 10m
+profile: development
+order_seed: 20261020
+bootstrap_seed: 1102026
+bootstrap_replicates: 20000
+pilot_ids: [pilot_integrate, pilot_version, pilot_conflict, pilot_validate]
+confirmatory_ids: [integrate_01, integrate_02, integrate_03, version_01, version_02, version_03, conflict_01, conflict_02, conflict_03, validate_01, validate_02, validate_03]

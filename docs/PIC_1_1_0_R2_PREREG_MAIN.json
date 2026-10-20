@@ -1,0 +1,1395 @@
+{
+  "phase": "main",
+  "created_utc": "2026-10-20T03:51:54.342441+00:00",
+  "hash_convention": "SHA256 of bytes with CRLF normalized to LF",
+  "hashes": {
+    "configs/experiment.pic-v1.1.0-r2.yaml": "184aa3517b0fc05cc3f8e616dc10e7f2fc5f0faa0cdcd2ec49f9bf73a6e88092",
+    "configs/requirements.pic110.lock": "296810466c3c36550efcb489c2509c92297d582d53395b7cd7babddb27e38dfe",
+    "docs/PROTOCOL_PIC_1_1_0_R2.md": "26549dba559fd8fded85f6f239ac33188a1bcbea3c7806a533e3e42ce18eb7ff",
+    "tasks/pic110r2/public.json": "0b15101478867ff90d129b71639eab8c21aa4d9e722413536df5309e3fa49821",
+    "tasks/pic110r2/oracles.json": "ec2f481a4b11fdc0cf28db781872485b924dfb48c149f8013c01cdc925c090ab",
+    "tasks/pic110r2/proof_audit.json": "d92b30db47a8a7c4ebb78e5e8571d030c39f818a7d4e2d5b4610cefd4ae41e94",
+    "scripts/build_pic110r2_tasks.py": "92fe80750fd0e684686532e1335c6fbc634c5534ef13d6c1fae8977386abeba2",
+    "src/pic_local_llm_phase_experiment/pic110r2_logic.py": "c2c97950bbbbc0b492ebf91767b03ac9481d8f985228abc9b4f51c43abe45c33",
+    "src/pic_local_llm_phase_experiment/pic110r2_oracle.py": "c203ffa3faf8d11825a918ab4bb4a21393cc02366120116c0739679e22e1e970",
+    "src/pic_local_llm_phase_experiment/pic110r2_runner.py": "4942bb63ee0441365afd901608b8812eacc64dab64b55effa0f53614b0566cac",
+    "src/pic_local_llm_phase_experiment/pic110r2_analysis.py": "8157f105caf0e9e2f2f43e00f9775b3c76b2c705bb3f8945b18cbaabd66051ea",
+    "src/pic_local_llm_phase_experiment/pic110_runner.py": "a7f30982f3fae7b61276907bfdd1d18bc663ad6b714d571c6bf55f15faa1d11e",
+    "src/pic_local_llm_phase_experiment/pic110_adapter.py": "41947044ffc00a27f07ff0a40e9b397e05e072d146a264ef1a81a57fbc63ee67",
+    "src/pic_local_llm_phase_experiment/pic110_oracle.py": "23887d0630d351f3926836af65f814419b572d9ee13f646e3417b98e14719f10",
+    "src/pic_local_llm_phase_experiment/pic110_analysis.py": "85be54496bed4d7f1268a4ff7f70132059a93919dda413cb50d13a82ae7c3aef",
+    "tests/test_pic110r2.py": "c284251df266ddd1059f550a06417983a66b076ed7c32bf01d20bf3a553db4c7"
+  },
+  "schedule": [
+    {
+      "task_id": "r2_pilot_integration",
+      "panel": "pilot",
+      "family": "integration",
+      "decision_kind": "integer",
+      "instructions": "Compute net available units: sum each named term times its weight; if a conditional_add is present, add its value only when its flag is true. Return the integer net. All quantities are disjoint. complete=true and unresolved=[] when computed.",
+      "rule": {
+        "kind": "linear",
+        "terms": [
+          [
+            "stock",
+            1
+          ],
+          [
+            "reserved",
+            -1
+          ],
+          [
+            "damaged",
+            -1
+          ]
+        ],
+        "conditional_add": [
+          "received",
+          "incoming"
+        ]
+      },
+      "domains": {
+        "stock": [
+          63,
+          72,
+          87
+        ],
+        "reserved": [
+          8,
+          13,
+          19
+        ],
+        "damaged": [
+          2,
+          5,
+          9
+        ],
+        "received": [
+          false,
+          true
+        ],
+        "incoming": [
+          11,
+          17,
+          23
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "stock": 72
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "reserved": 19
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "damaged": 5
+          }
+        },
+        {
+          "id": "E04",
+          "facts": {
+            "received": true
+          }
+        },
+        {
+          "id": "E05",
+          "facts": {
+            "incoming": 17
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nCompute net available units: sum each named term times its weight; if a conditional_add is present, add its value only when its flag is true. Return the integer net. All quantities are disjoint. complete=true and unresolved=[] when computed.\ndecision must be a JSON integer, or null only if the rule requires it.\nRULE PARAMETERS\n{\"kind\":\"linear\",\"terms\":[[\"stock\",1],[\"reserved\",-1],[\"damaged\",-1]],\"conditional_add\":[\"received\",\"incoming\"]}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"stock\":[63,72,87],\"reserved\":[8,13,19],\"damaged\":[2,5,9],\"received\":[false,true],\"incoming\":[11,17,23]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"stock\":72}},{\"id\":\"E02\",\"facts\":{\"reserved\":19}},{\"id\":\"E03\",\"facts\":{\"damaged\":5}},{\"id\":\"E04\",\"facts\":{\"received\":true}},{\"id\":\"E05\",\"facts\":{\"incoming\":17}}]",
+      "order": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r2_pilot_policy",
+      "panel": "pilot",
+      "family": "policy",
+      "decision_kind": "verdict",
+      "instructions": "Select the policy with the latest effective ISO date no later than the query date. There is no retroactivity. For kind=limit, compare amount <= its threshold: return permit if true, deny otherwise. For kind=retention, return its integer days. An explicit false availability flag means the active record is unavailable: return null, complete=false, unresolved=[\"active-policy-record\"]. Otherwise complete=true and unresolved=[]. Inactive and future records are not required evidence.",
+      "rule": {
+        "kind": "limit",
+        "date": "2026-07-18",
+        "amount": 54,
+        "policies": [
+          {
+            "effective": "2026-02-01",
+            "variable": "v1"
+          },
+          {
+            "effective": "2026-06-01",
+            "variable": "v2"
+          },
+          {
+            "effective": "2026-09-01",
+            "variable": "v3"
+          }
+        ]
+      },
+      "domains": {
+        "v1": [
+          25,
+          45,
+          65
+        ],
+        "v2": [
+          30,
+          50,
+          70
+        ],
+        "v3": [
+          35,
+          55,
+          75
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "v1": 65
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "v2": 50
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "v3": 75
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nSelect the policy with the latest effective ISO date no later than the query date. There is no retroactivity. For kind=limit, compare amount <= its threshold: return permit if true, deny otherwise. For kind=retention, return its integer days. An explicit false availability flag means the active record is unavailable: return null, complete=false, unresolved=[\"active-policy-record\"]. Otherwise complete=true and unresolved=[]. Inactive and future records are not required evidence.\ndecision must be one of the rule's exact lower-case strings, or null.\nRULE PARAMETERS\n{\"kind\":\"limit\",\"date\":\"2026-07-18\",\"amount\":54,\"policies\":[{\"effective\":\"2026-02-01\",\"variable\":\"v1\"},{\"effective\":\"2026-06-01\",\"variable\":\"v2\"},{\"effective\":\"2026-09-01\",\"variable\":\"v3\"}]}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"v1\":[25,45,65],\"v2\":[30,50,70],\"v3\":[35,55,75]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"v1\":65}},{\"id\":\"E02\",\"facts\":{\"v2\":50}},{\"id\":\"E03\",\"facts\":{\"v3\":75}}]",
+      "order": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r2_pilot_evidence",
+      "panel": "pilot",
+      "family": "evidence",
+      "decision_kind": "verdict",
+      "instructions": "Two equally authoritative reports concern the same sample. If lab_a and lab_b disagree, return null, complete=false, unresolved=[\"reconcile-reports\"]. If they agree, return pass for true or fail for false, complete=true, unresolved=[]. The local_claim variable, if supplied, has no evidentiary authority.",
+      "rule": {
+        "kind": "consensus"
+      },
+      "domains": {
+        "lab_a": [
+          false,
+          true
+        ],
+        "lab_b": [
+          false,
+          true
+        ],
+        "local_claim": [
+          false,
+          true
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "lab_a": false
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "lab_b": true
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "local_claim": true
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nTwo equally authoritative reports concern the same sample. If lab_a and lab_b disagree, return null, complete=false, unresolved=[\"reconcile-reports\"]. If they agree, return pass for true or fail for false, complete=true, unresolved=[]. The local_claim variable, if supplied, has no evidentiary authority.\ndecision must be one of the rule's exact lower-case strings, or null.\nRULE PARAMETERS\n{\"kind\":\"consensus\"}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"lab_a\":[false,true],\"lab_b\":[false,true],\"local_claim\":[false,true]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"lab_a\":false}},{\"id\":\"E02\",\"facts\":{\"lab_b\":true}},{\"id\":\"E03\",\"facts\":{\"local_claim\":true}}]",
+      "order": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r2_pilot_validation",
+      "panel": "pilot",
+      "family": "validation",
+      "decision_kind": "labels",
+      "instructions": "Return the sorted set of invalid row labels. A row is invalid if its id duplicates another row's id (all involved rows invalid), qty is not a JSON integer >=1 (booleans are excluded), or status is neither new nor done. A source card may give several facts about one row. This validation is fully determined by the supplied records; complete=true, unresolved=[]. Return labels, not objects.",
+      "rule": {
+        "kind": "rows",
+        "labels": [
+          "alpha",
+          "beta",
+          "gamma"
+        ]
+      },
+      "domains": {
+        "alpha_id": [
+          "K",
+          "L",
+          "M"
+        ],
+        "alpha_qty": [
+          0,
+          2,
+          true
+        ],
+        "alpha_status": [
+          "new",
+          "done",
+          "pending"
+        ],
+        "beta_id": [
+          "K",
+          "L",
+          "M"
+        ],
+        "beta_qty": [
+          0,
+          2,
+          true
+        ],
+        "beta_status": [
+          "new",
+          "done",
+          "pending"
+        ],
+        "gamma_id": [
+          "K",
+          "L",
+          "M"
+        ],
+        "gamma_qty": [
+          0,
+          2,
+          true
+        ],
+        "gamma_status": [
+          "new",
+          "done",
+          "pending"
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "alpha_id": "K",
+            "alpha_qty": 2,
+            "alpha_status": "new"
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "beta_id": "L",
+            "beta_qty": true,
+            "beta_status": "done"
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "gamma_id": "M",
+            "gamma_qty": 2,
+            "gamma_status": "pending"
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nReturn the sorted set of invalid row labels. A row is invalid if its id duplicates another row's id (all involved rows invalid), qty is not a JSON integer >=1 (booleans are excluded), or status is neither new nor done. A source card may give several facts about one row. This validation is fully determined by the supplied records; complete=true, unresolved=[]. Return labels, not objects.\ndecision must be an array of invalid row-label strings, not row objects.\nRULE PARAMETERS\n{\"kind\":\"rows\",\"labels\":[\"alpha\",\"beta\",\"gamma\"]}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"alpha_id\":[\"K\",\"L\",\"M\"],\"alpha_qty\":[0,2,true],\"alpha_status\":[\"new\",\"done\",\"pending\"],\"beta_id\":[\"K\",\"L\",\"M\"],\"beta_qty\":[0,2,true],\"beta_status\":[\"new\",\"done\",\"pending\"],\"gamma_id\":[\"K\",\"L\",\"M\"],\"gamma_qty\":[0,2,true],\"gamma_status\":[\"new\",\"done\",\"pending\"]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"alpha_id\":\"K\",\"alpha_qty\":2,\"alpha_status\":\"new\"}},{\"id\":\"E02\",\"facts\":{\"beta_id\":\"L\",\"beta_qty\":true,\"beta_status\":\"done\"}},{\"id\":\"E03\",\"facts\":{\"gamma_id\":\"M\",\"gamma_qty\":2,\"gamma_status\":\"pending\"}}]",
+      "order": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r2_integrate_01",
+      "panel": "confirmatory",
+      "family": "integration",
+      "decision_kind": "integer",
+      "instructions": "Compute net available units: sum each named term times its weight; if a conditional_add is present, add its value only when its flag is true. Return the integer net. All quantities are disjoint. complete=true and unresolved=[] when computed.",
+      "rule": {
+        "kind": "linear",
+        "terms": [
+          [
+            "stock",
+            1
+          ],
+          [
+            "reserved",
+            -1
+          ],
+          [
+            "damaged",
+            -1
+          ]
+        ],
+        "conditional_add": [
+          "received",
+          "incoming"
+        ]
+      },
+      "domains": {
+        "stock": [
+          63,
+          72,
+          87
+        ],
+        "reserved": [
+          8,
+          13,
+          19
+        ],
+        "damaged": [
+          2,
+          5,
+          9
+        ],
+        "received": [
+          false,
+          true
+        ],
+        "incoming": [
+          11,
+          17,
+          23
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "stock": 87
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "reserved": 13
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "damaged": 9
+          }
+        },
+        {
+          "id": "E04",
+          "facts": {
+            "received": false
+          }
+        },
+        {
+          "id": "E05",
+          "facts": {
+            "incoming": 23
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nCompute net available units: sum each named term times its weight; if a conditional_add is present, add its value only when its flag is true. Return the integer net. All quantities are disjoint. complete=true and unresolved=[] when computed.\ndecision must be a JSON integer, or null only if the rule requires it.\nRULE PARAMETERS\n{\"kind\":\"linear\",\"terms\":[[\"stock\",1],[\"reserved\",-1],[\"damaged\",-1]],\"conditional_add\":[\"received\",\"incoming\"]}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"stock\":[63,72,87],\"reserved\":[8,13,19],\"damaged\":[2,5,9],\"received\":[false,true],\"incoming\":[11,17,23]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"stock\":87}},{\"id\":\"E02\",\"facts\":{\"reserved\":13}},{\"id\":\"E03\",\"facts\":{\"damaged\":9}},{\"id\":\"E04\",\"facts\":{\"received\":false}},{\"id\":\"E05\",\"facts\":{\"incoming\":23}}]",
+      "order": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r2_integrate_02",
+      "panel": "confirmatory",
+      "family": "integration",
+      "decision_kind": "integer",
+      "instructions": "Compute net available units: sum each named term times its weight; if a conditional_add is present, add its value only when its flag is true. Return the integer net. All quantities are disjoint. complete=true and unresolved=[] when computed.",
+      "rule": {
+        "kind": "linear",
+        "terms": [
+          [
+            "stock",
+            1
+          ],
+          [
+            "reserved",
+            -1
+          ],
+          [
+            "damaged",
+            -1
+          ]
+        ],
+        "conditional_add": [
+          "received",
+          "incoming"
+        ]
+      },
+      "domains": {
+        "stock": [
+          63,
+          72,
+          87
+        ],
+        "reserved": [
+          8,
+          13,
+          19
+        ],
+        "damaged": [
+          2,
+          5,
+          9
+        ],
+        "received": [
+          false,
+          true
+        ],
+        "incoming": [
+          11,
+          17,
+          23
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "stock": 63
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "reserved": 8
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "damaged": 5
+          }
+        },
+        {
+          "id": "E04",
+          "facts": {
+            "received": true
+          }
+        },
+        {
+          "id": "E05",
+          "facts": {
+            "incoming": 11
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nCompute net available units: sum each named term times its weight; if a conditional_add is present, add its value only when its flag is true. Return the integer net. All quantities are disjoint. complete=true and unresolved=[] when computed.\ndecision must be a JSON integer, or null only if the rule requires it.\nRULE PARAMETERS\n{\"kind\":\"linear\",\"terms\":[[\"stock\",1],[\"reserved\",-1],[\"damaged\",-1]],\"conditional_add\":[\"received\",\"incoming\"]}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"stock\":[63,72,87],\"reserved\":[8,13,19],\"damaged\":[2,5,9],\"received\":[false,true],\"incoming\":[11,17,23]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"stock\":63}},{\"id\":\"E02\",\"facts\":{\"reserved\":8}},{\"id\":\"E03\",\"facts\":{\"damaged\":5}},{\"id\":\"E04\",\"facts\":{\"received\":true}},{\"id\":\"E05\",\"facts\":{\"incoming\":11}}]",
+      "order": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r2_integrate_03",
+      "panel": "confirmatory",
+      "family": "integration",
+      "decision_kind": "integer",
+      "instructions": "Compute net available units: sum each named term times its weight; if a conditional_add is present, add its value only when its flag is true. Return the integer net. All quantities are disjoint. complete=true and unresolved=[] when computed. Payment mirror records assigning the same variable describe the same transaction, so count that variable once.",
+      "rule": {
+        "kind": "linear",
+        "terms": [
+          [
+            "payment_a",
+            1
+          ],
+          [
+            "payment_b",
+            1
+          ],
+          [
+            "refund",
+            -1
+          ]
+        ]
+      },
+      "domains": {
+        "payment_a": [
+          73,
+          96,
+          124
+        ],
+        "payment_b": [
+          38,
+          57,
+          82
+        ],
+        "refund": [
+          7,
+          16,
+          25
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "payment_a": 96
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "payment_b": 57
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "refund": 16
+          }
+        },
+        {
+          "id": "E04",
+          "facts": {
+            "payment_a": 96
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nCompute net available units: sum each named term times its weight; if a conditional_add is present, add its value only when its flag is true. Return the integer net. All quantities are disjoint. complete=true and unresolved=[] when computed. Payment mirror records assigning the same variable describe the same transaction, so count that variable once.\ndecision must be a JSON integer, or null only if the rule requires it.\nRULE PARAMETERS\n{\"kind\":\"linear\",\"terms\":[[\"payment_a\",1],[\"payment_b\",1],[\"refund\",-1]]}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"payment_a\":[73,96,124],\"payment_b\":[38,57,82],\"refund\":[7,16,25]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"payment_a\":96}},{\"id\":\"E02\",\"facts\":{\"payment_b\":57}},{\"id\":\"E03\",\"facts\":{\"refund\":16}},{\"id\":\"E04\",\"facts\":{\"payment_a\":96}}]",
+      "order": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r2_integrate_04",
+      "panel": "confirmatory",
+      "family": "integration",
+      "decision_kind": "integer",
+      "instructions": "Compute net available units: sum each named term times its weight; if a conditional_add is present, add its value only when its flag is true. Return the integer net. All quantities are disjoint. complete=true and unresolved=[] when computed.",
+      "rule": {
+        "kind": "linear",
+        "terms": [
+          [
+            "boxes",
+            9
+          ],
+          [
+            "loose",
+            1
+          ],
+          [
+            "reserved",
+            -1
+          ]
+        ]
+      },
+      "domains": {
+        "boxes": [
+          4,
+          6,
+          8
+        ],
+        "loose": [
+          2,
+          5,
+          7
+        ],
+        "reserved": [
+          11,
+          18,
+          26
+        ],
+        "forecast": [
+          20,
+          30
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "boxes": 6
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "loose": 7
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "reserved": 18
+          }
+        },
+        {
+          "id": "E04",
+          "facts": {
+            "forecast": 30
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nCompute net available units: sum each named term times its weight; if a conditional_add is present, add its value only when its flag is true. Return the integer net. All quantities are disjoint. complete=true and unresolved=[] when computed.\ndecision must be a JSON integer, or null only if the rule requires it.\nRULE PARAMETERS\n{\"kind\":\"linear\",\"terms\":[[\"boxes\",9],[\"loose\",1],[\"reserved\",-1]]}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"boxes\":[4,6,8],\"loose\":[2,5,7],\"reserved\":[11,18,26],\"forecast\":[20,30]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"boxes\":6}},{\"id\":\"E02\",\"facts\":{\"loose\":7}},{\"id\":\"E03\",\"facts\":{\"reserved\":18}},{\"id\":\"E04\",\"facts\":{\"forecast\":30}}]",
+      "order": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r2_policy_01",
+      "panel": "confirmatory",
+      "family": "policy",
+      "decision_kind": "verdict",
+      "instructions": "Select the policy with the latest effective ISO date no later than the query date. There is no retroactivity. For kind=limit, compare amount <= its threshold: return permit if true, deny otherwise. For kind=retention, return its integer days. An explicit false availability flag means the active record is unavailable: return null, complete=false, unresolved=[\"active-policy-record\"]. Otherwise complete=true and unresolved=[]. Inactive and future records are not required evidence.",
+      "rule": {
+        "kind": "limit",
+        "date": "2026-08-12",
+        "amount": 48,
+        "policies": [
+          {
+            "effective": "2026-02-01",
+            "variable": "v1"
+          },
+          {
+            "effective": "2026-06-01",
+            "variable": "v2"
+          },
+          {
+            "effective": "2026-09-01",
+            "variable": "v3"
+          }
+        ]
+      },
+      "domains": {
+        "v1": [
+          25,
+          45,
+          65
+        ],
+        "v2": [
+          30,
+          50,
+          70
+        ],
+        "v3": [
+          35,
+          55,
+          75
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "v1": 65
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "v2": 30
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "v3": 75
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nSelect the policy with the latest effective ISO date no later than the query date. There is no retroactivity. For kind=limit, compare amount <= its threshold: return permit if true, deny otherwise. For kind=retention, return its integer days. An explicit false availability flag means the active record is unavailable: return null, complete=false, unresolved=[\"active-policy-record\"]. Otherwise complete=true and unresolved=[]. Inactive and future records are not required evidence.\ndecision must be one of the rule's exact lower-case strings, or null.\nRULE PARAMETERS\n{\"kind\":\"limit\",\"date\":\"2026-08-12\",\"amount\":48,\"policies\":[{\"effective\":\"2026-02-01\",\"variable\":\"v1\"},{\"effective\":\"2026-06-01\",\"variable\":\"v2\"},{\"effective\":\"2026-09-01\",\"variable\":\"v3\"}]}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"v1\":[25,45,65],\"v2\":[30,50,70],\"v3\":[35,55,75]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"v1\":65}},{\"id\":\"E02\",\"facts\":{\"v2\":30}},{\"id\":\"E03\",\"facts\":{\"v3\":75}}]",
+      "order": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r2_policy_02",
+      "panel": "confirmatory",
+      "family": "policy",
+      "decision_kind": "verdict",
+      "instructions": "Select the policy with the latest effective ISO date no later than the query date. There is no retroactivity. For kind=limit, compare amount <= its threshold: return permit if true, deny otherwise. For kind=retention, return its integer days. An explicit false availability flag means the active record is unavailable: return null, complete=false, unresolved=[\"active-policy-record\"]. Otherwise complete=true and unresolved=[]. Inactive and future records are not required evidence.",
+      "rule": {
+        "kind": "limit",
+        "date": "2026-05-31",
+        "amount": 42,
+        "policies": [
+          {
+            "effective": "2026-02-01",
+            "variable": "v1"
+          },
+          {
+            "effective": "2026-06-01",
+            "variable": "v2"
+          },
+          {
+            "effective": "2026-09-01",
+            "variable": "v3"
+          }
+        ]
+      },
+      "domains": {
+        "v1": [
+          25,
+          45,
+          65
+        ],
+        "v2": [
+          30,
+          50,
+          70
+        ],
+        "v3": [
+          35,
+          55,
+          75
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "v1": 45
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "v2": 30
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "v3": 35
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nSelect the policy with the latest effective ISO date no later than the query date. There is no retroactivity. For kind=limit, compare amount <= its threshold: return permit if true, deny otherwise. For kind=retention, return its integer days. An explicit false availability flag means the active record is unavailable: return null, complete=false, unresolved=[\"active-policy-record\"]. Otherwise complete=true and unresolved=[]. Inactive and future records are not required evidence.\ndecision must be one of the rule's exact lower-case strings, or null.\nRULE PARAMETERS\n{\"kind\":\"limit\",\"date\":\"2026-05-31\",\"amount\":42,\"policies\":[{\"effective\":\"2026-02-01\",\"variable\":\"v1\"},{\"effective\":\"2026-06-01\",\"variable\":\"v2\"},{\"effective\":\"2026-09-01\",\"variable\":\"v3\"}]}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"v1\":[25,45,65],\"v2\":[30,50,70],\"v3\":[35,55,75]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"v1\":45}},{\"id\":\"E02\",\"facts\":{\"v2\":30}},{\"id\":\"E03\",\"facts\":{\"v3\":35}}]",
+      "order": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r2_policy_03",
+      "panel": "confirmatory",
+      "family": "policy",
+      "decision_kind": "verdict",
+      "instructions": "Select the policy with the latest effective ISO date no later than the query date. There is no retroactivity. For kind=limit, compare amount <= its threshold: return permit if true, deny otherwise. For kind=retention, return its integer days. An explicit false availability flag means the active record is unavailable: return null, complete=false, unresolved=[\"active-policy-record\"]. Otherwise complete=true and unresolved=[]. Inactive and future records are not required evidence.",
+      "rule": {
+        "kind": "limit",
+        "date": "2026-10-04",
+        "amount": 40,
+        "policies": [
+          {
+            "effective": "2026-02-01",
+            "variable": "v1"
+          },
+          {
+            "effective": "2026-06-01",
+            "variable": "v2"
+          },
+          {
+            "effective": "2026-09-01",
+            "variable": "v3"
+          }
+        ],
+        "availability": "active_available"
+      },
+      "domains": {
+        "v1": [
+          25,
+          45,
+          65
+        ],
+        "v2": [
+          30,
+          50,
+          70
+        ],
+        "v3": [
+          35,
+          55,
+          75
+        ],
+        "active_available": [
+          false,
+          true
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "v1": 65
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "v2": 70
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "active_available": false
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nSelect the policy with the latest effective ISO date no later than the query date. There is no retroactivity. For kind=limit, compare amount <= its threshold: return permit if true, deny otherwise. For kind=retention, return its integer days. An explicit false availability flag means the active record is unavailable: return null, complete=false, unresolved=[\"active-policy-record\"]. Otherwise complete=true and unresolved=[]. Inactive and future records are not required evidence.\ndecision must be one of the rule's exact lower-case strings, or null.\nRULE PARAMETERS\n{\"kind\":\"limit\",\"date\":\"2026-10-04\",\"amount\":40,\"policies\":[{\"effective\":\"2026-02-01\",\"variable\":\"v1\"},{\"effective\":\"2026-06-01\",\"variable\":\"v2\"},{\"effective\":\"2026-09-01\",\"variable\":\"v3\"}],\"availability\":\"active_available\"}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"v1\":[25,45,65],\"v2\":[30,50,70],\"v3\":[35,55,75],\"active_available\":[false,true]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"v1\":65}},{\"id\":\"E02\",\"facts\":{\"v2\":70}},{\"id\":\"E03\",\"facts\":{\"active_available\":false}}]",
+      "order": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r2_policy_04",
+      "panel": "confirmatory",
+      "family": "policy",
+      "decision_kind": "integer",
+      "instructions": "Select the policy with the latest effective ISO date no later than the query date. There is no retroactivity. For kind=limit, compare amount <= its threshold: return permit if true, deny otherwise. For kind=retention, return its integer days. An explicit false availability flag means the active record is unavailable: return null, complete=false, unresolved=[\"active-policy-record\"]. Otherwise complete=true and unresolved=[]. Inactive and future records are not required evidence.",
+      "rule": {
+        "kind": "retention",
+        "date": "2026-05-31",
+        "policies": [
+          {
+            "effective": "2026-02-01",
+            "variable": "v1"
+          },
+          {
+            "effective": "2026-06-01",
+            "variable": "v2"
+          },
+          {
+            "effective": "2026-09-01",
+            "variable": "v3"
+          }
+        ]
+      },
+      "domains": {
+        "v1": [
+          14,
+          28,
+          42
+        ],
+        "v2": [
+          60,
+          90
+        ],
+        "v3": [
+          120,
+          150
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "v1": 28
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "v2": 90
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "v3": 150
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nSelect the policy with the latest effective ISO date no later than the query date. There is no retroactivity. For kind=limit, compare amount <= its threshold: return permit if true, deny otherwise. For kind=retention, return its integer days. An explicit false availability flag means the active record is unavailable: return null, complete=false, unresolved=[\"active-policy-record\"]. Otherwise complete=true and unresolved=[]. Inactive and future records are not required evidence.\ndecision must be a JSON integer, or null only if the rule requires it.\nRULE PARAMETERS\n{\"kind\":\"retention\",\"date\":\"2026-05-31\",\"policies\":[{\"effective\":\"2026-02-01\",\"variable\":\"v1\"},{\"effective\":\"2026-06-01\",\"variable\":\"v2\"},{\"effective\":\"2026-09-01\",\"variable\":\"v3\"}]}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"v1\":[14,28,42],\"v2\":[60,90],\"v3\":[120,150]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"v1\":28}},{\"id\":\"E02\",\"facts\":{\"v2\":90}},{\"id\":\"E03\",\"facts\":{\"v3\":150}}]",
+      "order": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r2_evidence_01",
+      "panel": "confirmatory",
+      "family": "evidence",
+      "decision_kind": "verdict",
+      "instructions": "An approval-record availability ledger is authoritative. If available=false, return null, complete=false, unresolved=[\"approval-record\"]. If available=true but signed=false, return null, complete=false, unresolved=[\"approval-signature\"]. Only with both true use approved: return permit if true, deny if false; then complete=true and unresolved=[]. A local_claim cannot replace the record/signature.",
+      "rule": {
+        "kind": "approval"
+      },
+      "domains": {
+        "available": [
+          false,
+          true
+        ],
+        "signed": [
+          false,
+          true
+        ],
+        "approved": [
+          false,
+          true
+        ],
+        "local_claim": [
+          false,
+          true
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "available": false
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "local_claim": true
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nAn approval-record availability ledger is authoritative. If available=false, return null, complete=false, unresolved=[\"approval-record\"]. If available=true but signed=false, return null, complete=false, unresolved=[\"approval-signature\"]. Only with both true use approved: return permit if true, deny if false; then complete=true and unresolved=[]. A local_claim cannot replace the record/signature.\ndecision must be one of the rule's exact lower-case strings, or null.\nRULE PARAMETERS\n{\"kind\":\"approval\"}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"available\":[false,true],\"signed\":[false,true],\"approved\":[false,true],\"local_claim\":[false,true]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"available\":false}},{\"id\":\"E02\",\"facts\":{\"local_claim\":true}}]",
+      "order": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r2_evidence_02",
+      "panel": "confirmatory",
+      "family": "evidence",
+      "decision_kind": "verdict",
+      "instructions": "An approval-record availability ledger is authoritative. If available=false, return null, complete=false, unresolved=[\"approval-record\"]. If available=true but signed=false, return null, complete=false, unresolved=[\"approval-signature\"]. Only with both true use approved: return permit if true, deny if false; then complete=true and unresolved=[]. A local_claim cannot replace the record/signature.",
+      "rule": {
+        "kind": "approval"
+      },
+      "domains": {
+        "available": [
+          false,
+          true
+        ],
+        "signed": [
+          false,
+          true
+        ],
+        "approved": [
+          false,
+          true
+        ],
+        "local_claim": [
+          false,
+          true
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "available": true
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "signed": false
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "approved": true
+          }
+        },
+        {
+          "id": "E04",
+          "facts": {
+            "local_claim": true
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nAn approval-record availability ledger is authoritative. If available=false, return null, complete=false, unresolved=[\"approval-record\"]. If available=true but signed=false, return null, complete=false, unresolved=[\"approval-signature\"]. Only with both true use approved: return permit if true, deny if false; then complete=true and unresolved=[]. A local_claim cannot replace the record/signature.\ndecision must be one of the rule's exact lower-case strings, or null.\nRULE PARAMETERS\n{\"kind\":\"approval\"}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"available\":[false,true],\"signed\":[false,true],\"approved\":[false,true],\"local_claim\":[false,true]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"available\":true}},{\"id\":\"E02\",\"facts\":{\"signed\":false}},{\"id\":\"E03\",\"facts\":{\"approved\":true}},{\"id\":\"E04\",\"facts\":{\"local_claim\":true}}]",
+      "order": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r2_evidence_03",
+      "panel": "confirmatory",
+      "family": "evidence",
+      "decision_kind": "verdict",
+      "instructions": "Two equally authoritative reports concern the same sample. If lab_a and lab_b disagree, return null, complete=false, unresolved=[\"reconcile-reports\"]. If they agree, return pass for true or fail for false, complete=true, unresolved=[]. The local_claim variable, if supplied, has no evidentiary authority.",
+      "rule": {
+        "kind": "consensus"
+      },
+      "domains": {
+        "lab_a": [
+          false,
+          true
+        ],
+        "lab_b": [
+          false,
+          true
+        ],
+        "local_claim": [
+          false,
+          true
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "lab_a": true
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "lab_b": false
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "local_claim": true
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nTwo equally authoritative reports concern the same sample. If lab_a and lab_b disagree, return null, complete=false, unresolved=[\"reconcile-reports\"]. If they agree, return pass for true or fail for false, complete=true, unresolved=[]. The local_claim variable, if supplied, has no evidentiary authority.\ndecision must be one of the rule's exact lower-case strings, or null.\nRULE PARAMETERS\n{\"kind\":\"consensus\"}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"lab_a\":[false,true],\"lab_b\":[false,true],\"local_claim\":[false,true]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"lab_a\":true}},{\"id\":\"E02\",\"facts\":{\"lab_b\":false}},{\"id\":\"E03\",\"facts\":{\"local_claim\":true}}]",
+      "order": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r2_evidence_04",
+      "panel": "confirmatory",
+      "family": "evidence",
+      "decision_kind": "verdict",
+      "instructions": "Two equally authoritative reports concern the same sample. If lab_a and lab_b disagree, return null, complete=false, unresolved=[\"reconcile-reports\"]. If they agree, return pass for true or fail for false, complete=true, unresolved=[]. The local_claim variable, if supplied, has no evidentiary authority.",
+      "rule": {
+        "kind": "consensus"
+      },
+      "domains": {
+        "lab_a": [
+          false,
+          true
+        ],
+        "lab_b": [
+          false,
+          true
+        ],
+        "local_claim": [
+          false,
+          true
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "lab_a": false
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "lab_b": false
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "local_claim": true
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nTwo equally authoritative reports concern the same sample. If lab_a and lab_b disagree, return null, complete=false, unresolved=[\"reconcile-reports\"]. If they agree, return pass for true or fail for false, complete=true, unresolved=[]. The local_claim variable, if supplied, has no evidentiary authority.\ndecision must be one of the rule's exact lower-case strings, or null.\nRULE PARAMETERS\n{\"kind\":\"consensus\"}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"lab_a\":[false,true],\"lab_b\":[false,true],\"local_claim\":[false,true]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"lab_a\":false}},{\"id\":\"E02\",\"facts\":{\"lab_b\":false}},{\"id\":\"E03\",\"facts\":{\"local_claim\":true}}]",
+      "order": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r2_validate_01",
+      "panel": "confirmatory",
+      "family": "validation",
+      "decision_kind": "labels",
+      "instructions": "Return the sorted set of invalid row labels. A row is invalid if its id duplicates another row's id (all involved rows invalid), qty is not a JSON integer >=1 (booleans are excluded), or status is neither new nor done. A source card may give several facts about one row. This validation is fully determined by the supplied records; complete=true, unresolved=[]. Return labels, not objects.",
+      "rule": {
+        "kind": "rows",
+        "labels": [
+          "alpha",
+          "beta",
+          "gamma"
+        ]
+      },
+      "domains": {
+        "alpha_id": [
+          "K",
+          "L",
+          "M"
+        ],
+        "alpha_qty": [
+          0,
+          2,
+          true
+        ],
+        "alpha_status": [
+          "new",
+          "done",
+          "pending"
+        ],
+        "beta_id": [
+          "K",
+          "L",
+          "M"
+        ],
+        "beta_qty": [
+          0,
+          2,
+          true
+        ],
+        "beta_status": [
+          "new",
+          "done",
+          "pending"
+        ],
+        "gamma_id": [
+          "K",
+          "L",
+          "M"
+        ],
+        "gamma_qty": [
+          0,
+          2,
+          true
+        ],
+        "gamma_status": [
+          "new",
+          "done",
+          "pending"
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "alpha_id": "K",
+            "alpha_qty": 2,
+            "alpha_status": "new"
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "beta_id": "K",
+            "beta_qty": 2,
+            "beta_status": "done"
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "gamma_id": "M",
+            "gamma_qty": 2,
+            "gamma_status": "new"
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nReturn the sorted set of invalid row labels. A row is invalid if its id duplicates another row's id (all involved rows invalid), qty is not a JSON integer >=1 (booleans are excluded), or status is neither new nor done. A source card may give several facts about one row. This validation is fully determined by the supplied records; complete=true, unresolved=[]. Return labels, not objects.\ndecision must be an array of invalid row-label strings, not row objects.\nRULE PARAMETERS\n{\"kind\":\"rows\",\"labels\":[\"alpha\",\"beta\",\"gamma\"]}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"alpha_id\":[\"K\",\"L\",\"M\"],\"alpha_qty\":[0,2,true],\"alpha_status\":[\"new\",\"done\",\"pending\"],\"beta_id\":[\"K\",\"L\",\"M\"],\"beta_qty\":[0,2,true],\"beta_status\":[\"new\",\"done\",\"pending\"],\"gamma_id\":[\"K\",\"L\",\"M\"],\"gamma_qty\":[0,2,true],\"gamma_status\":[\"new\",\"done\",\"pending\"]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"alpha_id\":\"K\",\"alpha_qty\":2,\"alpha_status\":\"new\"}},{\"id\":\"E02\",\"facts\":{\"beta_id\":\"K\",\"beta_qty\":2,\"beta_status\":\"done\"}},{\"id\":\"E03\",\"facts\":{\"gamma_id\":\"M\",\"gamma_qty\":2,\"gamma_status\":\"new\"}}]",
+      "order": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r2_validate_02",
+      "panel": "confirmatory",
+      "family": "validation",
+      "decision_kind": "labels",
+      "instructions": "Return the sorted set of invalid row labels. A row is invalid if its id duplicates another row's id (all involved rows invalid), qty is not a JSON integer >=1 (booleans are excluded), or status is neither new nor done. A source card may give several facts about one row. This validation is fully determined by the supplied records; complete=true, unresolved=[]. Return labels, not objects.",
+      "rule": {
+        "kind": "rows",
+        "labels": [
+          "alpha",
+          "beta",
+          "gamma"
+        ]
+      },
+      "domains": {
+        "alpha_id": [
+          "K",
+          "L",
+          "M"
+        ],
+        "alpha_qty": [
+          0,
+          2,
+          true
+        ],
+        "alpha_status": [
+          "new",
+          "done",
+          "pending"
+        ],
+        "beta_id": [
+          "K",
+          "L",
+          "M"
+        ],
+        "beta_qty": [
+          0,
+          2,
+          true
+        ],
+        "beta_status": [
+          "new",
+          "done",
+          "pending"
+        ],
+        "gamma_id": [
+          "K",
+          "L",
+          "M"
+        ],
+        "gamma_qty": [
+          0,
+          2,
+          true
+        ],
+        "gamma_status": [
+          "new",
+          "done",
+          "pending"
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "alpha_id": "K",
+            "alpha_qty": true,
+            "alpha_status": "new"
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "beta_id": "L",
+            "beta_qty": 0,
+            "beta_status": "done"
+          }
+        },
+        {
+          "id": "E03",
+          "facts": {
+            "gamma_id": "M",
+            "gamma_qty": 2,
+            "gamma_status": "pending"
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nReturn the sorted set of invalid row labels. A row is invalid if its id duplicates another row's id (all involved rows invalid), qty is not a JSON integer >=1 (booleans are excluded), or status is neither new nor done. A source card may give several facts about one row. This validation is fully determined by the supplied records; complete=true, unresolved=[]. Return labels, not objects.\ndecision must be an array of invalid row-label strings, not row objects.\nRULE PARAMETERS\n{\"kind\":\"rows\",\"labels\":[\"alpha\",\"beta\",\"gamma\"]}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"alpha_id\":[\"K\",\"L\",\"M\"],\"alpha_qty\":[0,2,true],\"alpha_status\":[\"new\",\"done\",\"pending\"],\"beta_id\":[\"K\",\"L\",\"M\"],\"beta_qty\":[0,2,true],\"beta_status\":[\"new\",\"done\",\"pending\"],\"gamma_id\":[\"K\",\"L\",\"M\"],\"gamma_qty\":[0,2,true],\"gamma_status\":[\"new\",\"done\",\"pending\"]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"alpha_id\":\"K\",\"alpha_qty\":true,\"alpha_status\":\"new\"}},{\"id\":\"E02\",\"facts\":{\"beta_id\":\"L\",\"beta_qty\":0,\"beta_status\":\"done\"}},{\"id\":\"E03\",\"facts\":{\"gamma_id\":\"M\",\"gamma_qty\":2,\"gamma_status\":\"pending\"}}]",
+      "order": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r2_validate_03",
+      "panel": "confirmatory",
+      "family": "validation",
+      "decision_kind": "verdict",
+      "instructions": "Check the literal raw JSON in the source. It must contain exactly id and reading, no duplicate keys, id a string and reading a JSON number in [0,1]; booleans excluded. Return pass or fail. This is a text validation, not code execution. complete=true, unresolved=[].",
+      "rule": {
+        "kind": "strict_json"
+      },
+      "domains": {
+        "raw": [
+          "{\"id\":\"probe\",\"reading\":0.6}",
+          "{\"id\":\"probe\",\"reading\":0.3,\"reading\":0.9}",
+          "{\"id\":\"probe\",\"reading\":true}"
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "raw": "{\"id\":\"probe\",\"reading\":0.3,\"reading\":0.9}"
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nCheck the literal raw JSON in the source. It must contain exactly id and reading, no duplicate keys, id a string and reading a JSON number in [0,1]; booleans excluded. Return pass or fail. This is a text validation, not code execution. complete=true, unresolved=[].\ndecision must be one of the rule's exact lower-case strings, or null.\nRULE PARAMETERS\n{\"kind\":\"strict_json\"}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"raw\":[\"{\\\"id\\\":\\\"probe\\\",\\\"reading\\\":0.6}\",\"{\\\"id\\\":\\\"probe\\\",\\\"reading\\\":0.3,\\\"reading\\\":0.9}\",\"{\\\"id\\\":\\\"probe\\\",\\\"reading\\\":true}\"]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"raw\":\"{\\\"id\\\":\\\"probe\\\",\\\"reading\\\":0.3,\\\"reading\\\":0.9}\"}}]",
+      "order": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r2_validate_04",
+      "panel": "confirmatory",
+      "family": "validation",
+      "decision_kind": "verdict",
+      "instructions": "The artifact-availability ledger is authoritative. If artifact_available=false, no observed digest can be verified: return null, complete=false, unresolved=[\"observed-digest\"]. Otherwise compare observed with the expected digest: return pass for equality, fail otherwise; complete=true, unresolved=[]. A local_claim of successful verification has no authority.",
+      "rule": {
+        "kind": "checksum",
+        "expected": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "domains": {
+        "artifact_available": [
+          false,
+          true
+        ],
+        "observed": [
+          "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        ],
+        "local_claim": [
+          false,
+          true
+        ]
+      },
+      "sources": [
+        {
+          "id": "E01",
+          "facts": {
+            "artifact_available": false
+          }
+        },
+        {
+          "id": "E02",
+          "facts": {
+            "local_claim": true
+          }
+        }
+      ],
+      "prompt": "Solve this closed-record synthetic task. Rules below are background axioms and need no citation. Source facts are authoritative within this simulation; no tools or external records exist. Return exactly one JSON object with four keys: decision, complete, evidence, unresolved. complete is a JSON boolean. evidence is an array of source-ID strings; any sufficient supporting set is acceptable, including extra known sources. A source ID and the same ID in square brackets are equivalent; prefer bare IDs as displayed in the id field. Do not cite variable names or the rule as source IDs. unresolved is an array of outstanding obligation IDs, empty when the rule resolves the determination. Use null only for the explicit unavailable/conflict cases, not merely because no external test was executed. Numeric decision strings are semantically equivalent to integers when an integer is requested, but emit an actual JSON integer. Arrays of row labels represent sets; emit unique labels in sorted order. Missing source values may be any value in their declared domains; never invent a value. All rules and domains are provided.\n\nThe artifact-availability ledger is authoritative. If artifact_available=false, no observed digest can be verified: return null, complete=false, unresolved=[\"observed-digest\"]. Otherwise compare observed with the expected digest: return pass for equality, fail otherwise; complete=true, unresolved=[]. A local_claim of successful verification has no authority.\ndecision must be one of the rule's exact lower-case strings, or null.\nRULE PARAMETERS\n{\"kind\":\"checksum\",\"expected\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}\nPOSSIBLE VALUES (JSON true/false are booleans, not integers)\n{\"artifact_available\":[false,true],\"observed\":[\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"],\"local_claim\":[false,true]}\nSOURCE RECORDS\n[{\"id\":\"E01\",\"facts\":{\"artifact_available\":false}},{\"id\":\"E02\",\"facts\":{\"local_claim\":true}}]",
+      "order": [
+        "A",
+        "B"
+      ]
+    }
+  ],
+  "git_head": "93edf596cb9034ee849485e25dfdd3d8a7e6731a"
+}

@@ -1,0 +1,1186 @@
+{
+  "analysis_status": "POST_HOC_MEASUREMENT_AUDIT_NOT_PRIMARY",
+  "primary_labels_unchanged": true,
+  "gold_unchanged": true,
+  "normalization": [
+    "unwrap square brackets around an already-known source ID",
+    "convert integer-valued decimal strings to JSON integers only when the fixed gold decision is an integer"
+  ],
+  "limitations": [
+    "The model saw bracketed source labels; requiring bare IDs can penalize notation.",
+    "Some predeclared evidence sets contain policy/redundancy context beyond the logically smallest proof. They remain fixed in the primary analysis.",
+    "A strict unsupported-completion label therefore need not mean a false factual decision.",
+    "Normalization was designed after viewing outputs. Its arm differences are descriptive and cannot support confirmatory efficacy claims."
+  ],
+  "arms": {
+    "initial": {
+      "n": 12,
+      "strict_success": 2,
+      "strict_false_completion": 5,
+      "exact_typed_decision_correct": 7,
+      "decision_correct_allowing_numeric_string": 8,
+      "wrapped_known_ids_answers": 5,
+      "strict_false_completion_with_semantically_wrong_decision": 2,
+      "strict_false_completion_with_semantically_correct_decision": 3,
+      "complete_true_on_intrinsically_missing_evidence_task": 0,
+      "required_task_obligation_disappearances": 0,
+      "exploratory_normalized_success": 5,
+      "exploratory_normalized_false_completion": 4
+    },
+    "A": {
+      "n": 12,
+      "strict_success": 2,
+      "strict_false_completion": 5,
+      "exact_typed_decision_correct": 7,
+      "decision_correct_allowing_numeric_string": 8,
+      "wrapped_known_ids_answers": 5,
+      "strict_false_completion_with_semantically_wrong_decision": 2,
+      "strict_false_completion_with_semantically_correct_decision": 3,
+      "complete_true_on_intrinsically_missing_evidence_task": 0,
+      "required_task_obligation_disappearances": 0,
+      "exploratory_normalized_success": 4,
+      "exploratory_normalized_false_completion": 5
+    },
+    "B": {
+      "n": 12,
+      "strict_success": 2,
+      "strict_false_completion": 5,
+      "exact_typed_decision_correct": 7,
+      "decision_correct_allowing_numeric_string": 8,
+      "wrapped_known_ids_answers": 5,
+      "strict_false_completion_with_semantically_wrong_decision": 2,
+      "strict_false_completion_with_semantically_correct_decision": 3,
+      "complete_true_on_intrinsically_missing_evidence_task": 0,
+      "required_task_obligation_disappearances": 0,
+      "exploratory_normalized_success": 5,
+      "exploratory_normalized_false_completion": 4
+    }
+  },
+  "rows": [
+    {
+      "task_id": "integrate_01",
+      "condition": "initial",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": false,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "integrate_01",
+      "condition": "A",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": false,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "integrate_01",
+      "condition": "B",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": false,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "integrate_02",
+      "condition": "initial",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "integrate_02",
+      "condition": "A",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "M"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "integrate_02",
+      "condition": "B",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "integrate_03",
+      "condition": "initial",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": false,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "integrate_03",
+      "condition": "A",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": false,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "integrate_03",
+      "condition": "B",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": false,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "version_01",
+      "condition": "initial",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": false,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "version_01",
+      "condition": "A",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": false,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "version_01",
+      "condition": "B",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": false,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "version_02",
+      "condition": "initial",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": true,
+      "still_missing_required_source_ids_after_normalization": [
+        "V2"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "version_02",
+      "condition": "A",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": true,
+      "still_missing_required_source_ids_after_normalization": [
+        "V2"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "version_02",
+      "condition": "B",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": true,
+      "still_missing_required_source_ids_after_normalization": [
+        "V2"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "version_03",
+      "condition": "initial",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": false,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "version_03",
+      "condition": "A",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": false,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "version_03",
+      "condition": "B",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": false,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": true,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "conflict_01",
+      "condition": "initial",
+      "strict_result": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "conflict_01",
+      "condition": "A",
+      "strict_result": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "conflict_01",
+      "condition": "B",
+      "strict_result": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "conflict_02",
+      "condition": "initial",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "RULE"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "conflict_02",
+      "condition": "A",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "RULE"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "conflict_02",
+      "condition": "B",
+      "strict_result": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "RULE"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": true,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": true,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "conflict_03",
+      "condition": "initial",
+      "strict_result": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "conflict_03",
+      "condition": "A",
+      "strict_result": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "conflict_03",
+      "condition": "B",
+      "strict_result": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [],
+      "surface_normalization_sensitivity": {
+        "success": true,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": true,
+        "correct_abstention": true,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "validate_01",
+      "condition": "initial",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": false,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "SPEC",
+        "ROWS"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "validate_01",
+      "condition": "A",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": false,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": false,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "SPEC",
+        "ROWS"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": false,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": false
+    },
+    {
+      "task_id": "validate_01",
+      "condition": "B",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": false,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "SPEC",
+        "ROWS"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "validate_02",
+      "condition": "initial",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": false,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "SPEC",
+        "RAW"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "validate_02",
+      "condition": "A",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": false,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "SPEC",
+        "RAW"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "validate_02",
+      "condition": "B",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "exact_typed_decision_correct": false,
+      "decision_correct_allowing_numeric_string": false,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "SPEC",
+        "RAW"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": null,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 0
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": false,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "validate_03",
+      "condition": "initial",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": false,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "SPEC",
+        "EXPECTED",
+        "UPLOAD"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": false,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "validate_03",
+      "condition": "A",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": false,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "SPEC",
+        "EXPECTED",
+        "UPLOAD"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": false,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    },
+    {
+      "task_id": "validate_03",
+      "condition": "B",
+      "strict_result": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": false,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "exact_typed_decision_correct": true,
+      "decision_correct_allowing_numeric_string": true,
+      "wrapped_known_source_ids_present": false,
+      "numeric_string_present": false,
+      "still_missing_required_source_ids_after_normalization": [
+        "SPEC",
+        "EXPECTED",
+        "UPLOAD"
+      ],
+      "surface_normalization_sensitivity": {
+        "success": false,
+        "false_completion": false,
+        "status": "graded",
+        "valid_evidence": false,
+        "correct_abstention": false,
+        "unresolved_preserved": true,
+        "expected_unresolved_count": 1
+      },
+      "complete_true": false,
+      "intrinsic_insufficient_evidence_task": true,
+      "task_obligation_set_correct": true
+    }
+  ],
+  "efficacy_decision": "INCONCLUSIVE_SMALL_SAMPLE_AND_MEASUREMENT_VALIDITY_LIMITS"
+}

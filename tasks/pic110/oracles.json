@@ -1,0 +1,285 @@
+{
+  "pilot_integrate": {
+    "decision": 28,
+    "complete": true,
+    "minimal_evidence_sets": [
+      [
+        "P1",
+        "P2",
+        "P3"
+      ]
+    ],
+    "unresolved": [],
+    "allowed_evidence": [
+      "P1",
+      "P2",
+      "P3"
+    ]
+  },
+  "pilot_version": {
+    "decision": "deny",
+    "complete": true,
+    "minimal_evidence_sets": [
+      [
+        "P2",
+        "P3"
+      ]
+    ],
+    "unresolved": [],
+    "allowed_evidence": [
+      "P1",
+      "P2",
+      "P3"
+    ]
+  },
+  "pilot_conflict": {
+    "decision": null,
+    "complete": false,
+    "minimal_evidence_sets": [
+      [
+        "P1",
+        "P2"
+      ]
+    ],
+    "unresolved": [
+      "test-result"
+    ],
+    "allowed_evidence": [
+      "P1",
+      "P2"
+    ]
+  },
+  "pilot_validate": {
+    "decision": [
+      "b",
+      "c"
+    ],
+    "complete": true,
+    "minimal_evidence_sets": [
+      [
+        "P1"
+      ]
+    ],
+    "unresolved": [],
+    "allowed_evidence": [
+      "P1"
+    ]
+  },
+  "integrate_01": {
+    "decision": 51,
+    "complete": true,
+    "minimal_evidence_sets": [
+      [
+        "S",
+        "R",
+        "Q",
+        "O",
+        "I"
+      ]
+    ],
+    "unresolved": [],
+    "allowed_evidence": [
+      "S",
+      "R",
+      "Q",
+      "O",
+      "I"
+    ]
+  },
+  "integrate_02": {
+    "decision": 180,
+    "complete": true,
+    "minimal_evidence_sets": [
+      [
+        "A",
+        "B",
+        "C",
+        "M"
+      ]
+    ],
+    "unresolved": [],
+    "allowed_evidence": [
+      "A",
+      "B",
+      "C",
+      "M"
+    ]
+  },
+  "integrate_03": {
+    "decision": null,
+    "complete": false,
+    "minimal_evidence_sets": [
+      [
+        "P",
+        "T",
+        "C"
+      ]
+    ],
+    "unresolved": [
+      "applicable-tax-rate"
+    ],
+    "allowed_evidence": [
+      "P",
+      "T",
+      "C"
+    ]
+  },
+  "version_01": {
+    "decision": "deny",
+    "complete": true,
+    "minimal_evidence_sets": [
+      [
+        "V2",
+        "X"
+      ]
+    ],
+    "unresolved": [],
+    "allowed_evidence": [
+      "V1",
+      "V2",
+      "V3",
+      "X"
+    ]
+  },
+  "version_02": {
+    "decision": 30,
+    "complete": true,
+    "minimal_evidence_sets": [
+      [
+        "V1",
+        "V2",
+        "E"
+      ]
+    ],
+    "unresolved": [],
+    "allowed_evidence": [
+      "V1",
+      "V2",
+      "E"
+    ]
+  },
+  "version_03": {
+    "decision": null,
+    "complete": false,
+    "minimal_evidence_sets": [
+      [
+        "N",
+        "D"
+      ]
+    ],
+    "unresolved": [
+      "active-policy-text"
+    ],
+    "allowed_evidence": [
+      "V1",
+      "N",
+      "D"
+    ]
+  },
+  "conflict_01": {
+    "decision": null,
+    "complete": false,
+    "minimal_evidence_sets": [
+      [
+        "R1",
+        "R2"
+      ]
+    ],
+    "unresolved": [
+      "reconcile-assays"
+    ],
+    "allowed_evidence": [
+      "R1",
+      "R2"
+    ]
+  },
+  "conflict_02": {
+    "decision": "hold",
+    "complete": true,
+    "minimal_evidence_sets": [
+      [
+        "RULE",
+        "TEST"
+      ]
+    ],
+    "unresolved": [],
+    "allowed_evidence": [
+      "RULE",
+      "TEST",
+      "CHAT"
+    ]
+  },
+  "conflict_03": {
+    "decision": null,
+    "complete": false,
+    "minimal_evidence_sets": [
+      [
+        "RULE",
+        "CANDIDATE",
+        "ACCESS"
+      ]
+    ],
+    "unresolved": [
+      "external-approval"
+    ],
+    "allowed_evidence": [
+      "RULE",
+      "CANDIDATE",
+      "ACCESS"
+    ]
+  },
+  "validate_01": {
+    "decision": [
+      "a",
+      "b",
+      "c",
+      "e"
+    ],
+    "complete": true,
+    "minimal_evidence_sets": [
+      [
+        "SPEC",
+        "ROWS"
+      ]
+    ],
+    "unresolved": [],
+    "allowed_evidence": [
+      "SPEC",
+      "ROWS"
+    ]
+  },
+  "validate_02": {
+    "decision": "fail",
+    "complete": true,
+    "minimal_evidence_sets": [
+      [
+        "SPEC",
+        "RAW"
+      ]
+    ],
+    "unresolved": [],
+    "allowed_evidence": [
+      "SPEC",
+      "RAW"
+    ]
+  },
+  "validate_03": {
+    "decision": null,
+    "complete": false,
+    "minimal_evidence_sets": [
+      [
+        "SPEC",
+        "EXPECTED",
+        "UPLOAD"
+      ]
+    ],
+    "unresolved": [
+      "observed-checksum"
+    ],
+    "allowed_evidence": [
+      "SPEC",
+      "EXPECTED",
+      "UPLOAD"
+    ]
+  }
+}

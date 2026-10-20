@@ -1,0 +1,133 @@
+{
+  "hash_convention": "SHA-256 over UTF-8 bytes with CRLF normalized to LF; manifest itself excluded",
+  "files": {
+    "configs/experiment.pic-v1.1.0.yaml": {
+      "sha256_normalized_lf": "a81850f8c5a51ff36fb774775ce57a0c7bc89fa1e8c3376952ca45879f11e879",
+      "bytes_worktree": 943
+    },
+    "configs/requirements.pic110.in": {
+      "sha256_normalized_lf": "5b0e22398facf755f129d58e0da18e96e8f45b68e7d9a35d70c7b839d19dfc8f",
+      "bytes_worktree": 185
+    },
+    "configs/requirements.pic110.lock": {
+      "sha256_normalized_lf": "296810466c3c36550efcb489c2509c92297d582d53395b7cd7babddb27e38dfe",
+      "bytes_worktree": 75083
+    },
+    "docs/EXPERIMENT_REPORT_PIC_1_1_0.md": {
+      "sha256_normalized_lf": "948a37e68059d40f1d8533a187ec9df59a79c25b0862f38b540edf915bc562ca",
+      "bytes_worktree": 24200
+    },
+    "docs/EXPERIMENT_SUMMARY_PIC_1_1_0.json": {
+      "sha256_normalized_lf": "269c251c3822d493c2185879de1a662e5ee38af967c67a7e7bd3b3b109ef5e3f",
+      "bytes_worktree": 528906
+    },
+    "docs/PIC_1_1_0_ATTEMPT_LEDGER.json": {
+      "sha256_normalized_lf": "fe62bbf0a718dbada16209d8f0fdbb3dae16592f799efcd24e9eb199ecf2eed9",
+      "bytes_worktree": 35480
+    },
+    "docs/PIC_1_1_0_ORACLE_AUDIT.json": {
+      "sha256_normalized_lf": "5017bbe28a1aa45d9f9a5521b4e6a6f70e318dd007a2e282bc175d05f2b83b3a",
+      "bytes_worktree": 40667
+    },
+    "docs/PIC_1_1_0_PILOT.md": {
+      "sha256_normalized_lf": "a621e15fee31ce263aacf1a2149723212e835c1d56907db9aad18243355e48eb",
+      "bytes_worktree": 3056
+    },
+    "docs/PIC_1_1_0_PREREG_IDENTITIES.json": {
+      "sha256_normalized_lf": "13e6044dfb832c8f259b4c7fcabc3bd7871c57d039cc78ccaa0c96187c9a6445",
+      "bytes_worktree": 434
+    },
+    "docs/PIC_1_1_0_PREREG_MAIN.json": {
+      "sha256_normalized_lf": "f404f9581b8f67bdbeea01485ab7fcb00221add5ee05a10cdd756718394a15e9",
+      "bytes_worktree": 27166
+    },
+    "docs/PIC_1_1_0_PREREG_PILOT.json": {
+      "sha256_normalized_lf": "9bcf6aea24429ba3f0a4307a49ac7568c4684512a36a1914699741c265cc0389",
+      "bytes_worktree": 27167
+    },
+    "docs/PIC_1_1_0_PRIVATE_ARCHIVE_IDENTITY.json": {
+      "sha256_normalized_lf": "96a7563ab39e9b20a072d2df76db72d81e32718cfa42e772272c3012966a4946",
+      "bytes_worktree": 400
+    },
+    "docs/PIC_1_1_0_SOURCE_IDENTITIES.json": {
+      "sha256_normalized_lf": "331212864a76296da79ac8094419c9687cb49fe74cc682dc77954393a822c244",
+      "bytes_worktree": 7146
+    },
+    "docs/PIC_1_1_0_VALIDATION.json": {
+      "sha256_normalized_lf": "672b492328759d141750e066e74e9d60aaa1814af950ef04a77f3d57826e6de1",
+      "bytes_worktree": 1813
+    },
+    "docs/PROTOCOL_PIC_1_1_0.md": {
+      "sha256_normalized_lf": "565dc3da72d3fe8a31c05fa01fcd38604af567a95495ad87bd6089838c82aeff",
+      "bytes_worktree": 14256
+    },
+    "docs/REPRODUCIBILITY_PIC_1_1_0.md": {
+      "sha256_normalized_lf": "e981db1d695f98f188542f2bf6dc334f6118dab780f3fff004001237eda4eb16",
+      "bytes_worktree": 7229
+    },
+    "scripts/archive_pic110_private.py": {
+      "sha256_normalized_lf": "621f74eb623206e21867035527b190bb00e93953adc31b0e4b887e51b2ad6379",
+      "bytes_worktree": 2526
+    },
+    "scripts/audit_pic110_oracle.py": {
+      "sha256_normalized_lf": "fc144d7f577ff8dac4a787d18acd5e8c049abdf40fdd55fcd4be66f17bd33b24",
+      "bytes_worktree": 6456
+    },
+    "scripts/build_pic110_tasks.py": {
+      "sha256_normalized_lf": "235a8da26195c06d6e01a213a7936fdf12c21362f0a6e7ed9418bc171b22a7ca",
+      "bytes_worktree": 12386
+    },
+    "scripts/probe_pic110_boundary.py": {
+      "sha256_normalized_lf": "8d1bd3835b0a7b8ad62061f9ed6d26042a701ecc83b4a087bd332d6f97c1fa9b",
+      "bytes_worktree": 3329
+    },
+    "scripts/reanalyze_pic110_public.py": {
+      "sha256_normalized_lf": "0affcae8b6f46491b5c2a3960af39aef64c6eaa24551e1a924fa0b12d04a1602",
+      "bytes_worktree": 984
+    },
+    "scripts/report_pic110.py": {
+      "sha256_normalized_lf": "e012906ea3a82e5752fad04988de022ba894d36d02dbd253cf43b1b0c6b3c66e",
+      "bytes_worktree": 33890
+    },
+    "scripts/setup_pic110.py": {
+      "sha256_normalized_lf": "65c138e71b6d697b8637412bd5b1cab79a490fef94ee081c53f6ac9c2d6c797a",
+      "bytes_worktree": 5012
+    },
+    "scripts/validate_pic110.py": {
+      "sha256_normalized_lf": "32578c75cd856cf4f0cd47d57621070e8805832d79955ade7e2945377067667d",
+      "bytes_worktree": 7238
+    },
+    "src/pic_local_llm_phase_experiment/pic110_adapter.py": {
+      "sha256_normalized_lf": "41947044ffc00a27f07ff0a40e9b397e05e072d146a264ef1a81a57fbc63ee67",
+      "bytes_worktree": 4406
+    },
+    "src/pic_local_llm_phase_experiment/pic110_analysis.py": {
+      "sha256_normalized_lf": "85be54496bed4d7f1268a4ff7f70132059a93919dda413cb50d13a82ae7c3aef",
+      "bytes_worktree": 16270
+    },
+    "src/pic_local_llm_phase_experiment/pic110_oracle.py": {
+      "sha256_normalized_lf": "23887d0630d351f3926836af65f814419b572d9ee13f646e3417b98e14719f10",
+      "bytes_worktree": 3740
+    },
+    "src/pic_local_llm_phase_experiment/pic110_prompts.py": {
+      "sha256_normalized_lf": "bd292a2902ff91030e4f163383e88891fdbb336eabee057269b3cbd021f4974e",
+      "bytes_worktree": 1147
+    },
+    "src/pic_local_llm_phase_experiment/pic110_runner.py": {
+      "sha256_normalized_lf": "a7f30982f3fae7b61276907bfdd1d18bc663ad6b714d571c6bf55f15faa1d11e",
+      "bytes_worktree": 17982
+    },
+    "tasks/pic110/oracles.json": {
+      "sha256_normalized_lf": "5939704887ea4cc19d9ae8d500ae066c133562fbdefa50b3c01d83a2d4cc4443",
+      "bytes_worktree": 4511
+    },
+    "tasks/pic110/public.json": {
+      "sha256_normalized_lf": "7f7788018a07989b366f8f853c1ead1d30eb64bb69773808c2e3801a6977d8f0",
+      "bytes_worktree": 17806
+    },
+    "tests/test_pic110.py": {
+      "sha256_normalized_lf": "56409f51dd6b306f86208698bc838d5810d43ee1ac1a94ae246c20d99c88e02e",
+      "bytes_worktree": 9591
+    }
+  }
+}

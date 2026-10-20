@@ -1,0 +1,80 @@
+{
+  "status": "PASS",
+  "checks": {
+    "syntax": {
+      "status": "PASS",
+      "returncode": 0
+    },
+    "ruff": {
+      "status": "PASS",
+      "returncode": 0
+    },
+    "format": {
+      "status": "PASS",
+      "returncode": 0
+    },
+    "mypy_new_core": {
+      "status": "PASS",
+      "returncode": 0
+    },
+    "pytest": {
+      "status": "PASS",
+      "returncode": 0,
+      "tests": 81,
+      "passed": 81,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "public_safety": {
+      "status": "PASS",
+      "returncode": 0
+    },
+    "public_reanalysis": {
+      "status": "PASS",
+      "returncode": 0
+    },
+    "frozen_pilot": {
+      "status": "PASS",
+      "files": 21
+    },
+    "frozen_main": {
+      "status": "PASS",
+      "files": 21
+    },
+    "saved_real_trial_integrity": {
+      "status": "PASS",
+      "records": 57,
+      "planned_records": 78,
+      "retained_not_run_entries": 21,
+      "retained_truncated_records": 3,
+      "issues": [],
+      "inference_attempts_including_warmup": 58
+    },
+    "historical_files_preserved": {
+      "status": "PASS",
+      "files": 59
+    },
+    "live_cli_parsing": {
+      "status": "PASS",
+      "answer_diagnostics": 56,
+      "missing_due_to_stopping_or_not_run": 22,
+      "commands_per_diagnosis": 2
+    },
+    "warmup": {
+      "status": "PASS",
+      "real_inference_calls": 1
+    }
+  },
+  "development_history": {
+    "first_combined_test_run": {
+      "passed": 80,
+      "failed": 1
+    },
+    "postpilot_document_audit_repeat": {
+      "passed": 80,
+      "failed": 1
+    },
+    "reason": "Legacy secret regex false positives on prose; wording corrected without weakening scanner. Pre-pilot type/format/syntax issues also fixed."
+  }
+}

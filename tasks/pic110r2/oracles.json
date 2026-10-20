@@ -1,0 +1,379 @@
+{
+  "r2_pilot_integration": {
+    "decision": 65,
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "decision_kind": "integer"
+  },
+  "r2_integrate_01": {
+    "decision": 65,
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E01",
+        "E02",
+        "E03",
+        "E04"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "decision_kind": "integer"
+  },
+  "r2_integrate_02": {
+    "decision": 61,
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E01",
+        "E02",
+        "E03",
+        "E04",
+        "E05"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "decision_kind": "integer"
+  },
+  "r2_integrate_03": {
+    "decision": 137,
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E01",
+        "E02",
+        "E03"
+      ],
+      [
+        "E02",
+        "E03",
+        "E04"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03",
+      "E04"
+    ],
+    "decision_kind": "integer"
+  },
+  "r2_integrate_04": {
+    "decision": 43,
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E01",
+        "E02",
+        "E03"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03",
+      "E04"
+    ],
+    "decision_kind": "integer"
+  },
+  "r2_pilot_policy": {
+    "decision": "deny",
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E02"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03"
+    ],
+    "decision_kind": "verdict"
+  },
+  "r2_policy_01": {
+    "decision": "deny",
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E02"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03"
+    ],
+    "decision_kind": "verdict"
+  },
+  "r2_policy_02": {
+    "decision": "permit",
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E01"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03"
+    ],
+    "decision_kind": "verdict"
+  },
+  "r2_policy_03": {
+    "decision": null,
+    "complete": false,
+    "unresolved": [
+      "active-policy-record"
+    ],
+    "minimal_evidence_sets": [
+      [
+        "E03"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03"
+    ],
+    "decision_kind": "verdict"
+  },
+  "r2_policy_04": {
+    "decision": 28,
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E01"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03"
+    ],
+    "decision_kind": "integer"
+  },
+  "r2_pilot_evidence": {
+    "decision": null,
+    "complete": false,
+    "unresolved": [
+      "reconcile-reports"
+    ],
+    "minimal_evidence_sets": [
+      [
+        "E01",
+        "E02"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03"
+    ],
+    "decision_kind": "verdict"
+  },
+  "r2_evidence_01": {
+    "decision": null,
+    "complete": false,
+    "unresolved": [
+      "approval-record"
+    ],
+    "minimal_evidence_sets": [
+      [
+        "E01"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02"
+    ],
+    "decision_kind": "verdict"
+  },
+  "r2_evidence_02": {
+    "decision": null,
+    "complete": false,
+    "unresolved": [
+      "approval-signature"
+    ],
+    "minimal_evidence_sets": [
+      [
+        "E01",
+        "E02"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03",
+      "E04"
+    ],
+    "decision_kind": "verdict"
+  },
+  "r2_evidence_03": {
+    "decision": null,
+    "complete": false,
+    "unresolved": [
+      "reconcile-reports"
+    ],
+    "minimal_evidence_sets": [
+      [
+        "E01",
+        "E02"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03"
+    ],
+    "decision_kind": "verdict"
+  },
+  "r2_evidence_04": {
+    "decision": "fail",
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E01",
+        "E02"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03"
+    ],
+    "decision_kind": "verdict"
+  },
+  "r2_pilot_validation": {
+    "decision": [
+      "beta",
+      "gamma"
+    ],
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E01",
+        "E02",
+        "E03"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03"
+    ],
+    "decision_kind": "labels"
+  },
+  "r2_validate_01": {
+    "decision": [
+      "alpha",
+      "beta"
+    ],
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E01",
+        "E02",
+        "E03"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03"
+    ],
+    "decision_kind": "labels"
+  },
+  "r2_validate_02": {
+    "decision": [
+      "alpha",
+      "beta",
+      "gamma"
+    ],
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E01",
+        "E02",
+        "E03"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02",
+      "E03"
+    ],
+    "decision_kind": "labels"
+  },
+  "r2_validate_03": {
+    "decision": "fail",
+    "complete": true,
+    "unresolved": [],
+    "minimal_evidence_sets": [
+      [
+        "E01"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01"
+    ],
+    "decision_kind": "verdict"
+  },
+  "r2_validate_04": {
+    "decision": null,
+    "complete": false,
+    "unresolved": [
+      "observed-digest"
+    ],
+    "minimal_evidence_sets": [
+      [
+        "E01"
+      ]
+    ],
+    "allowed_evidence": [
+      "E01",
+      "E02"
+    ],
+    "decision_kind": "verdict"
+  }
+}
