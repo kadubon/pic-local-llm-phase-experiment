@@ -1,0 +1,223 @@
+{
+  "status": "PASS",
+  "model_calls": 0,
+  "actual_SDK_cases": 36,
+  "rows": [
+    {
+      "task_id": "r4_pilot_00_s0",
+      "minimal_bytes": 1999,
+      "full_bytes": 10190,
+      "native_calls": 3
+    },
+    {
+      "task_id": "r4_pilot_00_s1",
+      "minimal_bytes": 2027,
+      "full_bytes": 13767,
+      "native_calls": 0
+    },
+    {
+      "task_id": "r4_pilot_00_s2",
+      "minimal_bytes": 2050,
+      "full_bytes": 14106,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_pilot_00_s3",
+      "minimal_bytes": 1998,
+      "full_bytes": 14342,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_00_s0",
+      "minimal_bytes": 2111,
+      "full_bytes": 10463,
+      "native_calls": 3
+    },
+    {
+      "task_id": "r4_confirmatory_00_s1",
+      "minimal_bytes": 2146,
+      "full_bytes": 14334,
+      "native_calls": 0
+    },
+    {
+      "task_id": "r4_confirmatory_00_s2",
+      "minimal_bytes": 2169,
+      "full_bytes": 14673,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_00_s3",
+      "minimal_bytes": 2110,
+      "full_bytes": 14867,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_01_s0",
+      "minimal_bytes": 2103,
+      "full_bytes": 10841,
+      "native_calls": 3
+    },
+    {
+      "task_id": "r4_confirmatory_01_s1",
+      "minimal_bytes": 2137,
+      "full_bytes": 14705,
+      "native_calls": 0
+    },
+    {
+      "task_id": "r4_confirmatory_01_s2",
+      "minimal_bytes": 2155,
+      "full_bytes": 14982,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_01_s3",
+      "minimal_bytes": 2111,
+      "full_bytes": 14269,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_02_s0",
+      "minimal_bytes": 2111,
+      "full_bytes": 10463,
+      "native_calls": 3
+    },
+    {
+      "task_id": "r4_confirmatory_02_s1",
+      "minimal_bytes": 2130,
+      "full_bytes": 14260,
+      "native_calls": 0
+    },
+    {
+      "task_id": "r4_confirmatory_02_s2",
+      "minimal_bytes": 2168,
+      "full_bytes": 14940,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_02_s3",
+      "minimal_bytes": 2110,
+      "full_bytes": 14867,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_03_s0",
+      "minimal_bytes": 2111,
+      "full_bytes": 11065,
+      "native_calls": 3
+    },
+    {
+      "task_id": "r4_confirmatory_03_s1",
+      "minimal_bytes": 2146,
+      "full_bytes": 14936,
+      "native_calls": 0
+    },
+    {
+      "task_id": "r4_confirmatory_03_s2",
+      "minimal_bytes": 2111,
+      "full_bytes": 14270,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_03_s3",
+      "minimal_bytes": 2111,
+      "full_bytes": 16173,
+      "native_calls": 0
+    },
+    {
+      "task_id": "r4_confirmatory_04_s0",
+      "minimal_bytes": 2111,
+      "full_bytes": 10463,
+      "native_calls": 3
+    },
+    {
+      "task_id": "r4_confirmatory_04_s1",
+      "minimal_bytes": 2145,
+      "full_bytes": 14327,
+      "native_calls": 0
+    },
+    {
+      "task_id": "r4_confirmatory_04_s2",
+      "minimal_bytes": 2170,
+      "full_bytes": 14674,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_04_s3",
+      "minimal_bytes": 2110,
+      "full_bytes": 14867,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_05_s0",
+      "minimal_bytes": 2110,
+      "full_bytes": 11060,
+      "native_calls": 3
+    },
+    {
+      "task_id": "r4_confirmatory_05_s1",
+      "minimal_bytes": 2129,
+      "full_bytes": 14857,
+      "native_calls": 0
+    },
+    {
+      "task_id": "r4_confirmatory_05_s2",
+      "minimal_bytes": 2162,
+      "full_bytes": 15264,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_05_s3",
+      "minimal_bytes": 2111,
+      "full_bytes": 14270,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_06_s0",
+      "minimal_bytes": 2111,
+      "full_bytes": 10463,
+      "native_calls": 3
+    },
+    {
+      "task_id": "r4_confirmatory_06_s1",
+      "minimal_bytes": 2146,
+      "full_bytes": 14334,
+      "native_calls": 0
+    },
+    {
+      "task_id": "r4_confirmatory_06_s2",
+      "minimal_bytes": 2111,
+      "full_bytes": 14870,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_06_s3",
+      "minimal_bytes": 2110,
+      "full_bytes": 14867,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_07_s0",
+      "minimal_bytes": 2103,
+      "full_bytes": 10841,
+      "native_calls": 3
+    },
+    {
+      "task_id": "r4_confirmatory_07_s1",
+      "minimal_bytes": 2137,
+      "full_bytes": 14705,
+      "native_calls": 0
+    },
+    {
+      "task_id": "r4_confirmatory_07_s2",
+      "minimal_bytes": 2188,
+      "full_bytes": 14784,
+      "native_calls": 1
+    },
+    {
+      "task_id": "r4_confirmatory_07_s3",
+      "minimal_bytes": 2111,
+      "full_bytes": 14269,
+      "native_calls": 1
+    }
+  ]
+}

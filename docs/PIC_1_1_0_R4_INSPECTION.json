@@ -1,0 +1,14 @@
+{
+  "checked_at_utc": "2026-10-20T07:05:13.351080+00:00",
+  "baseline": "b5275dff85d0c73024e0995d0b273d72f27795c0",
+  "branch": "codex/pic-1-1-0-r4-mechanism",
+  "git_status": "",
+  "pic_version": "1.1.0",
+  "wheel_sha256": "2d23def1bb734d12a6746caeabcc76fdce985476ed126545caba4a16838c0bb7",
+  "wheel_payload_files": 617,
+  "installed_file_map_sha256": "c317caa37d63f5769d813785711dcc537be0ca4afddd110dc7375863497f0794",
+  "protected_files": 2884,
+  "ollama_version": {
+    "version": "0.35.0"
+  }
+}
