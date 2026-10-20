@@ -37,6 +37,15 @@ The inherited answer parser can extract a JSON object from surrounding text;
 raw JSON without wrappers is additionally described rather than retroactively
 tightening the frozen format endpoint.
 
+Code inspection before answer grading also found that the frozen
+`backend_yield_secondary` comparison helper uses all 32 planned cases, while
+the protocol and arm tables define supported yield over 23 determinable cases.
+The original field is retained and must not be read as a 23-case yield-rate
+interval. `scripts/audit_pic110r4_analysis.py` separately reports the correct
+eligible rates and discloses this secondary analysis deviation. No primary
+denominator, answer grade or frozen source is changed. The component field
+`decision_correct` means the decision and completion flag are both correct.
+
 ## Reuse harness startup
 
 The frozen `pic110r4_reuse` module imports the unchanged R3 PIC adapter at module
