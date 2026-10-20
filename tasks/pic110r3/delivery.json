@@ -1,0 +1,342 @@
+{
+  "source:r3_pilot_numerical_01": {
+    "payload": {
+      "source_id": "source:r3_pilot_numerical_01",
+      "scope": "scope:r3_pilot_numerical_01",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "numerical",
+      "data": {
+        "residual": 0.125
+      }
+    },
+    "advertised_sha256": "b43d19b3225618bfaf2c6a4155db1dc6333fc77cca2a6c1e31cee00776afd3fd"
+  },
+  "source:r3_pilot_telemetry_01": {
+    "payload": {
+      "source_id": "source:r3_pilot_telemetry_01",
+      "scope": "scope:r3_pilot_telemetry_01",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "telemetry",
+      "data": {
+        "samples": [
+          10.125,
+          20.25,
+          30.5
+        ]
+      }
+    },
+    "advertised_sha256": "bd80a96a8078b360dc5ef5253083b89dfacda91bfd35cc05324999476ab9e9e0"
+  },
+  "source:r3_pilot_trace_01": {
+    "payload": null,
+    "advertised_sha256": "6bbfe2aa98e4a6db02de0bc1b98b1f182010fa01c9fd8ed6b937e0693ecee172"
+  },
+  "source:r3_pilot_reuse_01": {
+    "payload": {
+      "source_id": "source:r3_pilot_reuse_01",
+      "scope": "scope:r3_pilot_reuse_01",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "numerical",
+      "data": {
+        "residual": 0.125
+      }
+    },
+    "advertised_sha256": "15c3890d9bef7244fd32e1a89ee90f5648b23e80ef23249d3c8cc2fc841c7e99"
+  },
+  "source:r3_numerical_01": {
+    "payload": {
+      "source_id": "source:r3_numerical_01",
+      "scope": "scope:r3_numerical_01",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "numerical",
+      "data": {
+        "residual": 0.125
+      }
+    },
+    "advertised_sha256": "e84584e00c00b5dee76fc085aa5b8f3c21829e5b68d38c9e028f6bb0363c63e8"
+  },
+  "source:r3_numerical_02": {
+    "payload": {
+      "source_id": "source:r3_numerical_02",
+      "scope": "scope:r3_numerical_02",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "numerical",
+      "data": {
+        "residual": 0.75
+      }
+    },
+    "advertised_sha256": "2453b291dd9bd15027df8896a07a866b3cd546e5bfbae26f81ef29359aa5c584"
+  },
+  "source:r3_numerical_03": {
+    "payload": null,
+    "advertised_sha256": "4b871533bcfaf22f0084795cb8e8476b0ec02ba8c6e696adbe58a6ddd67c2d80"
+  },
+  "source:r3_numerical_04": {
+    "payload": {
+      "source_id": "source:r3_numerical_04",
+      "scope": "scope:r3_numerical_04",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "numerical",
+      "data": {
+        "residual": 0.0
+      }
+    },
+    "advertised_sha256": "7280ede368a3dc1b499e2e2642f4e484e2e0c5efec40e12e2e8a9f730e9b5c12"
+  },
+  "source:r3_telemetry_01": {
+    "payload": {
+      "source_id": "source:r3_telemetry_01",
+      "scope": "scope:r3_telemetry_01",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "telemetry",
+      "data": {
+        "samples": [
+          10.125,
+          20.25,
+          30
+        ]
+      }
+    },
+    "advertised_sha256": "a90132175c7cdaa2a20d1372809e293b93561a382577c17437147806ee7a4d00"
+  },
+  "source:r3_telemetry_02": {
+    "payload": {
+      "source_id": "source:r3_telemetry_02",
+      "scope": "scope:r3_telemetry_02",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "telemetry",
+      "data": {
+        "samples": [
+          10.125,
+          20.25,
+          30.5
+        ]
+      }
+    },
+    "advertised_sha256": "17073fdb5d531027e33f0b1561e5e67dfde9c3fe9da1b4d9b49681f30bf13485"
+  },
+  "source:r3_telemetry_03": {
+    "payload": null,
+    "advertised_sha256": "69996d7a71d593335c11200c250c28ec0f6b378c81ff3b9755ffeb2a1f3c69c2"
+  },
+  "source:r3_telemetry_04": {
+    "payload": {
+      "source_id": "source:r3_telemetry_04",
+      "scope": "scope:r3_telemetry_04",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "telemetry",
+      "data": {
+        "samples": [
+          10.125,
+          20.25,
+          30
+        ],
+        "secondary_samples": [
+          10.125,
+          20.25,
+          31
+        ]
+      }
+    },
+    "advertised_sha256": "41dc5e0fdc1949f6365fcfe0934cf308ef603f6974a2244afa416785486f36c9"
+  },
+  "source:r3_trace_01": {
+    "payload": {
+      "source_id": "source:r3_trace_01",
+      "scope": "scope:r3_trace_01",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "trace",
+      "data": {
+        "events": [
+          "initialize",
+          "measure",
+          "verify",
+          "commit"
+        ]
+      }
+    },
+    "advertised_sha256": "dc14ac1875c9d5a44700bd5fef97de99555fad50048f4e1d95dd3636d8062380"
+  },
+  "source:r3_trace_02": {
+    "payload": {
+      "source_id": "source:r3_trace_02",
+      "scope": "scope:r3_trace_02",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "trace",
+      "data": {
+        "events": [
+          "initialize",
+          "verify",
+          "measure",
+          "commit"
+        ]
+      }
+    },
+    "advertised_sha256": "8cd28251fba7c69691418e12a8930a903184f7c136e6b962b19534764c031573"
+  },
+  "source:r3_trace_03": {
+    "payload": null,
+    "advertised_sha256": "83cf2f16357a86b5be70c88901024b773a77ce6be6ce40fb20ebc91b2cb91d20"
+  },
+  "source:r3_trace_04": {
+    "payload": {
+      "source_id": "source:unknown",
+      "scope": "scope:r3_trace_04",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "trace",
+      "data": {
+        "events": [
+          "initialize",
+          "measure",
+          "verify",
+          "commit"
+        ]
+      }
+    },
+    "advertised_sha256": "4b115dbb7f35e070fffe5755d90ab35e978681a763343ce8ff56d10cb9329ef9"
+  },
+  "source:r3_reuse_01": {
+    "payload": {
+      "source_id": "source:r3_reuse_01",
+      "scope": "scope:r3_reuse_01",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "numerical",
+      "data": {
+        "residual": 0.75
+      }
+    },
+    "advertised_sha256": "f28b1d5c5e2eb3ac0e337acaa3d7ef72e7df175242c206ab7b1e4d8e594780cd"
+  },
+  "source:r3_reuse_02": {
+    "payload": {
+      "source_id": "source:r3_reuse_02",
+      "scope": "scope:r3_reuse_02",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2026-10-19T12:00:00+00:00",
+      "domain": "numerical",
+      "data": {
+        "residual": 0.75
+      }
+    },
+    "advertised_sha256": "ab73ab07068be4c9460acc6407b7de677b9cdc8dbf53d6ea31c5dbe3ecbbad70"
+  },
+  "source:r3_reuse_03": {
+    "payload": {
+      "source_id": "source:r3_reuse_03",
+      "scope": "scope:r3_reuse_03",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:lab"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "numerical",
+      "data": {
+        "residual": 0.0
+      }
+    },
+    "advertised_sha256": "fab8104332c432ce0f4e6c1f81bae6f1cdbfee1b6854ada32dccffa860259e31"
+  },
+  "source:r3_reuse_04": {
+    "payload": {
+      "source_id": "source:r3_reuse_04",
+      "scope": "scope:r3_reuse_04",
+      "issuer": "finite-lab-authority",
+      "receiver_contexts": [
+        "producer:lab",
+        "consumer:other"
+      ],
+      "produced_at": "2026-10-18T00:00:00+00:00",
+      "expires_at": "2100-01-01T00:00:00+00:00",
+      "domain": "numerical",
+      "data": {
+        "residual": 0.75
+      }
+    },
+    "advertised_sha256": "b63a45ed61afa18930118a743e06d77209c9f85b37be71db92306c5d0ae9ac09"
+  }
+}

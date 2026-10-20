@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pic110r3:finite-source:1",
+  "type": "object",
+  "required": [
+    "source_id",
+    "scope",
+    "issuer",
+    "receiver_contexts",
+    "produced_at",
+    "expires_at",
+    "domain",
+    "data"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "source_id": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "issuer": {
+      "type": "string"
+    },
+    "produced_at": {
+      "type": "string"
+    },
+    "expires_at": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "receiver_contexts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "data": {
+      "type": "object"
+    }
+  }
+}

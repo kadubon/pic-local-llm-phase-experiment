@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "execution_status": "COMPLETED",
+  "checks": {
+    "syntax": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "ruff": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "format": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "mypy_new_core": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "pytest": {
+      "status": "PASS",
+      "exit_code": 0,
+      "tests": 184,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 184
+    },
+    "public_safety": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "public_arithmetic": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "preservation": {
+      "status": "PASS",
+      "protected_files": 1832,
+      "changed": []
+    },
+    "installed_pic_identity": {
+      "status": "PASS",
+      "wheel_payload_files": 617
+    },
+    "frozen_pilot": {
+      "status": "PASS",
+      "files": 51
+    },
+    "frozen_main": {
+      "status": "PASS",
+      "files": 51
+    },
+    "actual_artifact_integrity": {
+      "status": "PASS",
+      "task_generation_records": 80,
+      "calls_including_warmup": 81,
+      "planned_task_slots": 80,
+      "native_feedback_calls": 17,
+      "identical_B_C_common_receipts": true,
+      "identical_shared_initials": true,
+      "exact_frozen_prompts": true
+    },
+    "real_negative_integration": {
+      "status": "PASS",
+      "cases": 10,
+      "actual_PIC": true,
+      "mock_calls": 0,
+      "CLI_commands": 5
+    },
+    "invalid_evidence_protected_promotion": {
+      "status": "PASS",
+      "invalid_observed_cases": 10,
+      "false_protected_promotions": 0
+    }
+  }
+}

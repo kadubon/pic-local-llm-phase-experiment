@@ -1,0 +1,1637 @@
+{
+  "status": "PASS",
+  "actual_pic": true,
+  "mock_calls": 0,
+  "model_calls": 0,
+  "attempt": "attempt_02",
+  "cases": [
+    {
+      "case": "valid",
+      "status": "PASS",
+      "shared_verifier": {
+        "evidence_id": "ev:r3_numerical_01",
+        "source_id": "source:r3_numerical_01",
+        "source_sha256": "e84584e00c00b5dee76fc085aa5b8f3c21829e5b68d38c9e028f6bb0363c63e8",
+        "trusted": true,
+        "sufficient": true,
+        "decision": "COMPLIANT",
+        "unresolved": [],
+        "reasons": [],
+        "facts": {
+          "residual": 0.125
+        },
+        "cache_hit": false,
+        "domain_calls": 1,
+        "elapsed_seconds": 6.239999993340462e-05
+      },
+      "native": [
+        {
+          "function": "percolation_inversion_compiler.adapters.domain.verify_ecpt_numerical_envelope",
+          "implementation_sha256": "d6b0f06f84032605661d2b9d410e55b4cf709db61b93c94eab5e8208d1d5094c",
+          "arguments": {
+            "residual": 0.125,
+            "residual_bound": 0.5,
+            "finite_horizon": 8
+          },
+          "result": {
+            "accepted": true,
+            "status": "settled",
+            "schema_valid": true,
+            "finite_checks_passed": true,
+            "operationally_usable": true,
+            "settled": true,
+            "claims": [],
+            "reasons": [],
+            "missing_obligations": [],
+            "residual_ledger": {
+              "coordinates": {}
+            }
+          },
+          "elapsed_seconds": 0.000561199999992823
+        }
+      ],
+      "raw_route": {
+        "resolution_id": "resolution:16359d5cb10fc859",
+        "route_id": "adapters.domain.verify_ecpt_numerical_envelope",
+        "accepted": true,
+        "status": "settled",
+        "availability": "implemented",
+        "profile": "production",
+        "discharge_level": "finite_value_check",
+        "binding_id": "binding:core.adapters.envelope.verify_finite_bound->adapters.domain.verify_ecpt_numerical_envelope",
+        "evidence_envelope_id": "envelope:r3_numerical_01",
+        "evidence_artifact_ids": [
+          "ev:r3_numerical_01"
+        ],
+        "resolution_digest": "16359d5cb10fc859b1976c397ca36a957dd5fc74fd39690f89f8baa3ceec0c37",
+        "settled_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "finite_scope_usable": true,
+        "residual_external_obligations": [],
+        "domain_witness_required": false,
+        "operationally_usable": true,
+        "settled": true,
+        "accepted_obligation_ids": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "rejected_obligation_ids": [],
+        "missing_evidence_kind": [],
+        "reasons": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "safe_default": "diagnostic-with-numerical-envelope-obligation"
+      },
+      "raw_discharge": {
+        "accepted": true,
+        "status": "settled",
+        "schema_valid": true,
+        "finite_checks_passed": true,
+        "operationally_usable": true,
+        "settled": true,
+        "claims": [],
+        "reasons": [],
+        "missing_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        }
+      },
+      "raw_packet": {
+        "packet_id": "verified:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "verification_resolution_ids": [
+          "resolution:16359d5cb10fc859"
+        ],
+        "accepted_edge_witness_ids": [],
+        "validity_domain": "protocol-relative-finite",
+        "receiver_family": [
+          "consumer:lab",
+          "producer:lab"
+        ],
+        "liquidity_score": 1.0,
+        "execution_available": true,
+        "settlement_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "residual_external_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "expires_at": "2100-01-01T00:00:00+00:00",
+        "rollback_receipt": "candidate-rollback-available",
+        "issuer_agent_id": null,
+        "issuer_public_key_id": null,
+        "issuer_attestation_id": null,
+        "identity_contribution_status": "diagnostic",
+        "operationally_usable": true,
+        "settled": false
+      },
+      "protected_packet": {
+        "packet_id": "verified:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "verification_resolution_ids": [
+          "resolution:920549b2981eeed5"
+        ],
+        "accepted_edge_witness_ids": [],
+        "validity_domain": "protocol-relative-finite",
+        "receiver_family": [
+          "consumer:lab"
+        ],
+        "liquidity_score": 1.0,
+        "execution_available": true,
+        "settlement_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "residual_external_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "expires_at": "2100-01-01T00:00:00+00:00",
+        "rollback_receipt": "candidate-rollback-available",
+        "issuer_agent_id": null,
+        "issuer_public_key_id": null,
+        "issuer_attestation_id": null,
+        "identity_contribution_status": "diagnostic",
+        "operationally_usable": true,
+        "settled": false
+      },
+      "protected_task_obligation_discharged": true,
+      "B_gate": {
+        "admitted_complete": true,
+        "evidence_supported": true,
+        "reason": "supported"
+      },
+      "C_gate": {
+        "admitted_complete": true,
+        "evidence_supported": true,
+        "reason": "supported"
+      },
+      "framework": {
+        "accepted": true,
+        "operationally_usable": false,
+        "settled": false,
+        "missing_obligations": [
+          "phase-control-action-catalog"
+        ]
+      }
+    },
+    {
+      "case": "missing",
+      "status": "PASS",
+      "shared_verifier": {
+        "evidence_id": "ev:r3_numerical_01",
+        "source_id": "source:r3_numerical_01",
+        "source_sha256": null,
+        "trusted": false,
+        "sufficient": false,
+        "decision": "UNKNOWN",
+        "unresolved": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "reasons": [
+          "missing-evidence"
+        ],
+        "facts": null,
+        "cache_hit": false,
+        "domain_calls": 0,
+        "elapsed_seconds": 5.5900000006658956e-05
+      },
+      "native": [],
+      "raw_route": {
+        "resolution_id": "resolution:a47080435962782f",
+        "route_id": "adapters.domain.verify_ecpt_numerical_envelope",
+        "accepted": false,
+        "status": "diagnostic",
+        "availability": "implemented",
+        "profile": "production",
+        "discharge_level": "finite_value_check",
+        "binding_id": "binding:core.adapters.envelope.verify_finite_bound->adapters.domain.verify_ecpt_numerical_envelope",
+        "evidence_envelope_id": "envelope:r3_numerical_01",
+        "evidence_artifact_ids": [],
+        "resolution_digest": "a47080435962782ffd499eb551be985a236039f34f53631dcb26baad99df75ae",
+        "settled_scope": [],
+        "finite_scope_usable": false,
+        "residual_external_obligations": [],
+        "domain_witness_required": false,
+        "operationally_usable": false,
+        "settled": false,
+        "accepted_obligation_ids": [],
+        "rejected_obligation_ids": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "missing_evidence_kind": [],
+        "reasons": [
+          "evidence artifacts are missing"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "safe_default": "diagnostic-with-numerical-envelope-obligation"
+      },
+      "raw_discharge": {
+        "accepted": false,
+        "status": "diagnostic",
+        "schema_valid": true,
+        "finite_checks_passed": false,
+        "operationally_usable": false,
+        "settled": false,
+        "claims": [],
+        "reasons": [
+          "proof-obligation-unmet"
+        ],
+        "missing_obligations": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        }
+      },
+      "raw_packet": {
+        "packet_id": "rejected:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "reasons": [
+          "packet verifier route resolution is rejected"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "identity_contribution_status": "diagnostic",
+        "status": "diagnostic"
+      },
+      "protected_packet": {
+        "packet_id": "rejected:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "reasons": [
+          "packet evidence hash is invalid",
+          "packet receiver family is empty",
+          "packet verifier route is unsafe",
+          "packet verifier route resolution is rejected"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "identity_contribution_status": "diagnostic",
+        "status": "diagnostic"
+      },
+      "protected_task_obligation_discharged": false,
+      "B_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "C_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "framework": {
+        "accepted": true,
+        "operationally_usable": false,
+        "settled": false,
+        "missing_obligations": [
+          "phase-control-action-catalog"
+        ]
+      }
+    },
+    {
+      "case": "confirmed_violation",
+      "status": "PASS",
+      "shared_verifier": {
+        "evidence_id": "ev:r3_numerical_01",
+        "source_id": "source:r3_numerical_01",
+        "source_sha256": "97984a354155dbc5713ecc2e71762c4a99362f307ad8959f36f436156d62d9db",
+        "trusted": true,
+        "sufficient": true,
+        "decision": "NONCOMPLIANT",
+        "unresolved": [],
+        "reasons": [],
+        "facts": {
+          "residual": 0.75
+        },
+        "cache_hit": false,
+        "domain_calls": 1,
+        "elapsed_seconds": 8.030000003600435e-05
+      },
+      "native": [
+        {
+          "function": "percolation_inversion_compiler.adapters.domain.verify_ecpt_numerical_envelope",
+          "implementation_sha256": "d6b0f06f84032605661d2b9d410e55b4cf709db61b93c94eab5e8208d1d5094c",
+          "arguments": {
+            "residual": 0.75,
+            "residual_bound": 0.5,
+            "finite_horizon": 8
+          },
+          "result": {
+            "accepted": false,
+            "status": "diagnostic",
+            "schema_valid": true,
+            "finite_checks_passed": false,
+            "operationally_usable": false,
+            "settled": false,
+            "claims": [],
+            "reasons": [
+              "numerical envelope residual exceeds certified bound"
+            ],
+            "missing_obligations": [
+              "ecpt-numerical-envelope:accepted"
+            ],
+            "residual_ledger": {
+              "coordinates": {
+                "ecpt:numerical-envelope:gap": {
+                  "name": "ecpt:numerical-envelope:gap",
+                  "value": 0.25,
+                  "unit": "dimensionless",
+                  "kind": "residual",
+                  "description": null,
+                  "evidence_status": "declared",
+                  "evidence_refs": [],
+                  "known": true
+                },
+                "ecpt-numerical-envelope:1:numerical envelope residual exceeds certified bound": {
+                  "name": "ecpt-numerical-envelope:1:numerical envelope residual exceeds certified bound",
+                  "value": 1.0,
+                  "unit": "dimensionless",
+                  "kind": "residual",
+                  "description": null,
+                  "evidence_status": "declared",
+                  "evidence_refs": [],
+                  "known": true
+                }
+              }
+            }
+          },
+          "elapsed_seconds": 0.0003411999998661486
+        }
+      ],
+      "raw_route": {
+        "resolution_id": "resolution:16359d5cb10fc859",
+        "route_id": "adapters.domain.verify_ecpt_numerical_envelope",
+        "accepted": true,
+        "status": "settled",
+        "availability": "implemented",
+        "profile": "production",
+        "discharge_level": "finite_value_check",
+        "binding_id": "binding:core.adapters.envelope.verify_finite_bound->adapters.domain.verify_ecpt_numerical_envelope",
+        "evidence_envelope_id": "envelope:r3_numerical_01",
+        "evidence_artifact_ids": [
+          "ev:r3_numerical_01"
+        ],
+        "resolution_digest": "16359d5cb10fc859b1976c397ca36a957dd5fc74fd39690f89f8baa3ceec0c37",
+        "settled_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "finite_scope_usable": true,
+        "residual_external_obligations": [],
+        "domain_witness_required": false,
+        "operationally_usable": true,
+        "settled": true,
+        "accepted_obligation_ids": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "rejected_obligation_ids": [],
+        "missing_evidence_kind": [],
+        "reasons": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "safe_default": "diagnostic-with-numerical-envelope-obligation"
+      },
+      "raw_discharge": {
+        "accepted": true,
+        "status": "settled",
+        "schema_valid": true,
+        "finite_checks_passed": true,
+        "operationally_usable": true,
+        "settled": true,
+        "claims": [],
+        "reasons": [],
+        "missing_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        }
+      },
+      "raw_packet": {
+        "packet_id": "verified:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "verification_resolution_ids": [
+          "resolution:16359d5cb10fc859"
+        ],
+        "accepted_edge_witness_ids": [],
+        "validity_domain": "protocol-relative-finite",
+        "receiver_family": [
+          "consumer:lab",
+          "producer:lab"
+        ],
+        "liquidity_score": 1.0,
+        "execution_available": true,
+        "settlement_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "residual_external_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "expires_at": "2100-01-01T00:00:00+00:00",
+        "rollback_receipt": "candidate-rollback-available",
+        "issuer_agent_id": null,
+        "issuer_public_key_id": null,
+        "issuer_attestation_id": null,
+        "identity_contribution_status": "diagnostic",
+        "operationally_usable": true,
+        "settled": false
+      },
+      "protected_packet": {
+        "packet_id": "verified:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "verification_resolution_ids": [
+          "resolution:920549b2981eeed5"
+        ],
+        "accepted_edge_witness_ids": [],
+        "validity_domain": "protocol-relative-finite",
+        "receiver_family": [
+          "consumer:lab"
+        ],
+        "liquidity_score": 1.0,
+        "execution_available": true,
+        "settlement_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "residual_external_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "expires_at": "2100-01-01T00:00:00+00:00",
+        "rollback_receipt": "candidate-rollback-available",
+        "issuer_agent_id": null,
+        "issuer_public_key_id": null,
+        "issuer_attestation_id": null,
+        "identity_contribution_status": "diagnostic",
+        "operationally_usable": true,
+        "settled": false
+      },
+      "protected_task_obligation_discharged": true,
+      "B_gate": {
+        "admitted_complete": true,
+        "evidence_supported": true,
+        "reason": "supported"
+      },
+      "C_gate": {
+        "admitted_complete": true,
+        "evidence_supported": true,
+        "reason": "supported"
+      },
+      "framework": {
+        "accepted": true,
+        "operationally_usable": false,
+        "settled": false,
+        "missing_obligations": [
+          "phase-control-action-catalog"
+        ]
+      }
+    },
+    {
+      "case": "hash_mismatch",
+      "status": "PASS",
+      "shared_verifier": {
+        "evidence_id": "ev:r3_numerical_01",
+        "source_id": "source:r3_numerical_01",
+        "source_sha256": "97984a354155dbc5713ecc2e71762c4a99362f307ad8959f36f436156d62d9db",
+        "trusted": false,
+        "sufficient": false,
+        "decision": "UNKNOWN",
+        "unresolved": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "reasons": [
+          "content-hash-mismatch",
+          "trusted-source-digest-mismatch"
+        ],
+        "facts": {
+          "residual": 0.75
+        },
+        "cache_hit": false,
+        "domain_calls": 0,
+        "elapsed_seconds": 9.349999982077861e-05
+      },
+      "native": [
+        {
+          "function": "percolation_inversion_compiler.adapters.domain.verify_ecpt_numerical_envelope",
+          "implementation_sha256": "d6b0f06f84032605661d2b9d410e55b4cf709db61b93c94eab5e8208d1d5094c",
+          "arguments": {
+            "residual": 0.75,
+            "residual_bound": 0.5,
+            "finite_horizon": 8
+          },
+          "result": {
+            "accepted": false,
+            "status": "diagnostic",
+            "schema_valid": true,
+            "finite_checks_passed": false,
+            "operationally_usable": false,
+            "settled": false,
+            "claims": [],
+            "reasons": [
+              "numerical envelope residual exceeds certified bound"
+            ],
+            "missing_obligations": [
+              "ecpt-numerical-envelope:accepted"
+            ],
+            "residual_ledger": {
+              "coordinates": {
+                "ecpt:numerical-envelope:gap": {
+                  "name": "ecpt:numerical-envelope:gap",
+                  "value": 0.25,
+                  "unit": "dimensionless",
+                  "kind": "residual",
+                  "description": null,
+                  "evidence_status": "declared",
+                  "evidence_refs": [],
+                  "known": true
+                },
+                "ecpt-numerical-envelope:1:numerical envelope residual exceeds certified bound": {
+                  "name": "ecpt-numerical-envelope:1:numerical envelope residual exceeds certified bound",
+                  "value": 1.0,
+                  "unit": "dimensionless",
+                  "kind": "residual",
+                  "description": null,
+                  "evidence_status": "declared",
+                  "evidence_refs": [],
+                  "known": true
+                }
+              }
+            }
+          },
+          "elapsed_seconds": 0.00038949999998294516
+        }
+      ],
+      "raw_route": {
+        "resolution_id": "resolution:5c8e058b531c7ca2",
+        "route_id": "adapters.domain.verify_ecpt_numerical_envelope",
+        "accepted": false,
+        "status": "diagnostic",
+        "availability": "implemented",
+        "profile": "production",
+        "discharge_level": "finite_value_check",
+        "binding_id": "binding:core.adapters.envelope.verify_finite_bound->adapters.domain.verify_ecpt_numerical_envelope",
+        "evidence_envelope_id": "envelope:r3_numerical_01",
+        "evidence_artifact_ids": [
+          "ev:r3_numerical_01"
+        ],
+        "resolution_digest": "5c8e058b531c7ca21211205f35faac7e01bd9aa271e63493f5c207d64ea17651",
+        "settled_scope": [],
+        "finite_scope_usable": false,
+        "residual_external_obligations": [],
+        "domain_witness_required": false,
+        "operationally_usable": false,
+        "settled": false,
+        "accepted_obligation_ids": [],
+        "rejected_obligation_ids": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "missing_evidence_kind": [],
+        "reasons": [
+          "evidence artifact 'ev:r3_numerical_01' sha256 mismatch"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "safe_default": "diagnostic-with-numerical-envelope-obligation"
+      },
+      "raw_discharge": {
+        "accepted": false,
+        "status": "diagnostic",
+        "schema_valid": true,
+        "finite_checks_passed": false,
+        "operationally_usable": false,
+        "settled": false,
+        "claims": [],
+        "reasons": [
+          "proof-obligation-unmet"
+        ],
+        "missing_obligations": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        }
+      },
+      "raw_packet": {
+        "packet_id": "rejected:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "reasons": [
+          "packet verifier route resolution is rejected"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "identity_contribution_status": "diagnostic",
+        "status": "diagnostic"
+      },
+      "protected_packet": {
+        "packet_id": "rejected:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "reasons": [
+          "packet evidence hash is invalid",
+          "packet receiver family is empty",
+          "packet verifier route is unsafe",
+          "packet verifier route resolution is rejected"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "identity_contribution_status": "diagnostic",
+        "status": "diagnostic"
+      },
+      "protected_task_obligation_discharged": false,
+      "B_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "C_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "framework": {
+        "accepted": true,
+        "operationally_usable": false,
+        "settled": false,
+        "missing_obligations": [
+          "phase-control-action-catalog"
+        ]
+      }
+    },
+    {
+      "case": "rehashed_forgery",
+      "status": "PASS",
+      "shared_verifier": {
+        "evidence_id": "ev:r3_numerical_01",
+        "source_id": "source:r3_numerical_01",
+        "source_sha256": "97984a354155dbc5713ecc2e71762c4a99362f307ad8959f36f436156d62d9db",
+        "trusted": false,
+        "sufficient": false,
+        "decision": "UNKNOWN",
+        "unresolved": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "reasons": [
+          "trusted-source-digest-mismatch"
+        ],
+        "facts": {
+          "residual": 0.75
+        },
+        "cache_hit": false,
+        "domain_calls": 0,
+        "elapsed_seconds": 6.469999993896636e-05
+      },
+      "native": [
+        {
+          "function": "percolation_inversion_compiler.adapters.domain.verify_ecpt_numerical_envelope",
+          "implementation_sha256": "d6b0f06f84032605661d2b9d410e55b4cf709db61b93c94eab5e8208d1d5094c",
+          "arguments": {
+            "residual": 0.75,
+            "residual_bound": 0.5,
+            "finite_horizon": 8
+          },
+          "result": {
+            "accepted": false,
+            "status": "diagnostic",
+            "schema_valid": true,
+            "finite_checks_passed": false,
+            "operationally_usable": false,
+            "settled": false,
+            "claims": [],
+            "reasons": [
+              "numerical envelope residual exceeds certified bound"
+            ],
+            "missing_obligations": [
+              "ecpt-numerical-envelope:accepted"
+            ],
+            "residual_ledger": {
+              "coordinates": {
+                "ecpt:numerical-envelope:gap": {
+                  "name": "ecpt:numerical-envelope:gap",
+                  "value": 0.25,
+                  "unit": "dimensionless",
+                  "kind": "residual",
+                  "description": null,
+                  "evidence_status": "declared",
+                  "evidence_refs": [],
+                  "known": true
+                },
+                "ecpt-numerical-envelope:1:numerical envelope residual exceeds certified bound": {
+                  "name": "ecpt-numerical-envelope:1:numerical envelope residual exceeds certified bound",
+                  "value": 1.0,
+                  "unit": "dimensionless",
+                  "kind": "residual",
+                  "description": null,
+                  "evidence_status": "declared",
+                  "evidence_refs": [],
+                  "known": true
+                }
+              }
+            }
+          },
+          "elapsed_seconds": 0.00024699999994481914
+        }
+      ],
+      "raw_route": {
+        "resolution_id": "resolution:16359d5cb10fc859",
+        "route_id": "adapters.domain.verify_ecpt_numerical_envelope",
+        "accepted": true,
+        "status": "settled",
+        "availability": "implemented",
+        "profile": "production",
+        "discharge_level": "finite_value_check",
+        "binding_id": "binding:core.adapters.envelope.verify_finite_bound->adapters.domain.verify_ecpt_numerical_envelope",
+        "evidence_envelope_id": "envelope:r3_numerical_01",
+        "evidence_artifact_ids": [
+          "ev:r3_numerical_01"
+        ],
+        "resolution_digest": "16359d5cb10fc859b1976c397ca36a957dd5fc74fd39690f89f8baa3ceec0c37",
+        "settled_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "finite_scope_usable": true,
+        "residual_external_obligations": [],
+        "domain_witness_required": false,
+        "operationally_usable": true,
+        "settled": true,
+        "accepted_obligation_ids": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "rejected_obligation_ids": [],
+        "missing_evidence_kind": [],
+        "reasons": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "safe_default": "diagnostic-with-numerical-envelope-obligation"
+      },
+      "raw_discharge": {
+        "accepted": true,
+        "status": "settled",
+        "schema_valid": true,
+        "finite_checks_passed": true,
+        "operationally_usable": true,
+        "settled": true,
+        "claims": [],
+        "reasons": [],
+        "missing_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        }
+      },
+      "raw_packet": {
+        "packet_id": "verified:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "verification_resolution_ids": [
+          "resolution:16359d5cb10fc859"
+        ],
+        "accepted_edge_witness_ids": [],
+        "validity_domain": "protocol-relative-finite",
+        "receiver_family": [
+          "consumer:lab",
+          "producer:lab"
+        ],
+        "liquidity_score": 1.0,
+        "execution_available": true,
+        "settlement_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "residual_external_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "expires_at": "2100-01-01T00:00:00+00:00",
+        "rollback_receipt": "candidate-rollback-available",
+        "issuer_agent_id": null,
+        "issuer_public_key_id": null,
+        "issuer_attestation_id": null,
+        "identity_contribution_status": "diagnostic",
+        "operationally_usable": true,
+        "settled": false
+      },
+      "protected_packet": {
+        "packet_id": "rejected:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "reasons": [
+          "packet evidence hash is invalid",
+          "packet receiver family is empty",
+          "packet verifier route is unsafe",
+          "packet verifier route resolution is rejected"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "identity_contribution_status": "diagnostic",
+        "status": "diagnostic"
+      },
+      "protected_task_obligation_discharged": false,
+      "B_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "C_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "framework": {
+        "accepted": true,
+        "operationally_usable": false,
+        "settled": false,
+        "missing_obligations": [
+          "phase-control-action-catalog"
+        ]
+      }
+    },
+    {
+      "case": "unknown_id",
+      "status": "PASS",
+      "shared_verifier": {
+        "evidence_id": "ev:r3_numerical_01",
+        "source_id": "source:r3_numerical_01",
+        "source_sha256": "1607f443a43ae2a13de15da4310d31bacd64af52993bfdc40aef77110fc53409",
+        "trusted": false,
+        "sufficient": false,
+        "decision": "UNKNOWN",
+        "unresolved": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "reasons": [
+          "trusted-source-digest-mismatch",
+          "unknown-source-id"
+        ],
+        "facts": {
+          "residual": 0.125
+        },
+        "cache_hit": false,
+        "domain_calls": 0,
+        "elapsed_seconds": 6.729999995513936e-05
+      },
+      "native": [
+        {
+          "function": "percolation_inversion_compiler.adapters.domain.verify_ecpt_numerical_envelope",
+          "implementation_sha256": "d6b0f06f84032605661d2b9d410e55b4cf709db61b93c94eab5e8208d1d5094c",
+          "arguments": {
+            "residual": 0.125,
+            "residual_bound": 0.5,
+            "finite_horizon": 8
+          },
+          "result": {
+            "accepted": true,
+            "status": "settled",
+            "schema_valid": true,
+            "finite_checks_passed": true,
+            "operationally_usable": true,
+            "settled": true,
+            "claims": [],
+            "reasons": [],
+            "missing_obligations": [],
+            "residual_ledger": {
+              "coordinates": {}
+            }
+          },
+          "elapsed_seconds": 0.00026479999996809056
+        }
+      ],
+      "raw_route": {
+        "resolution_id": "resolution:16359d5cb10fc859",
+        "route_id": "adapters.domain.verify_ecpt_numerical_envelope",
+        "accepted": true,
+        "status": "settled",
+        "availability": "implemented",
+        "profile": "production",
+        "discharge_level": "finite_value_check",
+        "binding_id": "binding:core.adapters.envelope.verify_finite_bound->adapters.domain.verify_ecpt_numerical_envelope",
+        "evidence_envelope_id": "envelope:r3_numerical_01",
+        "evidence_artifact_ids": [
+          "ev:r3_numerical_01"
+        ],
+        "resolution_digest": "16359d5cb10fc859b1976c397ca36a957dd5fc74fd39690f89f8baa3ceec0c37",
+        "settled_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "finite_scope_usable": true,
+        "residual_external_obligations": [],
+        "domain_witness_required": false,
+        "operationally_usable": true,
+        "settled": true,
+        "accepted_obligation_ids": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "rejected_obligation_ids": [],
+        "missing_evidence_kind": [],
+        "reasons": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "safe_default": "diagnostic-with-numerical-envelope-obligation"
+      },
+      "raw_discharge": {
+        "accepted": true,
+        "status": "settled",
+        "schema_valid": true,
+        "finite_checks_passed": true,
+        "operationally_usable": true,
+        "settled": true,
+        "claims": [],
+        "reasons": [],
+        "missing_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        }
+      },
+      "raw_packet": {
+        "packet_id": "verified:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "verification_resolution_ids": [
+          "resolution:16359d5cb10fc859"
+        ],
+        "accepted_edge_witness_ids": [],
+        "validity_domain": "protocol-relative-finite",
+        "receiver_family": [
+          "consumer:lab",
+          "producer:lab"
+        ],
+        "liquidity_score": 1.0,
+        "execution_available": true,
+        "settlement_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "residual_external_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "expires_at": "2100-01-01T00:00:00+00:00",
+        "rollback_receipt": "candidate-rollback-available",
+        "issuer_agent_id": null,
+        "issuer_public_key_id": null,
+        "issuer_attestation_id": null,
+        "identity_contribution_status": "diagnostic",
+        "operationally_usable": true,
+        "settled": false
+      },
+      "protected_packet": {
+        "packet_id": "rejected:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "reasons": [
+          "packet evidence hash is invalid",
+          "packet receiver family is empty",
+          "packet verifier route is unsafe",
+          "packet verifier route resolution is rejected"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "identity_contribution_status": "diagnostic",
+        "status": "diagnostic"
+      },
+      "protected_task_obligation_discharged": false,
+      "B_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "C_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "framework": {
+        "accepted": true,
+        "operationally_usable": false,
+        "settled": false,
+        "missing_obligations": [
+          "phase-control-action-catalog"
+        ]
+      }
+    },
+    {
+      "case": "expired",
+      "status": "PASS",
+      "shared_verifier": {
+        "evidence_id": "ev:r3_numerical_01",
+        "source_id": "source:r3_numerical_01",
+        "source_sha256": "d4baee087c86e1ad0d55a06cd6503fb3cc7ab27bcab5ed6972af6cf5d1d6adef",
+        "trusted": false,
+        "sufficient": false,
+        "decision": "UNKNOWN",
+        "unresolved": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "reasons": [
+          "expired-or-not-yet-valid"
+        ],
+        "facts": {
+          "residual": 0.125
+        },
+        "cache_hit": false,
+        "domain_calls": 0,
+        "elapsed_seconds": 7.010000012996898e-05
+      },
+      "native": [
+        {
+          "function": "percolation_inversion_compiler.adapters.domain.verify_ecpt_numerical_envelope",
+          "implementation_sha256": "d6b0f06f84032605661d2b9d410e55b4cf709db61b93c94eab5e8208d1d5094c",
+          "arguments": {
+            "residual": 0.125,
+            "residual_bound": 0.5,
+            "finite_horizon": 8
+          },
+          "result": {
+            "accepted": true,
+            "status": "settled",
+            "schema_valid": true,
+            "finite_checks_passed": true,
+            "operationally_usable": true,
+            "settled": true,
+            "claims": [],
+            "reasons": [],
+            "missing_obligations": [],
+            "residual_ledger": {
+              "coordinates": {}
+            }
+          },
+          "elapsed_seconds": 0.00024300000018229184
+        }
+      ],
+      "raw_route": {
+        "resolution_id": "resolution:16359d5cb10fc859",
+        "route_id": "adapters.domain.verify_ecpt_numerical_envelope",
+        "accepted": true,
+        "status": "settled",
+        "availability": "implemented",
+        "profile": "production",
+        "discharge_level": "finite_value_check",
+        "binding_id": "binding:core.adapters.envelope.verify_finite_bound->adapters.domain.verify_ecpt_numerical_envelope",
+        "evidence_envelope_id": "envelope:r3_numerical_01",
+        "evidence_artifact_ids": [
+          "ev:r3_numerical_01"
+        ],
+        "resolution_digest": "16359d5cb10fc859b1976c397ca36a957dd5fc74fd39690f89f8baa3ceec0c37",
+        "settled_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "finite_scope_usable": true,
+        "residual_external_obligations": [],
+        "domain_witness_required": false,
+        "operationally_usable": true,
+        "settled": true,
+        "accepted_obligation_ids": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "rejected_obligation_ids": [],
+        "missing_evidence_kind": [],
+        "reasons": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "safe_default": "diagnostic-with-numerical-envelope-obligation"
+      },
+      "raw_discharge": {
+        "accepted": true,
+        "status": "settled",
+        "schema_valid": true,
+        "finite_checks_passed": true,
+        "operationally_usable": true,
+        "settled": true,
+        "claims": [],
+        "reasons": [],
+        "missing_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        }
+      },
+      "raw_packet": {
+        "packet_id": "rejected:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "reasons": [
+          "packet candidate is expired"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "identity_contribution_status": "diagnostic",
+        "status": "diagnostic"
+      },
+      "protected_packet": {
+        "packet_id": "rejected:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "reasons": [
+          "packet candidate is expired",
+          "packet evidence hash is invalid",
+          "packet receiver family is empty",
+          "packet verifier route is unsafe",
+          "packet verifier route resolution is rejected"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "identity_contribution_status": "diagnostic",
+        "status": "diagnostic"
+      },
+      "protected_task_obligation_discharged": false,
+      "B_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "C_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "framework": {
+        "accepted": true,
+        "operationally_usable": false,
+        "settled": false,
+        "missing_obligations": [
+          "phase-control-action-catalog"
+        ]
+      }
+    },
+    {
+      "case": "receiver_mismatch",
+      "status": "PASS",
+      "shared_verifier": {
+        "evidence_id": "ev:r3_numerical_01",
+        "source_id": "source:r3_numerical_01",
+        "source_sha256": "cffe0a5f5e22b2e14fa9219a49aa9dc18709901f2203c6c5e1ecb6eb4f71e9d7",
+        "trusted": false,
+        "sufficient": false,
+        "decision": "UNKNOWN",
+        "unresolved": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "reasons": [
+          "receiver-context-mismatch"
+        ],
+        "facts": {
+          "residual": 0.125
+        },
+        "cache_hit": false,
+        "domain_calls": 0,
+        "elapsed_seconds": 6.599999983336602e-05
+      },
+      "native": [
+        {
+          "function": "percolation_inversion_compiler.adapters.domain.verify_ecpt_numerical_envelope",
+          "implementation_sha256": "d6b0f06f84032605661d2b9d410e55b4cf709db61b93c94eab5e8208d1d5094c",
+          "arguments": {
+            "residual": 0.125,
+            "residual_bound": 0.5,
+            "finite_horizon": 8
+          },
+          "result": {
+            "accepted": true,
+            "status": "settled",
+            "schema_valid": true,
+            "finite_checks_passed": true,
+            "operationally_usable": true,
+            "settled": true,
+            "claims": [],
+            "reasons": [],
+            "missing_obligations": [],
+            "residual_ledger": {
+              "coordinates": {}
+            }
+          },
+          "elapsed_seconds": 0.00019870000005539623
+        }
+      ],
+      "raw_route": {
+        "resolution_id": "resolution:16359d5cb10fc859",
+        "route_id": "adapters.domain.verify_ecpt_numerical_envelope",
+        "accepted": true,
+        "status": "settled",
+        "availability": "implemented",
+        "profile": "production",
+        "discharge_level": "finite_value_check",
+        "binding_id": "binding:core.adapters.envelope.verify_finite_bound->adapters.domain.verify_ecpt_numerical_envelope",
+        "evidence_envelope_id": "envelope:r3_numerical_01",
+        "evidence_artifact_ids": [
+          "ev:r3_numerical_01"
+        ],
+        "resolution_digest": "16359d5cb10fc859b1976c397ca36a957dd5fc74fd39690f89f8baa3ceec0c37",
+        "settled_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "finite_scope_usable": true,
+        "residual_external_obligations": [],
+        "domain_witness_required": false,
+        "operationally_usable": true,
+        "settled": true,
+        "accepted_obligation_ids": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "rejected_obligation_ids": [],
+        "missing_evidence_kind": [],
+        "reasons": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "safe_default": "diagnostic-with-numerical-envelope-obligation"
+      },
+      "raw_discharge": {
+        "accepted": true,
+        "status": "settled",
+        "schema_valid": true,
+        "finite_checks_passed": true,
+        "operationally_usable": true,
+        "settled": true,
+        "claims": [],
+        "reasons": [],
+        "missing_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        }
+      },
+      "raw_packet": {
+        "packet_id": "verified:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "verification_resolution_ids": [
+          "resolution:16359d5cb10fc859"
+        ],
+        "accepted_edge_witness_ids": [],
+        "validity_domain": "protocol-relative-finite",
+        "receiver_family": [
+          "consumer:other"
+        ],
+        "liquidity_score": 1.0,
+        "execution_available": true,
+        "settlement_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "residual_external_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "expires_at": "2100-01-01T00:00:00+00:00",
+        "rollback_receipt": "candidate-rollback-available",
+        "issuer_agent_id": null,
+        "issuer_public_key_id": null,
+        "issuer_attestation_id": null,
+        "identity_contribution_status": "diagnostic",
+        "operationally_usable": true,
+        "settled": false
+      },
+      "protected_packet": {
+        "packet_id": "rejected:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "reasons": [
+          "packet evidence hash is invalid",
+          "packet receiver family is empty",
+          "packet verifier route is unsafe",
+          "packet verifier route resolution is rejected"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "identity_contribution_status": "diagnostic",
+        "status": "diagnostic"
+      },
+      "protected_task_obligation_discharged": false,
+      "B_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "C_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "framework": {
+        "accepted": true,
+        "operationally_usable": false,
+        "settled": false,
+        "missing_obligations": [
+          "phase-control-action-catalog"
+        ]
+      }
+    },
+    {
+      "case": "other_task",
+      "status": "PASS",
+      "shared_verifier": {
+        "evidence_id": "ev:r3_numerical_01",
+        "source_id": "source:r3_numerical_01",
+        "source_sha256": "e84584e00c00b5dee76fc085aa5b8f3c21829e5b68d38c9e028f6bb0363c63e8",
+        "trusted": false,
+        "sufficient": false,
+        "decision": "UNKNOWN",
+        "unresolved": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "reasons": [
+          "task_scope_mismatch"
+        ],
+        "facts": {
+          "residual": 0.125
+        },
+        "cache_hit": false,
+        "domain_calls": 0,
+        "elapsed_seconds": 7.47999999930471e-05
+      },
+      "native": [
+        {
+          "function": "percolation_inversion_compiler.adapters.domain.verify_ecpt_numerical_envelope",
+          "implementation_sha256": "d6b0f06f84032605661d2b9d410e55b4cf709db61b93c94eab5e8208d1d5094c",
+          "arguments": {
+            "residual": 0.125,
+            "residual_bound": 0.5,
+            "finite_horizon": 8
+          },
+          "result": {
+            "accepted": true,
+            "status": "settled",
+            "schema_valid": true,
+            "finite_checks_passed": true,
+            "operationally_usable": true,
+            "settled": true,
+            "claims": [],
+            "reasons": [],
+            "missing_obligations": [],
+            "residual_ledger": {
+              "coordinates": {}
+            }
+          },
+          "elapsed_seconds": 0.00024699999994481914
+        }
+      ],
+      "raw_route": {
+        "resolution_id": "resolution:fed6632d3bd759a7",
+        "route_id": "adapters.domain.verify_ecpt_numerical_envelope",
+        "accepted": true,
+        "status": "settled",
+        "availability": "implemented",
+        "profile": "production",
+        "discharge_level": "finite_value_check",
+        "binding_id": "binding:core.adapters.envelope.verify_finite_bound->adapters.domain.verify_ecpt_numerical_envelope",
+        "evidence_envelope_id": "envelope:r3_other_task",
+        "evidence_artifact_ids": [
+          "ev:r3_numerical_01"
+        ],
+        "resolution_digest": "fed6632d3bd759a7a04c4c9f36c031ebcbba28760aab400caa87c18b947ef845",
+        "settled_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "finite_scope_usable": true,
+        "residual_external_obligations": [],
+        "domain_witness_required": false,
+        "operationally_usable": true,
+        "settled": true,
+        "accepted_obligation_ids": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "rejected_obligation_ids": [],
+        "missing_evidence_kind": [],
+        "reasons": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "safe_default": "diagnostic-with-numerical-envelope-obligation"
+      },
+      "raw_discharge": {
+        "accepted": true,
+        "status": "settled",
+        "schema_valid": true,
+        "finite_checks_passed": true,
+        "operationally_usable": true,
+        "settled": true,
+        "claims": [],
+        "reasons": [],
+        "missing_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        }
+      },
+      "raw_packet": {
+        "packet_id": "verified:candidate:r3_other_task",
+        "source_candidate_id": "candidate:r3_other_task",
+        "verification_resolution_ids": [
+          "resolution:fed6632d3bd759a7"
+        ],
+        "accepted_edge_witness_ids": [],
+        "validity_domain": "protocol-relative-finite",
+        "receiver_family": [
+          "consumer:lab",
+          "producer:lab"
+        ],
+        "liquidity_score": 1.0,
+        "execution_available": true,
+        "settlement_scope": [
+          "finite-value:adapters.domain.verify_ecpt_numerical_envelope"
+        ],
+        "residual_external_obligations": [],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "expires_at": "2100-01-01T00:00:00+00:00",
+        "rollback_receipt": "candidate-rollback-available",
+        "issuer_agent_id": null,
+        "issuer_public_key_id": null,
+        "issuer_attestation_id": null,
+        "identity_contribution_status": "diagnostic",
+        "operationally_usable": true,
+        "settled": false
+      },
+      "protected_packet": {
+        "packet_id": "rejected:candidate:r3_other_task",
+        "source_candidate_id": "candidate:r3_other_task",
+        "reasons": [
+          "packet evidence hash is invalid",
+          "packet receiver family is empty",
+          "packet verifier route is unsafe",
+          "packet verifier route resolution is rejected"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "identity_contribution_status": "diagnostic",
+        "status": "diagnostic"
+      },
+      "protected_task_obligation_discharged": false,
+      "B_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "C_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "framework": {
+        "accepted": true,
+        "operationally_usable": false,
+        "settled": false,
+        "missing_obligations": [
+          "phase-control-action-catalog"
+        ]
+      }
+    },
+    {
+      "case": "self_claim_only",
+      "status": "PASS",
+      "shared_verifier": {
+        "evidence_id": "ev:r3_numerical_01",
+        "source_id": "source:r3_numerical_01",
+        "source_sha256": null,
+        "trusted": false,
+        "sufficient": false,
+        "decision": "UNKNOWN",
+        "unresolved": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "reasons": [
+          "missing-evidence"
+        ],
+        "facts": null,
+        "cache_hit": false,
+        "domain_calls": 0,
+        "elapsed_seconds": 3.270000001975859e-05
+      },
+      "native": [],
+      "raw_route": {
+        "resolution_id": "resolution:a47080435962782f",
+        "route_id": "adapters.domain.verify_ecpt_numerical_envelope",
+        "accepted": false,
+        "status": "diagnostic",
+        "availability": "implemented",
+        "profile": "production",
+        "discharge_level": "finite_value_check",
+        "binding_id": "binding:core.adapters.envelope.verify_finite_bound->adapters.domain.verify_ecpt_numerical_envelope",
+        "evidence_envelope_id": "envelope:r3_numerical_01",
+        "evidence_artifact_ids": [],
+        "resolution_digest": "a47080435962782ffd499eb551be985a236039f34f53631dcb26baad99df75ae",
+        "settled_scope": [],
+        "finite_scope_usable": false,
+        "residual_external_obligations": [],
+        "domain_witness_required": false,
+        "operationally_usable": false,
+        "settled": false,
+        "accepted_obligation_ids": [],
+        "rejected_obligation_ids": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "missing_evidence_kind": [],
+        "reasons": [
+          "evidence artifacts are missing"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "safe_default": "diagnostic-with-numerical-envelope-obligation"
+      },
+      "raw_discharge": {
+        "accepted": false,
+        "status": "diagnostic",
+        "schema_valid": true,
+        "finite_checks_passed": false,
+        "operationally_usable": false,
+        "settled": false,
+        "claims": [],
+        "reasons": [
+          "proof-obligation-unmet"
+        ],
+        "missing_obligations": [
+          "obligation:r3_numerical_01:evidence"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        }
+      },
+      "raw_packet": {
+        "packet_id": "rejected:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "reasons": [
+          "packet verifier route resolution is rejected"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "identity_contribution_status": "diagnostic",
+        "status": "diagnostic"
+      },
+      "protected_packet": {
+        "packet_id": "rejected:candidate:r3_numerical_01",
+        "source_candidate_id": "candidate:r3_numerical_01",
+        "reasons": [
+          "packet evidence hash is invalid",
+          "packet receiver family is empty",
+          "packet verifier route is unsafe",
+          "packet verifier route resolution is rejected"
+        ],
+        "residual_ledger": {
+          "coordinates": {}
+        },
+        "identity_contribution_status": "diagnostic",
+        "status": "diagnostic"
+      },
+      "protected_task_obligation_discharged": false,
+      "B_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "C_gate": {
+        "admitted_complete": false,
+        "evidence_supported": false,
+        "reason": "unresolved-or-mismatched-evidence"
+      },
+      "framework": {
+        "accepted": true,
+        "operationally_usable": false,
+        "settled": false,
+        "missing_obligations": [
+          "phase-control-action-catalog"
+        ]
+      }
+    }
+  ],
+  "cli": {
+    "evidence_verify": {
+      "exit_code": 0,
+      "parsed": true,
+      "output_sha256": "f4a2b5c5da01b05ef018d8dc00d61efbf119a80c9ba4f62f62e082dd65121d94"
+    },
+    "evidence_discharge": {
+      "exit_code": 0,
+      "parsed": true,
+      "output_sha256": "c981a779b01fd464910360849d21d67fd712132632ba58c17002ac5a56fdc86e"
+    },
+    "runtime_resolve": {
+      "exit_code": 0,
+      "parsed": true,
+      "output_sha256": "29f18e22230109c8038ac8cb20d9dd5eee37271d313aab3a04324fcef01d5f30"
+    },
+    "runtime_step": {
+      "exit_code": 0,
+      "parsed": true,
+      "output_sha256": "a07841be19963d36af926b74a2198f644476b24213839364ff7108ba28b409bc"
+    },
+    "agent_check_self_claim": {
+      "exit_code": 0,
+      "parsed": true,
+      "output_sha256": "c9015bbafee18c12a029a7485644b5e4dd2e7a8a14ad06b2645556f82f3b61e7"
+    }
+  },
+  "capability_matrix": {
+    "native_numerical_telemetry_trace_archive": "AVAILABLE; explicit finite semantic function calls",
+    "evidence_verify_discharge": "AVAILABLE; metadata and content hash checks, not automatic domain evaluation",
+    "runtime_resolve_evidence_step": "AVAILABLE; finite route discharge and residual tracking",
+    "packet_promotion": "AVAILABLE; development identity policy; no production issuer authentication",
+    "exact_receiver_match": "EXTERNAL; native packet check only requires a nonempty receiver family",
+    "trusted_source_hash_and_scope": "EXTERNAL; pinned by the common B/C orchestrator",
+    "TTL": "Packet expiration AVAILABLE; envelope TTL requires common external policy",
+    "route_discovery": "EXTERNAL fixed mapping; no autonomous discovery claimed",
+    "real_autonomous_producer_consumer_agents": "UNSUPPORTED in this design; logical roles only",
+    "production_signed_identity_attestation": "UNSUPPORTED in this experiment; no invented signatures"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "execution": "COMPLETED",
+  "actual_calls_including_warmup": 17,
+  "task_attempt_states": {
+    "OK": 16
+  },
+  "shared_initial_and_receipt_integrity": "PASS",
+  "actual_PIC_transmission": "PASS",
+  "live_connectors": false,
+  "preservation": {
+    "status": "PASS",
+    "protected_files": 1832,
+    "changed": []
+  },
+  "elapsed_campaign_seconds_at_gate": 178.89959383010864,
+  "main_wall_projection_seconds_not_observed": 609.3777312000002,
+  "technical_amendments": [],
+  "effect_oracle_inspected_for_gate": false,
+  "decision": "Proceed with identical frozen protocol, tasks, prompts and endpoints; pilot excluded from main."
+}

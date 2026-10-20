@@ -1,34 +1,55 @@
 # PIC Local LLM Phase Experiment
 
-The latest completed comparison is **PIC 1.1.0 R2**, recorded on 2026-10-20.
-It prospectively fixes citation/type ambiguity and overinclusive evidence
-requirements, then compares a generic review (A) with PIC feedback (B) on
-sixteen fresh confirmatory tasks. Both arms use the same local `gemma4:e4b`
-digest, the exact same initial answer, and one revision with matched generation
-limits. Four pilot tasks are excluded from the primary estimates.
+The latest completed comparison is **PIC 1.1.0 R3**, recorded on 2026-10-20.
+It separates evidence acquisition from PIC's additional contribution: A uses
+generic self-review, B receives an independent verifier's evidence through a
+strong typed ledger, and C receives the same evidence through actual PIC
+native checks and evidence/runtime processing. All arms share the same local
+`gemma4:e4b` digest, initial answer, one revision and generation limits.
+Four pilot tasks precede sixteen fresh confirmatory tasks; all 81 actual
+generations including warmup completed without retry or truncation.
 
-| R2 confirmatory endpoint | Generic review A | PIC feedback B |
-| --- | ---: | ---: |
-| Independently graded success | 8/16 | 9/16 |
-| Substantive false completion | 7/16 | 6/16 |
-| Allocated measured workflow time | 191.2 s | 479.5 s |
+| R3 confirmatory endpoint | Review A | Verifier + ledger B | Verifier + PIC C |
+| --- | ---: | ---: | ---: |
+| Frozen composite success | 0/16 | 15/16 | 13/16 |
+| Correct decision label | 9/16 | 16/16 | 16/16 |
+| Evidence-supported completion yield | 0/7 | 7/7 | 7/7 |
+| Unsupported model completions | 0/16 | 0/16 | 0/16 |
+| Allocated measured workflow time | 151.8 s | 177.2 s | 362.1 s |
 
-The success difference is +6.25 percentage points (conservative 95% interval
-[-23.9, +33.8]). The sole discordance is an A revision losing a correct initial
-answer; B preserves it. B improves no initial success label and costs about
-2.51 times as much measured workflow time. This small experiment does not
-establish incremental superiority or a resource-efficiency advantage. Matched
-call/output limits do not imply equal realized prompt tokens or runtime.
+The primary PIC increment C-B is **-12.5 percentage points**, conservative 95%
+interval **[-41.95, +22.88]**, exact paired McNemar p=0.5. Two C-only composite
+failures concern a draft citation or an extra unresolved item on holding
+outputs. Both B/C preserve the correct decisions and required obligations.
+The predeclared `HARM_OBSERVED` label describes the observed composite decline;
+it does not establish general or statistically conclusive harm. PIC's
+incremental superiority is not demonstrated.
 
-Start with the [R2 report](docs/EXPERIMENT_REPORT_PIC_1_1_0_R2.md),
-[fixed protocol](docs/PROTOCOL_PIC_1_1_0_R2.md),
-[reproduction guide](docs/REPRODUCIBILITY_PIC_1_1_0_R2.md), and
-[publication and offline-check guide](docs/PUBLICATION_PIC_1_1_0.md).
-The [documentation index](docs/README.md) distinguishes R2, the earlier PIC
-1.1.0 comparison with oracle limitations and an incomplete historical panel,
-and the retained v0.1.0/v0.2.0 workflow below. Experiment reports and frozen
-identities retain their recorded state; subsequent publication is documented
-separately. The experiment package version remains 0.2.0; PIC is pinned to 1.1.0.
+A's zero composite score includes failure to use prescribed machine obligation
+IDs: it discloses missing observations in free text on every task. B-A combines
+evidence acquisition, explicit verifier verdicts and contract adherence; it does
+not measure intrinsic model improvement. Equal allowed limits also do not imply
+equal realized compute: C costs **2.04 times B's measured workflow time** and
+about twice its allocated tokens. One valid main reuse case skips verifier
+calls but shows no time saving. Energy and continuous GPU use are unknown.
+
+Start with the [R3 report](docs/EXPERIMENT_REPORT_PIC_1_1_0_R3.md),
+[fixed protocol](docs/PROTOCOL_PIC_1_1_0_R3.md),
+[endpoint audit](docs/PIC_1_1_0_R3_ENDPOINT_AUDIT.md),
+[reproduction guide](docs/REPRODUCIBILITY_PIC_1_1_0_R3.md), and
+[publication and offline checks](docs/PUBLICATION_PIC_1_1_0_R3.md).
+This small, authored finite benchmark uses one model/seed/host, a strong
+explicit-verdict control and synthetic trust roots. Four invalid cases pass
+raw PIC packet promotion in deterministic integration tests; a common outer
+provenance/semantic gate rejects them in both B/C. That protection cannot be
+credited to PIC alone. Independent agents, production identity assurance and
+real-world evidence acquisition remain untested. The result supports no
+efficacy or resource-efficiency claim for PIC in this setting.
+
+The [documentation index](docs/README.md) retains R2, the first PIC 1.1.0
+campaign and v0.1.0/v0.2.0 as separate historical profiles. Frozen experimental
+records are preserved; later publication Docs are recorded separately.
+The experiment package version remains 0.2.0; PIC is pinned to 1.1.0.
 
 This repository is an English-first, local-only research scaffold for testing
 whether the Percolation Inversion Compiler (PIC) improves finite workflow
@@ -71,7 +92,7 @@ Useful upstream references:
 ## What This Repository Does
 
 The historical v0.1.0/v0.2.0 workflow described in the following sections runs
-a small, synthetic, local experiment over ten review-style tasks. For R2's
+a small, synthetic, local experiment over ten review-style tasks. For R3's
 distinct commands and endpoints, use the guides above. The historical workflow
 compares two conditions:
 

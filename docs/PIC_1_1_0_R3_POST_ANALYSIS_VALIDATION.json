@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "scope": "Post-hoc descriptive additions; no scoring changes or model calls",
+  "frozen_pilot_files": 51,
+  "frozen_main_files": 51,
+  "preservation": {
+    "status": "PASS",
+    "protected_files": 1832,
+    "changed": []
+  },
+  "local_links_checked": 20,
+  "primary_summary_sha256_normalized_lf": "b5af1c212b0c719e4ca9e75ff90620e4a40f4909cc5818d7a697dbb4177fa7ff",
+  "primary_judgment_unchanged": {
+    "judgment": "HARM_OBSERVED",
+    "rule": "Frozen protocol endpoint/uncertainty rule; resource cost remains a separate utility consideration",
+    "incremental_superiority_established": false
+  },
+  "static_checks": "Ruff/style/syntax/public-safety/public-arithmetic passed after descriptive script; 184-test source unchanged."
+}
