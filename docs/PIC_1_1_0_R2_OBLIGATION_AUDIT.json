@@ -1,0 +1,428 @@
+[
+  {
+    "task_id": "r2_pilot_integration",
+    "panel": "pilot",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_pilot_integration",
+    "panel": "pilot",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_pilot_integration",
+    "panel": "pilot",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_pilot_policy",
+    "panel": "pilot",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_pilot_policy",
+    "panel": "pilot",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_pilot_policy",
+    "panel": "pilot",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_pilot_evidence",
+    "panel": "pilot",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_pilot_evidence",
+    "panel": "pilot",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_pilot_evidence",
+    "panel": "pilot",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_pilot_validation",
+    "panel": "pilot",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_pilot_validation",
+    "panel": "pilot",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_pilot_validation",
+    "panel": "pilot",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_integrate_01",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_integrate_01",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_integrate_01",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_integrate_02",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_integrate_02",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_integrate_02",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_integrate_03",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_integrate_03",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_integrate_03",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_integrate_04",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_integrate_04",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_integrate_04",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_policy_01",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_policy_01",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_policy_01",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_policy_02",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_policy_02",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_policy_02",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_policy_03",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_policy_03",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_policy_03",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_policy_04",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_policy_04",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_policy_04",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_evidence_01",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_evidence_01",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_evidence_01",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_evidence_02",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_evidence_02",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_evidence_02",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_evidence_03",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_evidence_03",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_evidence_03",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_evidence_04",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": [
+      "reconcile-reports"
+    ]
+  },
+  {
+    "task_id": "r2_evidence_04",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": [
+      "reconcile-reports"
+    ]
+  },
+  {
+    "task_id": "r2_evidence_04",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": [
+      "reconcile-reports"
+    ]
+  },
+  {
+    "task_id": "r2_validate_01",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_validate_01",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_validate_01",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_validate_02",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_validate_02",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_validate_02",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_validate_03",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_validate_03",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_validate_03",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_validate_04",
+    "panel": "confirmatory",
+    "condition": "initial",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_validate_04",
+    "panel": "confirmatory",
+    "condition": "A",
+    "lost": [],
+    "spurious": []
+  },
+  {
+    "task_id": "r2_validate_04",
+    "panel": "confirmatory",
+    "condition": "B",
+    "lost": [],
+    "spurious": []
+  }
+]

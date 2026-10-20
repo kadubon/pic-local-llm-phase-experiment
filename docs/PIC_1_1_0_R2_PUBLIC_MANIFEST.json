@@ -1,0 +1,28 @@
+{
+  "convention": "SHA256 with CRLF normalized to LF; this manifest excluded",
+  "files": {
+    "configs/experiment.pic-v1.1.0-r2.yaml": "184aa3517b0fc05cc3f8e616dc10e7f2fc5f0faa0cdcd2ec49f9bf73a6e88092",
+    "docs/EXPERIMENT_REPORT_PIC_1_1_0_R2.md": "42d9f023f552e54621d273b0070919c2de27b68a0a6d2636ac230a36ed59f11c",
+    "docs/EXPERIMENT_SUMMARY_PIC_1_1_0_R2.json": "903165412ffec5943c2cce31d70696dd98e32aaac91a440c6419d8b218bb9b8f",
+    "docs/PIC_1_1_0_R2_INITIAL_TRANSITIONS.json": "592f995505ddeee859f48b8c0bdde43758ded586e5998a4598191f30af203f8f",
+    "docs/PIC_1_1_0_R2_OBLIGATION_AUDIT.json": "f282d42904412027dfd60c3c04b93b2069d5b50bd64e472fa7a114b0350b9ded",
+    "docs/PIC_1_1_0_R2_PILOT_GATE.md": "bb9d9ab65eb9b436581559a1af8445243091a8820b431bf2a36537e446928bd4",
+    "docs/PIC_1_1_0_R2_PREREG_MAIN.json": "da6de40e65bb6957ae163fa2b00260a0438aaf636a669e50a1bb819913aee133",
+    "docs/PIC_1_1_0_R2_PREREG_PILOT.json": "c0ad1c5ee2ff38fc207933686aac8ac2189a6740faa512bae6477d6869abdf5b",
+    "docs/PIC_1_1_0_R2_PRIVATE_ARCHIVE_IDENTITY.json": "453dbd747815e702d4dc988728de21d46c8230834bb7f46512a9ff72bac1b298",
+    "docs/PIC_1_1_0_R2_VALIDATION.json": "c71cb8e1687c54ef4626b9c84791e7ffc34384458b03361fc13f1cbfba800e1e",
+    "docs/PROTOCOL_PIC_1_1_0_R2.md": "26549dba559fd8fded85f6f239ac33188a1bcbea3c7806a533e3e42ce18eb7ff",
+    "docs/REPRODUCIBILITY_PIC_1_1_0_R2.md": "5016f2345fb970aa9cf5f07dde456adab057583c1d3b804c6e3e665465fc7b99",
+    "scripts/build_pic110r2_tasks.py": "92fe80750fd0e684686532e1335c6fbc634c5534ef13d6c1fae8977386abeba2",
+    "scripts/manage_pic110r2_artifacts.py": "b965c8c717b513e6cf5c1ec345b2eab0e9c4367a53ffd6a44a62d57153f965e1",
+    "scripts/report_pic110r2.py": "b0252bf22f105ee2cb889829bd1c7379732198be0bac5a3aaf222363693a2e42",
+    "src/pic_local_llm_phase_experiment/pic110r2_analysis.py": "8157f105caf0e9e2f2f43e00f9775b3c76b2c705bb3f8945b18cbaabd66051ea",
+    "src/pic_local_llm_phase_experiment/pic110r2_logic.py": "c2c97950bbbbc0b492ebf91767b03ac9481d8f985228abc9b4f51c43abe45c33",
+    "src/pic_local_llm_phase_experiment/pic110r2_oracle.py": "c203ffa3faf8d11825a918ab4bb4a21393cc02366120116c0739679e22e1e970",
+    "src/pic_local_llm_phase_experiment/pic110r2_runner.py": "4942bb63ee0441365afd901608b8812eacc64dab64b55effa0f53614b0566cac",
+    "tasks/pic110r2/oracles.json": "ec2f481a4b11fdc0cf28db781872485b924dfb48c149f8013c01cdc925c090ab",
+    "tasks/pic110r2/proof_audit.json": "d92b30db47a8a7c4ebb78e5e8571d030c39f818a7d4e2d5b4610cefd4ae41e94",
+    "tasks/pic110r2/public.json": "0b15101478867ff90d129b71639eab8c21aa4d9e722413536df5309e3fa49821",
+    "tests/test_pic110r2.py": "c284251df266ddd1059f550a06417983a66b076ed7c32bf01d20bf3a553db4c7"
+  }
+}

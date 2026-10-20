@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "checks": {
+    "syntax": {
+      "status": "PASS",
+      "returncode": 0
+    },
+    "ruff": {
+      "status": "PASS",
+      "returncode": 0
+    },
+    "format": {
+      "status": "PASS",
+      "returncode": 0
+    },
+    "mypy_new_core": {
+      "status": "PASS",
+      "returncode": 0
+    },
+    "pytest": {
+      "status": "PASS",
+      "returncode": 0,
+      "tests": 138,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 138
+    },
+    "public_safety": {
+      "status": "PASS",
+      "returncode": 0
+    },
+    "public_arithmetic": {
+      "status": "PASS",
+      "returncode": 0
+    },
+    "prior_preservation": {
+      "status": "PASS",
+      "protected_files": 957
+    },
+    "frozen_pilot": {
+      "status": "PASS",
+      "files": 16
+    },
+    "frozen_main": {
+      "status": "PASS",
+      "files": 16
+    },
+    "minimum_proof_audit": {
+      "status": "PASS",
+      "tasks": 20,
+      "worlds": 59830,
+      "minimal_sets": 21
+    },
+    "actual_model_artifact_integrity": {
+      "status": "PASS",
+      "issues": [],
+      "actual_records": 60,
+      "planned_slots": 60,
+      "actual_calls_including_warmup": 61,
+      "actual_pic_diagnoses": 60,
+      "pic_commands_per_diagnosis": 2,
+      "attempt_states": {
+        "OK": 60
+      }
+    }
+  },
+  "experiment_execution_status": "COMPLETED"
+}

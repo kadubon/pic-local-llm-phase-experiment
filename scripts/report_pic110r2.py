@@ -7,6 +7,7 @@ from __future__ import annotations
 import argparse
 import json
 from collections import Counter
+from datetime import datetime
 
 from pic_local_llm_phase_experiment.pic110_runner import read, write
 from pic_local_llm_phase_experiment.pic110r2_analysis import summarize
@@ -50,9 +51,62 @@ def main() -> None:
     n_worlds = sum(x["world_count"] for x in proof_audit)
     n_proofs = sum(len(x["all_minimal_proofs"]) for x in proof_audit)
     diagnostic = [r for r in data["rows"] if r["pic"] is not None]
-    signatures = Counter(tuple(r["pic"]["intake"]["missing_obligations"] or []) for r in diagnostic)
+    signatures = Counter(
+        (
+            tuple(r["pic"]["intake"]["missing_obligations"])
+            if r["pic"]["intake"]["missing_obligations"] is not None
+            else None
+        )
+        for r in diagnostic
+    )
     burdens = Counter(str(r["pic"]["intake"]["residual_burden"]) for r in diagnostic)
     states = Counter(r["attempt_status"] for r in data["rows"])
+    transitions = {}
+    for arm in ("A", "B"):
+        changes = []
+        for row in (r for r in main_rows if r["condition"] == arm):
+            before = next(
+                r
+                for r in main_rows
+                if r["task_id"] == row["task_id"] and r["condition"] == "initial"
+            )
+            if before["oracle"]["success"] != row["oracle"]["success"]:
+                changes.append(
+                    {
+                        "task_id": row["task_id"],
+                        "initial_success": before["oracle"]["success"],
+                        "final_success": row["oracle"]["success"],
+                    }
+                )
+        transitions[arm] = changes
+    write(ROOT / "docs/PIC_1_1_0_R2_INITIAL_TRANSITIONS.json", transitions)
+    observed_regression = transitions == {
+        "A": [{"task_id": "r2_validate_02", "initial_success": True, "final_success": False}],
+        "B": [],
+    }
+    transition_note = (
+        "The sole A/B discordance is r2_validate_02: the initial answer correctly retained "
+        "all three invalid row labels, A dropped the row with an invalid status, and B "
+        "retained the correct initial set. The favorable B comparison reflects avoidance "
+        "of a generic-review regression, not repair of an initially wrong answer."
+        if observed_regression
+        else "The saved transition table describes which initial success labels changed in each arm."
+    )
+    transition_counts = {
+        arm: {
+            "improved": sum(not r["initial_success"] and r["final_success"] for r in changes),
+            "worsened": sum(r["initial_success"] and not r["final_success"] for r in changes),
+        }
+        for arm, changes in transitions.items()
+    }
+    unresolved_ok = {
+        arm: sum(
+            r["gold_requires_abstention"] and r["oracle"]["obligations_correct"] is True
+            for r in main_rows
+            if r["condition"] == arm
+        )
+        for arm in ("A", "B")
+    }
     rows_table = []
     for ar in (r for r in main_rows if r["condition"] == "A"):
         br = next(r for r in main_rows if r["task_id"] == ar["task_id"] and r["condition"] == "B")
@@ -126,6 +180,29 @@ def main() -> None:
         for k in ("resource_before", "resource_after")
         if r[k] is not None
     ]
+    all_usage_known = all(
+        r["token_usage"] is not None
+        and all(type(r["token_usage"].get(k)) is int for k in ("input", "output"))
+        for r in model_records
+    )
+    total_tokens = (
+        (data["campaign"]["input_tokens_observed"] + data["campaign"]["output_tokens_observed"])
+        if all_usage_known
+        else None
+    )
+    span = (
+        (
+            datetime.fromisoformat(panel["finished_utc"]).timestamp()
+            - data["campaign"]["started_epoch"]
+        )
+        if panel.get("finished_utc")
+        else None
+    )
+    allocations = [
+        m.get("size_vram")
+        for path in OUT.glob("*/*/ollama_ps.json")
+        for m in read(path).get("models", [])
+    ]
     pic_flags = b["pic_flags"]
     for phase in ("pilot", "main"):
         write(
@@ -177,6 +254,8 @@ an independent correctness label. The original run and R2 are not pooled.
   {max(r["cpu_percent"] for r in resources):.1f}%; RAM snapshots
   {min(r["ram_percent"] for r in resources):.1f}-{max(r["ram_percent"] for r in resources):.1f}%.
   No continuous GPU/energy monitoring was available.
+  Observed Ollama size_vram snapshots: {sorted(set(allocations), key=lambda x: str(x))} bytes;
+  this is actual reported allocation, not nominal dedicated VRAM.
 
 No model was downloaded, changed or silently substituted. The prior qwen3.5
 reference remains unavailable; this is the same gemma4 digest used in the first
@@ -259,6 +338,19 @@ bootstrap intervals: success {ci(success.get("paired_bootstrap_percentile_95_ci"
 false completion {ci(fc.get("paired_bootstrap_percentile_95_ci"))}.
 Degenerate bootstrap intervals do not prove equivalence. The conservative
 intervals and synthetic family dependence limit population interpretation.
+These intervals assume independent exchangeable task outcomes; nominal coverage
+is not established for a broader population with dependent template clusters.
+
+### Relation to the common initial answers
+
+Initial success was {initial["success"]}/{count}, with
+{initial["substantive_false_completion"]} substantive false completions. Initial-to-final
+success-label changes were `{json.dumps(transitions, sort_keys=True)}`.
+{transition_note}
+Initial-to-final improvement/regression counts: `{json.dumps(transition_counts)}`.
+This is a descriptive within-task observation, not an added independent sample
+or a replacement primary endpoint. No improved diagnostic localization is
+inferred from this one preserved answer.
 
 | Task | Order | A success | B success | A substantive false completion | B substantive false completion |
 | --- | --- | ---: | ---: | --- | --- |
@@ -289,6 +381,10 @@ evidence. Actual route/action fields remain available in private raw reports.
 No independence or usefulness is inferred from their parseability alone.
 PIC disappearance tracking is retained separately from independent task
 obligations; no new external verifier evidence was produced by either arm.
+Exact obligation sets on genuinely unresolved tasks: A {unresolved_ok["A"]}/
+{a["abstention_denominator"]}, B {unresolved_ok["B"]}/{b["abstention_denominator"]}.
+The separate obligation audit distinguishes lost obligations from extra labels;
+accuracy of a whole set is not equated with disappearance of a missing fact.
 Certification remains unknown/not applicable: the real resource-bound runtime
 trajectory contract is absent and no modeled proxy gain is used as observation.
 
@@ -311,6 +407,12 @@ Joint-success cases {costs["joint_success_tasks"]}/{count}: allocated A/B second
 Cache/load effects are recorded but not isolated. No claim of equal realized
 compute or a time-to-success frontier follows from one matched revision.
 Energy/monetary cost is missing. Raw timing/token metadata is retained.
+Campaign span including between-panel work: {number(span)} seconds, excluding
+the earlier warmup. Actual observed input/output tokens across real calls:
+{data["campaign"]["input_tokens_observed"]}/{data["campaign"]["output_tokens_observed"]};
+complete token metadata coverage: {all_usage_known}; total tokens {total_tokens}.
+PIC overhead charged to B is the shared-initial diagnosis plus B's final
+diagnosis: {number(initial["pic_seconds"] + b["pic_seconds"]) if initial["pic_seconds"] is not None and b["pic_seconds"] is not None else "missing"} seconds.
 
 ## Full attempt ledger, negative and inconclusive outcomes
 
@@ -321,6 +423,12 @@ trials are not removed, retried or replaced. Completion status above concerns
 execution, not a favorable efficacy result. {interpretation}
 Any lack of change is distinguished from proof of equivalence. Additional cost
 without demonstrated endpoint improvement is not a measured efficiency benefit.
+For the success endpoint: {interpretation} Format-conformant answer counts are
+{a["format_conformant"]}/{count} and {b["format_conformant"]}/{count}; surface
+normalization usage counts are {a["surface_normalization_used"]} and
+{b["surface_normalization_used"]}. These are reported separately rather than
+hidden in task success labels. Joint-success and all-task costs above are the
+resource comparison, not an inferred acceleration.
 
 ## Comparison with the earlier run and preservation
 

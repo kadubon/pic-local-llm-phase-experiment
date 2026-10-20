@@ -40,6 +40,15 @@ the private prior archive, preserve all available earlier tracked files and
 report that narrower coverage rather than inventing unavailable raw artifacts.
 The R2 runner checks this manifest before panels and after reanalysis.
 
+For a fresh R2 result directory, initialize that snapshot before preparation:
+
+```powershell
+.venv-pic110/Scripts/python.exe scripts/manage_pic110r2_artifacts.py preserve
+```
+
+This enumerates the earlier `bff2907` tree and any available earlier private
+raw/archive files. It refuses to overwrite an existing snapshot.
+
 ```powershell
 .venv-pic110/Scripts/python.exe -m compileall -q src scripts tests
 .venv-pic110/Scripts/ruff.exe check .
@@ -72,6 +81,10 @@ even before pilot inference. With no amendments, create the main manifest:
 .venv-pic110/Scripts/python.exe -m pic_local_llm_phase_experiment.pic110r2_runner freeze --phase main
 .venv-pic110/Scripts/python.exe -m pic_local_llm_phase_experiment.pic110r2_runner run --panel confirmatory
 .venv-pic110/Scripts/python.exe -m pic_local_llm_phase_experiment.pic110r2_analysis --export
+.venv-pic110/Scripts/python.exe scripts/report_pic110r2.py
+.venv-pic110/Scripts/python.exe scripts/manage_pic110r2_artifacts.py validate
+.venv-pic110/Scripts/python.exe scripts/manage_pic110r2_artifacts.py archive
+.venv-pic110/Scripts/python.exe scripts/manage_pic110r2_artifacts.py manifest
 ```
 
 Each task has one common initial and one revision per arm. Limit: 62 actual
@@ -100,3 +113,8 @@ private raw access or a fresh run. Repeated offline grading changes tiny
 evaluator CPU timings; recorded inference/PIC timings and deterministic estimates
 are unchanged. Protocol/source manifests use normalized LF SHA-256, so Windows
 line endings do not make Git content unverifiable.
+The new private ZIP contains raw responses, private environment details and
+exact frozen source bytes; only its identity is suitable for the local tracked
+report. It is not published. Validation also audits actual request hashes,
+model options, shared initials, the exact generic/PIC review material,
+minimum-proof data and old-file byte preservation.
