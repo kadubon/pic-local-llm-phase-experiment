@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "checked_at_utc": "2026-10-20T08:31:10.767872+00:00",
+  "scope": "Record, arithmetic, archival and documentation checks; does not replace the frozen scientific summary",
+  "checks": {
+    "prior_preservation": {
+      "status": "PASS",
+      "protected_files": 2884,
+      "changed": []
+    },
+    "unchanged_pic": {
+      "status": "PASS",
+      "unchanged_wheel_payload_files": 617
+    },
+    "frozen_pilot": {
+      "status": "PASS",
+      "files": 54
+    },
+    "frozen_main": {
+      "status": "PASS",
+      "files": 54
+    },
+    "r1_manifest": {
+      "status": "PASS",
+      "files": 32
+    },
+    "r2_manifest": {
+      "status": "PASS",
+      "files": 23
+    },
+    "r3_manifest": {
+      "status": "PASS",
+      "files": 36
+    },
+    "pre_inference_tests": {
+      "status": "PASS",
+      "passed": 267,
+      "failed": 0,
+      "skipped": 0,
+      "phase": "Before pilot freeze; frozen methods unchanged"
+    },
+    "arithmetic": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "ruff": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "format": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "syntax": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "mypy": {
+      "status": "PASS",
+      "exit_code": 0
+    },
+    "final_public_safety": {
+      "status": "PASS"
+    },
+    "lean_replication": {
+      "status": "PASS",
+      "conditions": 24,
+      "processes": 72,
+      "generic_pic_import_absent": true,
+      "all_results_correct": true
+    },
+    "PIC_1_1_0_R4_private_archive": {
+      "status": "PASS",
+      "sha256": "b9d0022e3bc8fd5afba649fb69a3d0b02540f5b26df2856435044ce10bce6c1d",
+      "bytes": 7327200,
+      "ignored_by_git": true
+    },
+    "PIC_1_1_0_R4_LEAN_private_archive": {
+      "status": "PASS",
+      "sha256": "a894da423440333e5e217b0b599da59a63150543b14d020564865d07ea3af44b",
+      "bytes": 2327553,
+      "ignored_by_git": true
+    },
+    "documentation_links": {
+      "status": "PASS",
+      "documents": 6,
+      "destinations": 21
+    },
+    "no_post_experiment_inference": {
+      "status": "PASS",
+      "actual_model_calls": 73
+    }
+  }
+}

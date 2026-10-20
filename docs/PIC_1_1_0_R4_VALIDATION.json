@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "execution_status": "COMPLETED",
+  "checked_at_utc": "2026-10-20T08:20:24.622966+00:00",
+  "checks": {
+    "prior_preservation": {
+      "status": "PASS",
+      "protected_files": 2884,
+      "changed": []
+    },
+    "installed_pic_identity": {
+      "status": "PASS",
+      "unchanged_wheel_payload_files": 617
+    },
+    "frozen_pilot": {
+      "status": "PASS",
+      "files": 54
+    },
+    "frozen_main": {
+      "status": "PASS",
+      "files": 54
+    },
+    "unchanged_pilot_to_main_methods": {
+      "status": "PASS",
+      "technical_amendments": []
+    },
+    "actual_model_artifacts": {
+      "status": "PASS",
+      "calls": 73,
+      "states": {
+        "OK": 73
+      },
+      "physical_input_output_seconds": {
+        "input": 176036,
+        "output": 6159,
+        "seconds": 3058.3570210000053
+      },
+      "retries": 0
+    },
+    "exact_backend_replay": {
+      "status": "PASS",
+      "cases": 36,
+      "independent_model_samples_claimed": false
+    },
+    "planned_denominators": {
+      "status": "PASS",
+      "logical_rows": 108,
+      "actual_task_generations": 72,
+      "confirmatory_cases": 32,
+      "confirmatory_episode_blocks": 8
+    },
+    "actual_pic_artifacts": {
+      "status": "PASS",
+      "component_diagnoses": 108,
+      "executed_native_calls": 44,
+      "reused_native_checks": 55,
+      "final_merged_runtime_calls": 72
+    },
+    "actual_cross_process_reuse": {
+      "status": "PASS",
+      "conditions": 24,
+      "processes": 72,
+      "source_sizes": [
+        16,
+        4096,
+        65536
+      ],
+      "fanouts": [
+        1,
+        8
+      ],
+      "positive_and_no_cache_results_preserved": true
+    },
+    "dependency_versions": {
+      "pic": "1.1.0"
+    }
+  },
+  "scope": "Artifact integrity; does not replace frozen scoring or add inference."
+}
