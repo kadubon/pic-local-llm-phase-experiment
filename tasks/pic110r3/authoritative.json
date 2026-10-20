@@ -1,0 +1,352 @@
+{
+  "source:r3_pilot_numerical_01": {
+    "source_id": "source:r3_pilot_numerical_01",
+    "scope": "scope:r3_pilot_numerical_01",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "numerical",
+    "data": {
+      "residual": 0.125
+    }
+  },
+  "source:r3_pilot_telemetry_01": {
+    "source_id": "source:r3_pilot_telemetry_01",
+    "scope": "scope:r3_pilot_telemetry_01",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "telemetry",
+    "data": {
+      "samples": [
+        10.125,
+        20.25,
+        30.5
+      ]
+    }
+  },
+  "source:r3_pilot_trace_01": {
+    "source_id": "source:r3_pilot_trace_01",
+    "scope": "scope:r3_pilot_trace_01",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "trace",
+    "data": {
+      "events": [
+        "initialize",
+        "measure",
+        "verify",
+        "commit"
+      ]
+    }
+  },
+  "source:r3_pilot_reuse_01": {
+    "source_id": "source:r3_pilot_reuse_01",
+    "scope": "scope:r3_pilot_reuse_01",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "numerical",
+    "data": {
+      "residual": 0.125
+    }
+  },
+  "source:r3_numerical_01": {
+    "source_id": "source:r3_numerical_01",
+    "scope": "scope:r3_numerical_01",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "numerical",
+    "data": {
+      "residual": 0.125
+    }
+  },
+  "source:r3_numerical_02": {
+    "source_id": "source:r3_numerical_02",
+    "scope": "scope:r3_numerical_02",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "numerical",
+    "data": {
+      "residual": 0.75
+    }
+  },
+  "source:r3_numerical_03": {
+    "source_id": "source:r3_numerical_03",
+    "scope": "scope:r3_numerical_03",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "numerical",
+    "data": {
+      "residual": 0.75
+    }
+  },
+  "source:r3_numerical_04": {
+    "source_id": "source:r3_numerical_04",
+    "scope": "scope:r3_numerical_04",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "numerical",
+    "data": {
+      "residual": 0.75
+    }
+  },
+  "source:r3_telemetry_01": {
+    "source_id": "source:r3_telemetry_01",
+    "scope": "scope:r3_telemetry_01",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "telemetry",
+    "data": {
+      "samples": [
+        10.125,
+        20.25,
+        30
+      ]
+    }
+  },
+  "source:r3_telemetry_02": {
+    "source_id": "source:r3_telemetry_02",
+    "scope": "scope:r3_telemetry_02",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "telemetry",
+    "data": {
+      "samples": [
+        10.125,
+        20.25,
+        30.5
+      ]
+    }
+  },
+  "source:r3_telemetry_03": {
+    "source_id": "source:r3_telemetry_03",
+    "scope": "scope:r3_telemetry_03",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "telemetry",
+    "data": {
+      "samples": [
+        10.125,
+        20.25,
+        30
+      ]
+    }
+  },
+  "source:r3_telemetry_04": {
+    "source_id": "source:r3_telemetry_04",
+    "scope": "scope:r3_telemetry_04",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "telemetry",
+    "data": {
+      "samples": [
+        10.125,
+        20.25,
+        30
+      ],
+      "secondary_samples": [
+        10.125,
+        20.25,
+        31
+      ]
+    }
+  },
+  "source:r3_trace_01": {
+    "source_id": "source:r3_trace_01",
+    "scope": "scope:r3_trace_01",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "trace",
+    "data": {
+      "events": [
+        "initialize",
+        "measure",
+        "verify",
+        "commit"
+      ]
+    }
+  },
+  "source:r3_trace_02": {
+    "source_id": "source:r3_trace_02",
+    "scope": "scope:r3_trace_02",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "trace",
+    "data": {
+      "events": [
+        "initialize",
+        "verify",
+        "measure",
+        "commit"
+      ]
+    }
+  },
+  "source:r3_trace_03": {
+    "source_id": "source:r3_trace_03",
+    "scope": "scope:r3_trace_03",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "trace",
+    "data": {
+      "events": [
+        "initialize",
+        "measure",
+        "verify",
+        "commit"
+      ]
+    }
+  },
+  "source:r3_trace_04": {
+    "source_id": "source:r3_trace_04",
+    "scope": "scope:r3_trace_04",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "trace",
+    "data": {
+      "events": [
+        "initialize",
+        "measure",
+        "verify",
+        "commit"
+      ]
+    }
+  },
+  "source:r3_reuse_01": {
+    "source_id": "source:r3_reuse_01",
+    "scope": "scope:r3_reuse_01",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "numerical",
+    "data": {
+      "residual": 0.75
+    }
+  },
+  "source:r3_reuse_02": {
+    "source_id": "source:r3_reuse_02",
+    "scope": "scope:r3_reuse_02",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2026-10-19T12:00:00+00:00",
+    "domain": "numerical",
+    "data": {
+      "residual": 0.75
+    }
+  },
+  "source:r3_reuse_03": {
+    "source_id": "source:r3_reuse_03",
+    "scope": "scope:r3_reuse_03",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:lab"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "numerical",
+    "data": {
+      "residual": 0.75
+    }
+  },
+  "source:r3_reuse_04": {
+    "source_id": "source:r3_reuse_04",
+    "scope": "scope:r3_reuse_04",
+    "issuer": "finite-lab-authority",
+    "receiver_contexts": [
+      "producer:lab",
+      "consumer:other"
+    ],
+    "produced_at": "2026-10-18T00:00:00+00:00",
+    "expires_at": "2100-01-01T00:00:00+00:00",
+    "domain": "numerical",
+    "data": {
+      "residual": 0.75
+    }
+  }
+}

@@ -1,0 +1,581 @@
+{
+  "phase": "pilot",
+  "created_utc": "2026-10-20T05:13:30.059174+00:00",
+  "git_head": "ca788ca800b58b00995e056ecde05b389e18077c",
+  "hash_convention": "SHA256 with CRLF normalized to LF",
+  "settings": {
+    "model": "gemma4:e4b",
+    "model_digest": "dc35e8d9c6061baa6f0fa870975ab6932e2542b579b13ea0f199fa4bb7300c9c",
+    "pic_version": "1.1.0",
+    "pic_distribution_hash": "2d23def1bb734d12a6746caeabcc76fdce985476ed126545caba4a16838c0bb7",
+    "ollama_url": "http://localhost:11434",
+    "temperature": 0,
+    "top_p": 1,
+    "seed": 20261020,
+    "num_predict": 768,
+    "num_ctx": 16384,
+    "max_prompt_bytes": 14000,
+    "max_input_tokens": 1134032,
+    "max_output_tokens": 61504,
+    "max_calls_including_warmup": 81,
+    "max_wall_seconds": 3600,
+    "request_timeout_seconds": 180,
+    "max_consecutive_failures": 3,
+    "max_ram_percent": 92,
+    "think": false,
+    "retries": 0,
+    "keep_alive": "10m",
+    "order_seed": 11032026
+  },
+  "hashes": {
+    "configs/experiment.pic-v1.1.0-r3.json": "73d377ed392b891d1a264595ffe98617c5abe791d5eb9655a5f45b42c758ef3c",
+    "configs/requirements.pic110.lock": "296810466c3c36550efcb489c2509c92297d582d53395b7cd7babddb27e38dfe",
+    "docs/PIC_1_1_0_R3_INTEGRATION.json": "1bda2e781c2557e5786d7221f24371b8424587c80d204fc708af954caa3538b7",
+    "docs/PROTOCOL_PIC_1_1_0_R3.md": "eb4cf053a62f8013b153b4a73adc0b5e0bc1d7a17f4476b768b049a286300b13",
+    "docs/REPRODUCIBILITY_PIC_1_1_0_R3.md": "8e1ea43ebd18f3584fce78f508a0e07115dd27981396aed8cc2edf5f87a73f33",
+    "results/pic110r3/setup/gold.json": "4510a517718bb18b9092af67b9aa813f031b3c7b73fe5a99407f117492b99f94",
+    "results/pic110r3/setup/inspection.json": "a96acd23ca4bbe2f32370f52572b20b117e154b925570e58a2ebf0cef32dc260",
+    "results/pic110r3/setup/installed_pic_hashes.json": "ef10a1e3aec131763c30bf41865703ef2089130e2bb5830c9a99ce8b8dbb20fd",
+    "results/pic110r3/setup/preservation_before.json": "f2704fa06d49d5a48edbf8d1c3f5c9b30328cf8ead6b0fe4d18715f77ffc1f6b",
+    "results/pic110r3/setup/schedule.json": "961d36aa529a865076f4a6096644b23521d04f44515c70341eadd86e76138493",
+    "src/pic_local_llm_phase_experiment/__init__.py": "906a70058485e27c969f43eeda1a9409ec599044c6fb63c527c00116732cdd0c",
+    "src/pic_local_llm_phase_experiment/analyze_cli.py": "ae4ce85a582abcc0c8a2cdb9b437625641dc79ffd3d54866f300f29354fe4d74",
+    "src/pic_local_llm_phase_experiment/experiment.py": "109b84a77471d692bb16863ce6c98ae86b5ddee93a13fd30bc3fb44c790e4992",
+    "src/pic_local_llm_phase_experiment/metrics.py": "1de81d0def6c958abdb08274efb5aab6ed97b20aec0e995c80728d1c49d2c562",
+    "src/pic_local_llm_phase_experiment/ollama_client.py": "d14ee1c63d43ab8bc0b4e9bedd4f41e2d3e7ec348e1f9d78aa02e493658e2eb5",
+    "src/pic_local_llm_phase_experiment/paths.py": "a7960489cb9cc2424607ebf18b2b7f24e558dbfb7df6b33c8aca13eb2b279c47",
+    "src/pic_local_llm_phase_experiment/pic110_adapter.py": "41947044ffc00a27f07ff0a40e9b397e05e072d146a264ef1a81a57fbc63ee67",
+    "src/pic_local_llm_phase_experiment/pic110_analysis.py": "85be54496bed4d7f1268a4ff7f70132059a93919dda413cb50d13a82ae7c3aef",
+    "src/pic_local_llm_phase_experiment/pic110_oracle.py": "23887d0630d351f3926836af65f814419b572d9ee13f646e3417b98e14719f10",
+    "src/pic_local_llm_phase_experiment/pic110_prompts.py": "bd292a2902ff91030e4f163383e88891fdbb336eabee057269b3cbd021f4974e",
+    "src/pic_local_llm_phase_experiment/pic110_runner.py": "a7f30982f3fae7b61276907bfdd1d18bc663ad6b714d571c6bf55f15faa1d11e",
+    "src/pic_local_llm_phase_experiment/pic110r2_analysis.py": "8157f105caf0e9e2f2f43e00f9775b3c76b2c705bb3f8945b18cbaabd66051ea",
+    "src/pic_local_llm_phase_experiment/pic110r2_logic.py": "c2c97950bbbbc0b492ebf91767b03ac9481d8f985228abc9b4f51c43abe45c33",
+    "src/pic_local_llm_phase_experiment/pic110r2_oracle.py": "c203ffa3faf8d11825a918ab4bb4a21393cc02366120116c0739679e22e1e970",
+    "src/pic_local_llm_phase_experiment/pic110r2_runner.py": "4942bb63ee0441365afd901608b8812eacc64dab64b55effa0f53614b0566cac",
+    "src/pic_local_llm_phase_experiment/pic110r3_analysis.py": "05dbbe8bda0a79a9cff789cbba3c0ae92c26a18258ce0bcdf2bfb5abbd2e5975",
+    "src/pic_local_llm_phase_experiment/pic110r3_audit.py": "f723426991cca00839b0711170ada7f6f0de5cdb89ac758dd1e0730795cadd27",
+    "src/pic_local_llm_phase_experiment/pic110r3_common.py": "09bdf951cd59ad9e8c4bb97cbb45b548a2fbd395e098c9f75d50943174b54435",
+    "src/pic_local_llm_phase_experiment/pic110r3_oracle.py": "488f26150cf76c78a569212ddd4e5e5d4a382228256fd5a84cfbcbadcd1b71a5",
+    "src/pic_local_llm_phase_experiment/pic110r3_pic_adapter.py": "ee7a2c7d05e452c4eee3423e5c1b777b3dc99acfa87bf6a7541bbc19e443dc87",
+    "src/pic_local_llm_phase_experiment/pic110r3_report.py": "a376279f1b53a25b15accae19c843298ce556edd37868b157bd53355a5504cbb",
+    "src/pic_local_llm_phase_experiment/pic110r3_runner.py": "056739b1fed372344922360c7ec7747c55a554d1c848239cba26e4b1ff1dc4e0",
+    "src/pic_local_llm_phase_experiment/pic110r3_setup.py": "29bdaf0cabd12dc0d9a5f730856240132efdb0aa51297c081ffe5405cf8cc860",
+    "src/pic_local_llm_phase_experiment/pic110r3_tasks.py": "93007494642c6198d5d232dcd9d07c993f09491de53f927692ccaccd81c27218",
+    "src/pic_local_llm_phase_experiment/pic110r3_validation.py": "e31f7156ff5d7fff4e6bdf2b2c7537bf3e00284d1616cf63d597a197c0f709cb",
+    "src/pic_local_llm_phase_experiment/pic110r3_verifiers.py": "65be2fc42accb9c742441b3de22ddf231f51e5984283e203b5a483ce3d36d97a",
+    "src/pic_local_llm_phase_experiment/pic_runner.py": "36da57655e4302b9de03d4c6931e16f4f3d0d5871ca33c82aefa4ab8b765e717",
+    "src/pic_local_llm_phase_experiment/public_audit.py": "3c1634d0ab253ea443ff497183ca4882720f4a4e72c39b6658d60211ee848741",
+    "src/pic_local_llm_phase_experiment/report.py": "c6ed8215bba039861bde2f7e5914cc4d1d5e29864455ede1e6b0f8cc99a9ae9b",
+    "src/pic_local_llm_phase_experiment/report_cli.py": "78b7b55f69b094f4e68853f4b508750fbc287b5a0f4b1ad26160ad40f9f4f058",
+    "src/pic_local_llm_phase_experiment/run_cli.py": "2178c955b430903d28f4b7f996a9386d7266f84156832e8cee2a4ef0bb483cac",
+    "src/pic_local_llm_phase_experiment/schemas.py": "8e569e873c104ec80afb9a7f2edea33625eeb5bcd52b19f268399af4e5cc2795",
+    "src/pic_local_llm_phase_experiment/setup_cli.py": "283e71f16f0ad54402a62a9956cefa55d09047e68302f5126fd70b31d183880d",
+    "src/pic_local_llm_phase_experiment/smoke_cli.py": "01641b231a37d00a812560deae553b73b12f5a638993a1f314b8b0b17def3b61",
+    "src/pic_local_llm_phase_experiment/task_loader.py": "192097dbfaf6f202fe72caf2be963906a0e655e89bff9de1a898dfb9f3129b65",
+    "tasks/pic110r3/authoritative.json": "58368c15c1f8c0e4665db66c44d3171d36a378f9c3fb6338e85d7dd01bffe387",
+    "tasks/pic110r3/delivery.json": "5843ce421fe77fc810b2f555ead9636a006d5ed007075ff5a8835395712ceb64",
+    "tasks/pic110r3/public.json": "085f34f936c400344660ebae05fdf0b37a665da00408e6e6809b258e35183c0d",
+    "tasks/pic110r3/source_schema.json": "4b66d53c76880142015ad193e3bc9b2b320d806fcd5d7bb204a54b8a86d2967b",
+    "tasks/pic110r3/trusted_manifest.json": "d4b501b00ad9b5ed3044c3547c07ec881236964cbf69843e6c98f537f574a3b5",
+    "tests/test_pic110r3.py": "1ae2fdccf70387a78d900247322579a01bde3fc652d5ca38733182260d0beff0"
+  },
+  "schedule": [
+    {
+      "task_id": "r3_pilot_trace_01",
+      "panel": "pilot",
+      "family": "trace",
+      "source_id": "source:r3_pilot_trace_01",
+      "scope": "scope:r3_pilot_trace_01",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "expected_events": [
+          "initialize",
+          "measure",
+          "verify",
+          "commit"
+        ]
+      },
+      "dependency_group": "source:r3_pilot_trace_01",
+      "producer_role": null,
+      "evidence_id": "ev:r3_pilot_trace_01",
+      "obligation_id": "obligation:r3_pilot_trace_01:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_pilot_trace_01\",\"evidence_id\":\"ev:r3_pilot_trace_01\",\"family\":\"trace\",\"obligation_id\":\"obligation:r3_pilot_trace_01:evidence\",\"panel\":\"pilot\",\"parameters\":{\"expected_events\":[\"initialize\",\"measure\",\"verify\",\"commit\"]},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_pilot_trace_01\",\"source_id\":\"source:r3_pilot_trace_01\",\"task_id\":\"r3_pilot_trace_01\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "task_id": "r3_pilot_telemetry_01",
+      "panel": "pilot",
+      "family": "telemetry",
+      "source_id": "source:r3_pilot_telemetry_01",
+      "scope": "scope:r3_pilot_telemetry_01",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "references": [
+          10,
+          20,
+          30
+        ],
+        "tolerance": 0.25
+      },
+      "dependency_group": "source:r3_pilot_telemetry_01",
+      "producer_role": null,
+      "evidence_id": "ev:r3_pilot_telemetry_01",
+      "obligation_id": "obligation:r3_pilot_telemetry_01:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_pilot_telemetry_01\",\"evidence_id\":\"ev:r3_pilot_telemetry_01\",\"family\":\"telemetry\",\"obligation_id\":\"obligation:r3_pilot_telemetry_01:evidence\",\"panel\":\"pilot\",\"parameters\":{\"references\":[10,20,30],\"tolerance\":0.25},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_pilot_telemetry_01\",\"source_id\":\"source:r3_pilot_telemetry_01\",\"task_id\":\"r3_pilot_telemetry_01\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r3_pilot_numerical_01",
+      "panel": "pilot",
+      "family": "numerical",
+      "source_id": "source:r3_pilot_numerical_01",
+      "scope": "scope:r3_pilot_numerical_01",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "residual_bound": 0.5,
+        "finite_horizon": 8
+      },
+      "dependency_group": "source:r3_pilot_numerical_01",
+      "producer_role": null,
+      "evidence_id": "ev:r3_pilot_numerical_01",
+      "obligation_id": "obligation:r3_pilot_numerical_01:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_pilot_numerical_01\",\"evidence_id\":\"ev:r3_pilot_numerical_01\",\"family\":\"numerical\",\"obligation_id\":\"obligation:r3_pilot_numerical_01:evidence\",\"panel\":\"pilot\",\"parameters\":{\"finite_horizon\":8,\"residual_bound\":0.5},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_pilot_numerical_01\",\"source_id\":\"source:r3_pilot_numerical_01\",\"task_id\":\"r3_pilot_numerical_01\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "C",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r3_pilot_reuse_01",
+      "panel": "pilot",
+      "family": "reuse",
+      "source_id": "source:r3_pilot_reuse_01",
+      "scope": "scope:r3_pilot_reuse_01",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "residual_bound": 0.5,
+        "finite_horizon": 8,
+        "allowed_domains": [
+          "numerical"
+        ]
+      },
+      "dependency_group": "source:r3_pilot_reuse_01",
+      "producer_role": "producer:r3_pilot_reuse_01",
+      "evidence_id": "ev:r3_pilot_reuse_01",
+      "obligation_id": "obligation:r3_pilot_reuse_01:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_pilot_reuse_01\",\"evidence_id\":\"ev:r3_pilot_reuse_01\",\"family\":\"reuse\",\"obligation_id\":\"obligation:r3_pilot_reuse_01:evidence\",\"panel\":\"pilot\",\"parameters\":{\"allowed_domains\":[\"numerical\"],\"finite_horizon\":8,\"residual_bound\":0.5},\"producer_role\":\"producer:r3_pilot_reuse_01\",\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_pilot_reuse_01\",\"source_id\":\"source:r3_pilot_reuse_01\",\"task_id\":\"r3_pilot_reuse_01\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "C",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r3_trace_01",
+      "panel": "confirmatory",
+      "family": "trace",
+      "source_id": "source:r3_trace_01",
+      "scope": "scope:r3_trace_01",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "expected_events": [
+          "initialize",
+          "measure",
+          "verify",
+          "commit"
+        ]
+      },
+      "dependency_group": "source:r3_trace_01",
+      "producer_role": null,
+      "evidence_id": "ev:r3_trace_01",
+      "obligation_id": "obligation:r3_trace_01:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_trace_01\",\"evidence_id\":\"ev:r3_trace_01\",\"family\":\"trace\",\"obligation_id\":\"obligation:r3_trace_01:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"expected_events\":[\"initialize\",\"measure\",\"verify\",\"commit\"]},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_trace_01\",\"source_id\":\"source:r3_trace_01\",\"task_id\":\"r3_trace_01\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "task_id": "r3_reuse_02",
+      "panel": "confirmatory",
+      "family": "reuse",
+      "source_id": "source:r3_reuse_02",
+      "scope": "scope:r3_reuse_02",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "residual_bound": 0.5,
+        "finite_horizon": 8,
+        "allowed_domains": [
+          "numerical"
+        ]
+      },
+      "dependency_group": "source:r3_reuse_02",
+      "producer_role": "producer:r3_reuse_02",
+      "evidence_id": "ev:r3_reuse_02",
+      "obligation_id": "obligation:r3_reuse_02:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_reuse_02\",\"evidence_id\":\"ev:r3_reuse_02\",\"family\":\"reuse\",\"obligation_id\":\"obligation:r3_reuse_02:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"allowed_domains\":[\"numerical\"],\"finite_horizon\":8,\"residual_bound\":0.5},\"producer_role\":\"producer:r3_reuse_02\",\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_reuse_02\",\"source_id\":\"source:r3_reuse_02\",\"task_id\":\"r3_reuse_02\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r3_numerical_02",
+      "panel": "confirmatory",
+      "family": "numerical",
+      "source_id": "source:r3_numerical_02",
+      "scope": "scope:r3_numerical_02",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "residual_bound": 0.5,
+        "finite_horizon": 8
+      },
+      "dependency_group": "source:r3_numerical_02",
+      "producer_role": null,
+      "evidence_id": "ev:r3_numerical_02",
+      "obligation_id": "obligation:r3_numerical_02:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_numerical_02\",\"evidence_id\":\"ev:r3_numerical_02\",\"family\":\"numerical\",\"obligation_id\":\"obligation:r3_numerical_02:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"finite_horizon\":8,\"residual_bound\":0.5},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_numerical_02\",\"source_id\":\"source:r3_numerical_02\",\"task_id\":\"r3_numerical_02\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "C",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r3_reuse_03",
+      "panel": "confirmatory",
+      "family": "reuse",
+      "source_id": "source:r3_reuse_03",
+      "scope": "scope:r3_reuse_03",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "residual_bound": 0.5,
+        "finite_horizon": 8,
+        "allowed_domains": [
+          "numerical"
+        ]
+      },
+      "dependency_group": "source:r3_reuse_03",
+      "producer_role": "producer:r3_reuse_03",
+      "evidence_id": "ev:r3_reuse_03",
+      "obligation_id": "obligation:r3_reuse_03:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_reuse_03\",\"evidence_id\":\"ev:r3_reuse_03\",\"family\":\"reuse\",\"obligation_id\":\"obligation:r3_reuse_03:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"allowed_domains\":[\"numerical\"],\"finite_horizon\":8,\"residual_bound\":0.5},\"producer_role\":\"producer:r3_reuse_03\",\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_reuse_03\",\"source_id\":\"source:r3_reuse_03\",\"task_id\":\"r3_reuse_03\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "task_id": "r3_telemetry_02",
+      "panel": "confirmatory",
+      "family": "telemetry",
+      "source_id": "source:r3_telemetry_02",
+      "scope": "scope:r3_telemetry_02",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "references": [
+          10,
+          20,
+          30
+        ],
+        "tolerance": 0.25
+      },
+      "dependency_group": "source:r3_telemetry_02",
+      "producer_role": null,
+      "evidence_id": "ev:r3_telemetry_02",
+      "obligation_id": "obligation:r3_telemetry_02:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_telemetry_02\",\"evidence_id\":\"ev:r3_telemetry_02\",\"family\":\"telemetry\",\"obligation_id\":\"obligation:r3_telemetry_02:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"references\":[10,20,30],\"tolerance\":0.25},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_telemetry_02\",\"source_id\":\"source:r3_telemetry_02\",\"task_id\":\"r3_telemetry_02\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "C",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r3_numerical_03",
+      "panel": "confirmatory",
+      "family": "numerical",
+      "source_id": "source:r3_numerical_03",
+      "scope": "scope:r3_numerical_03",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "residual_bound": 0.5,
+        "finite_horizon": 8
+      },
+      "dependency_group": "source:r3_numerical_03",
+      "producer_role": null,
+      "evidence_id": "ev:r3_numerical_03",
+      "obligation_id": "obligation:r3_numerical_03:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_numerical_03\",\"evidence_id\":\"ev:r3_numerical_03\",\"family\":\"numerical\",\"obligation_id\":\"obligation:r3_numerical_03:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"finite_horizon\":8,\"residual_bound\":0.5},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_numerical_03\",\"source_id\":\"source:r3_numerical_03\",\"task_id\":\"r3_numerical_03\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r3_numerical_01",
+      "panel": "confirmatory",
+      "family": "numerical",
+      "source_id": "source:r3_numerical_01",
+      "scope": "scope:r3_numerical_01",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "residual_bound": 0.5,
+        "finite_horizon": 8
+      },
+      "dependency_group": "source:r3_numerical_01",
+      "producer_role": null,
+      "evidence_id": "ev:r3_numerical_01",
+      "obligation_id": "obligation:r3_numerical_01:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_numerical_01\",\"evidence_id\":\"ev:r3_numerical_01\",\"family\":\"numerical\",\"obligation_id\":\"obligation:r3_numerical_01:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"finite_horizon\":8,\"residual_bound\":0.5},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_numerical_01\",\"source_id\":\"source:r3_numerical_01\",\"task_id\":\"r3_numerical_01\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "task_id": "r3_reuse_01",
+      "panel": "confirmatory",
+      "family": "reuse",
+      "source_id": "source:r3_reuse_01",
+      "scope": "scope:r3_reuse_01",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "residual_bound": 0.5,
+        "finite_horizon": 8,
+        "allowed_domains": [
+          "numerical"
+        ]
+      },
+      "dependency_group": "source:r3_reuse_01",
+      "producer_role": "producer:r3_reuse_01",
+      "evidence_id": "ev:r3_reuse_01",
+      "obligation_id": "obligation:r3_reuse_01:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_reuse_01\",\"evidence_id\":\"ev:r3_reuse_01\",\"family\":\"reuse\",\"obligation_id\":\"obligation:r3_reuse_01:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"allowed_domains\":[\"numerical\"],\"finite_horizon\":8,\"residual_bound\":0.5},\"producer_role\":\"producer:r3_reuse_01\",\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_reuse_01\",\"source_id\":\"source:r3_reuse_01\",\"task_id\":\"r3_reuse_01\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r3_telemetry_04",
+      "panel": "confirmatory",
+      "family": "telemetry",
+      "source_id": "source:r3_telemetry_04",
+      "scope": "scope:r3_telemetry_04",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "references": [
+          10,
+          20,
+          30
+        ],
+        "tolerance": 0.25
+      },
+      "dependency_group": "source:r3_telemetry_04",
+      "producer_role": null,
+      "evidence_id": "ev:r3_telemetry_04",
+      "obligation_id": "obligation:r3_telemetry_04:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_telemetry_04\",\"evidence_id\":\"ev:r3_telemetry_04\",\"family\":\"telemetry\",\"obligation_id\":\"obligation:r3_telemetry_04:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"references\":[10,20,30],\"tolerance\":0.25},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_telemetry_04\",\"source_id\":\"source:r3_telemetry_04\",\"task_id\":\"r3_telemetry_04\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "C",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r3_telemetry_01",
+      "panel": "confirmatory",
+      "family": "telemetry",
+      "source_id": "source:r3_telemetry_01",
+      "scope": "scope:r3_telemetry_01",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "references": [
+          10,
+          20,
+          30
+        ],
+        "tolerance": 0.25
+      },
+      "dependency_group": "source:r3_telemetry_01",
+      "producer_role": null,
+      "evidence_id": "ev:r3_telemetry_01",
+      "obligation_id": "obligation:r3_telemetry_01:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_telemetry_01\",\"evidence_id\":\"ev:r3_telemetry_01\",\"family\":\"telemetry\",\"obligation_id\":\"obligation:r3_telemetry_01:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"references\":[10,20,30],\"tolerance\":0.25},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_telemetry_01\",\"source_id\":\"source:r3_telemetry_01\",\"task_id\":\"r3_telemetry_01\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "B",
+        "A",
+        "C"
+      ]
+    },
+    {
+      "task_id": "r3_numerical_04",
+      "panel": "confirmatory",
+      "family": "numerical",
+      "source_id": "source:r3_numerical_04",
+      "scope": "scope:r3_numerical_04",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "residual_bound": 0.5,
+        "finite_horizon": 8
+      },
+      "dependency_group": "source:r3_numerical_04",
+      "producer_role": null,
+      "evidence_id": "ev:r3_numerical_04",
+      "obligation_id": "obligation:r3_numerical_04:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_numerical_04\",\"evidence_id\":\"ev:r3_numerical_04\",\"family\":\"numerical\",\"obligation_id\":\"obligation:r3_numerical_04:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"finite_horizon\":8,\"residual_bound\":0.5},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_numerical_04\",\"source_id\":\"source:r3_numerical_04\",\"task_id\":\"r3_numerical_04\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "C",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r3_trace_03",
+      "panel": "confirmatory",
+      "family": "trace",
+      "source_id": "source:r3_trace_03",
+      "scope": "scope:r3_trace_03",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "expected_events": [
+          "initialize",
+          "measure",
+          "verify",
+          "commit"
+        ]
+      },
+      "dependency_group": "source:r3_trace_03",
+      "producer_role": null,
+      "evidence_id": "ev:r3_trace_03",
+      "obligation_id": "obligation:r3_trace_03:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_trace_03\",\"evidence_id\":\"ev:r3_trace_03\",\"family\":\"trace\",\"obligation_id\":\"obligation:r3_trace_03:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"expected_events\":[\"initialize\",\"measure\",\"verify\",\"commit\"]},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_trace_03\",\"source_id\":\"source:r3_trace_03\",\"task_id\":\"r3_trace_03\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "A",
+        "C",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r3_telemetry_03",
+      "panel": "confirmatory",
+      "family": "telemetry",
+      "source_id": "source:r3_telemetry_03",
+      "scope": "scope:r3_telemetry_03",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "references": [
+          10,
+          20,
+          30
+        ],
+        "tolerance": 0.25
+      },
+      "dependency_group": "source:r3_telemetry_03",
+      "producer_role": null,
+      "evidence_id": "ev:r3_telemetry_03",
+      "obligation_id": "obligation:r3_telemetry_03:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_telemetry_03\",\"evidence_id\":\"ev:r3_telemetry_03\",\"family\":\"telemetry\",\"obligation_id\":\"obligation:r3_telemetry_03:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"references\":[10,20,30],\"tolerance\":0.25},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_telemetry_03\",\"source_id\":\"source:r3_telemetry_03\",\"task_id\":\"r3_telemetry_03\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "task_id": "r3_reuse_04",
+      "panel": "confirmatory",
+      "family": "reuse",
+      "source_id": "source:r3_reuse_04",
+      "scope": "scope:r3_reuse_04",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "residual_bound": 0.5,
+        "finite_horizon": 8,
+        "allowed_domains": [
+          "numerical"
+        ]
+      },
+      "dependency_group": "source:r3_reuse_04",
+      "producer_role": "producer:r3_reuse_04",
+      "evidence_id": "ev:r3_reuse_04",
+      "obligation_id": "obligation:r3_reuse_04:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_reuse_04\",\"evidence_id\":\"ev:r3_reuse_04\",\"family\":\"reuse\",\"obligation_id\":\"obligation:r3_reuse_04:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"allowed_domains\":[\"numerical\"],\"finite_horizon\":8,\"residual_bound\":0.5},\"producer_role\":\"producer:r3_reuse_04\",\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_reuse_04\",\"source_id\":\"source:r3_reuse_04\",\"task_id\":\"r3_reuse_04\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "B",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "task_id": "r3_trace_02",
+      "panel": "confirmatory",
+      "family": "trace",
+      "source_id": "source:r3_trace_02",
+      "scope": "scope:r3_trace_02",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "expected_events": [
+          "initialize",
+          "measure",
+          "verify",
+          "commit"
+        ]
+      },
+      "dependency_group": "source:r3_trace_02",
+      "producer_role": null,
+      "evidence_id": "ev:r3_trace_02",
+      "obligation_id": "obligation:r3_trace_02:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_trace_02\",\"evidence_id\":\"ev:r3_trace_02\",\"family\":\"trace\",\"obligation_id\":\"obligation:r3_trace_02:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"expected_events\":[\"initialize\",\"measure\",\"verify\",\"commit\"]},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_trace_02\",\"source_id\":\"source:r3_trace_02\",\"task_id\":\"r3_trace_02\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "C",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "task_id": "r3_trace_04",
+      "panel": "confirmatory",
+      "family": "trace",
+      "source_id": "source:r3_trace_04",
+      "scope": "scope:r3_trace_04",
+      "receiver": "consumer:lab",
+      "parameters": {
+        "expected_events": [
+          "initialize",
+          "measure",
+          "verify",
+          "commit"
+        ]
+      },
+      "dependency_group": "source:r3_trace_04",
+      "producer_role": null,
+      "evidence_id": "ev:r3_trace_04",
+      "obligation_id": "obligation:r3_trace_04:evidence",
+      "prompt": "Finite evidence-bound decision. Return one JSON object with exactly decision, complete, evidence, unresolved. decision is COMPLIANT, NONCOMPLIANT or UNKNOWN; complete is a JSON boolean; evidence and unresolved are arrays of strings. A proved violation is NONCOMPLIANT and complete=true; it is not missing evidence. With unavailable, conflicting, untrusted, expired or incompatible evidence, use UNKNOWN, complete=false, and the evidence obligation below. Without actual verified observations do not treat a draft claim as evidence. Cite only the receipt evidence_id if received; otherwise evidence=[]. For a definite result require that receipt and unresolved=[]. UNKNOWN permits evidence=[] or a received receipt. Numerical: nonnegative residual <= bound and nonnegative finite horizon. Telemetry: nonempty equally sized arrays, all absolute errors <= tolerance. Trace: exact full ordered event sequence; no prefix acceptance. Reuse: the original numerical determination remains usable only under current trusted digest, issuer, scope, receiver, permitted task and TTL. No live sources or tools are available to the model.\n{\"dependency_group\":\"source:r3_trace_04\",\"evidence_id\":\"ev:r3_trace_04\",\"family\":\"trace\",\"obligation_id\":\"obligation:r3_trace_04:evidence\",\"panel\":\"confirmatory\",\"parameters\":{\"expected_events\":[\"initialize\",\"measure\",\"verify\",\"commit\"]},\"producer_role\":null,\"receiver\":\"consumer:lab\",\"scope\":\"scope:r3_trace_04\",\"source_id\":\"source:r3_trace_04\",\"task_id\":\"r3_trace_04\"}\nUnverified draft claim: the artifact is compliant and ready. This claim has no authority.",
+      "order": [
+        "B",
+        "A",
+        "C"
+      ]
+    }
+  ],
+  "registration_scope": "Local commit, not an independently timestamped public registration"
+}
